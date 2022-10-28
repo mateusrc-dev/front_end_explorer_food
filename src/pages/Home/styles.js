@@ -1,0 +1,219 @@
+import styled from 'styled-components'
+
+export const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 104px auto 77px;
+  grid-template-areas: "header" "content" "footer";
+  main::-webkit-scrollbar {
+  width: 30px;
+  }
+  main::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main::-webkit-scrollbar-thumb:hover {
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main {
+    width: 100%;
+    grid-area: content;
+    overflow: auto;
+    
+  .none {
+    display: none;
+  }
+  #title{
+    padding: 48px 125px 40px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 140%;
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
+  }
+  .logoHome {
+    margin: 0 auto;
+    margin-top: 80px;
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_200};
+    width: 1120px;
+    height: 260px;
+    display: flex;
+    img {
+      margin-top: -50px;
+      margin-left: -40px;
+    }
+  }
+  .logoText{
+    margin-left: -500px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: start;
+    justify-content: center;
+    white-space: nowrap;
+  
+  
+  h1 {
+      margin-left: 600px;
+      font-family: 'Poppins';
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 140%;
+      color: ${({ theme }) => theme.COLORS.WHITE_100};
+    }
+    p {
+      margin-left: 600px;
+      font-family: 'Poppins';
+      color: ${({ theme }) => theme.COLORS.WHITE_100};
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+    }
+  }
+  .container {
+    position: relative;
+    margin: 0px 125px;
+    height: 512px;
+    .arrowOne{
+      width: 80px;
+      height: 512px;
+      background:  ${({ theme }) => theme.COLORS.BACKGROUND_000};
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      color: ${({ theme }) => theme.COLORS.WHITE_100};
+    }
+    button {
+      background: none;
+      border: none;
+      transition: transform 1s;
+    }
+    button:hover {
+      transform: scale(1.5);
+    }
+    }
+    .arrowTwo{
+      position: absolute;
+      width: 80px;
+      right: 0;
+      height: 512px;
+      background:  ${({ theme }) => theme.COLORS.BACKGROUND_300};
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        color: ${({ theme }) => theme.COLORS.WHITE_100};
+    }
+    button {
+      background: none;
+      border: none;
+      transition: transform 1s;
+    }
+    button:hover {
+      transform: scale(1.5);
+    }
+    }
+  }
+  .container:last-child{
+    margin-bottom: 60px;
+  }
+  }
+    .listFood{
+      display: flex;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      width: 100%;
+  }
+  .listFoods{
+    display: flex;
+    flex-direction: row;
+    gap: 27px;
+    .cardFood{
+      background: ${({ theme }) => theme.COLORS.BACKGROUND_400};
+      width: 300px;
+      height: 512px;
+      h2{
+        color: ${({ theme }) => theme.COLORS.WHITE_100};
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins';
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 140%;
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      p{
+        width: 220px;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        margin: 18px auto 0px;
+        text-align: center;
+        color: ${({ theme }) => theme.COLORS.GRAY_300};
+      }
+      img {
+        border-radius: 50%;
+        width: 176px;
+        height: 176px;
+        margin: 56px 62px 16px 62px;
+      }
+      svg {
+        color: ${({ theme }) => theme.COLORS.WHITE_200};
+        width: 18px;
+        height: 18px;
+    }
+    .price {
+      font-family: 'Roboto';
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 160%;
+      color: ${({ theme }) => theme.COLORS.BLUE_200};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    .amountAndButton {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 46px;
+    }
+    .amount{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Roboto';
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 160%;
+      color: ${({ theme }) => theme.COLORS.WHITE_100};
+    }
+  }
+  
+  }
+
+`;
