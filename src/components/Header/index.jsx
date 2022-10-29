@@ -5,6 +5,7 @@ import { Container, Logout } from './styles'
 import { ButtonTwo } from '../ButtonTwo'
 import { Input } from '../Input'
 import { BiSearchAlt } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
 
 export function Header() {
   return (
@@ -14,11 +15,13 @@ export function Header() {
         <span>food explorer</span>
       </div>
       <div className="gap">
-        <a>Meus favoritos</a>
+        <Link to="/myfavorites"><a>Meus favoritos</a></Link>
         <Input placeholder="Busque pelas suas opções de prato" ><BiSearchAlt /></Input>
-        <ButtonTwo>
-          <CgNotes />Meu pedido (0)
-        </ButtonTwo>
+        <Link to="/myrequest">
+          <ButtonTwo>
+            <CgNotes />Meu pedido (0)
+          </ButtonTwo>
+        </Link>
       </div>
       <Logout>
         <FiLogOut />

@@ -12,14 +12,12 @@ import Alface from '../../assets/alface.png'
 import Rabanete from '../../assets/rabanete.png'
 import PãoNaan from '../../assets/pãonaan.png'
 
-
-
 export function Details() {
 
   return (
     <Container>
       <Header />
-      <ButtonText> <SlArrowLeft />voltar</ButtonText>
+        <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
       <Main>
 
         <div className="image">

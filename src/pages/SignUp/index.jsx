@@ -1,6 +1,7 @@
 import { BsFillHexagonFill } from 'react-icons/bs'
 import { Container } from './styles'
 import { Button } from '../../components/Button'
+import { Link } from 'react-router-dom'
 
 export function SignUp() {
   return (
@@ -20,7 +21,7 @@ export function SignUp() {
           <input type="text" id="password" placeholder="No mínimo 6 caracteres" />
         </div>
         <Button>Entrar</Button>
-        <a>Criar uma conta</a>
+        <Link to="/register"><a>Criar uma conta</a></Link>
       </div>
     </Container >
   )

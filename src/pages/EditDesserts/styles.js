@@ -129,7 +129,7 @@ export const Main = styled.main`
       background: transparent;
       border-radius: 5px;
       padding: 16px;
-      height: 50px;
+      min-height: 50px;
       color: ${({ theme }) => theme.COLORS.WHITE_200};
     }
     .ingredient{

@@ -1,11 +1,33 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 104px auto 77px;
-  grid-template-areas: "header" "content" "footer";
+  grid-template-rows: 104px 50px auto 77px;
+  grid-template-areas: "header" "back" "content" "footer";
+`;
+
+export const ButtonText = styled(Link)`
+  margin-left: 125px;
+  margin-top: 50px;
+  width: 100px;
+  grid-area: back;  
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
+  svg {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
 `;
 
 export const Main = styled.div`

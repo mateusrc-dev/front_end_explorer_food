@@ -12,6 +12,7 @@ import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 export function Home() {
   const carousel = useRef(null)
@@ -74,7 +75,7 @@ export function Home() {
               <div className="listFoods">
                 <div className="cardFood" >
                   <img src={Salada} alt="imagem do prato" />
-                  <h2>Salada Ravanello<BiChevronRight /></h2>
+                  <Link to="/details/1"><h2>Salada Ravanello<BiChevronRight /></h2></Link>
                   <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
                   <span className="price">R$ 25,97</span>
                   <div className="amountAndButton">

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
@@ -8,7 +9,7 @@ export const Container = styled.div`
   grid-template-areas: "header" "back" "content" "footer";
 `;
 
-export const ButtonText = styled.a`
+export const ButtonText = styled(Link)`
   margin-left: 125px;
   margin-top: 50px;
   width: 100px;
@@ -21,6 +22,7 @@ export const ButtonText = styled.a`
   font-weight: 500;
   font-size: 24px;
   line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
   svg {
     width: 22px;
     height: 22px;

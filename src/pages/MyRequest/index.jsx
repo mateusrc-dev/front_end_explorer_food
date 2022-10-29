@@ -1,5 +1,6 @@
-import { useRef, useLayoutEffect, useState } from 'react'
-import { Container, Main } from './styles'
+import { useState } from 'react'
+import { Container, Main, ButtonText } from './styles'
+import { SlArrowLeft } from 'react-icons/sl'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Button } from '../../components/Button'
@@ -12,6 +13,7 @@ import { FiClock } from 'react-icons/fi'
 import { FiAlertTriangle } from 'react-icons/fi'
 import { BsCheckCircle } from 'react-icons/bs'
 import { BiListCheck } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
 
 export function MyRequest() {
  
@@ -23,6 +25,7 @@ export function MyRequest() {
 
     <Container>
       <Header />
+      <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
       <Main>
         <div className="columnOne">
           <h1>Meu pedido</h1>
@@ -106,7 +109,7 @@ export function MyRequest() {
             <div className={!button ? "buttonOne" : "buttonTwo"}>
               <BsCheckCircle />
               <p>Pagamento aprovado!</p>
-              <a href="#"><BiListCheck className="svg"/>Ver todos os pedidos</a>
+              <Link to="/requests"><a><BiListCheck className="svg"/>Ver todos os pedidos</a></Link>
             </div>
           </div>
         </div>

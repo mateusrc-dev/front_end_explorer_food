@@ -11,6 +11,9 @@ export const Container = styled.header`
   justify-content: center;
   padding: 0 125px;
   white-space: nowrap;
+  a{
+    color: ${({theme}) => theme.COLORS.WHITE_200};
+  }
   .gap {
     display: flex;
     width: 100%;

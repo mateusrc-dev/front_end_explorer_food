@@ -3,14 +3,16 @@ import { SlArrowLeft } from 'react-icons/sl'
 import { HeaderTwo } from '../../components/HeaderTwo'
 import { Footer } from '../../components/Footer'
 import { FiUpload } from 'react-icons/fi'
-import { AiOutlineClose } from 'react-icons/ai'
-import { MdAdd } from 'react-icons/md'
+import { IngredientItem } from '../../components/IngredientItem'
+import { Link } from 'react-router-dom'
 
 export function EditDrinks() {
   return (
     <Container>
       <HeaderTwo />
-      <ButtonText><SlArrowLeft />voltar</ButtonText>
+      <Link to="/homeadm">
+        <ButtonText><SlArrowLeft />voltar</ButtonText>
+      </Link>
       <Main>
         <h1>Editar bebida</h1>
         <div className="imageAndNameDish">
@@ -28,12 +30,8 @@ export function EditDrinks() {
           <div className="ingredients">
             <p>Ingredientes</p>
             <div className="box">
-              <div className="ingredient">
-                <span>Café</span><button><AiOutlineClose /></button>
-              </div>
-              <div className="add">
-                <span>Adicionar</span><button><MdAdd /></button>
-              </div>
+              <IngredientItem value="Café" />
+              <IngredientItem placeholder="Adicionar" isNew />
             </div>
           </div>
           <div className="price">

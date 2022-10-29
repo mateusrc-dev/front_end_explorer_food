@@ -3,14 +3,17 @@ import { SlArrowLeft } from 'react-icons/sl'
 import { HeaderTwo } from '../../components/HeaderTwo'
 import { Footer } from '../../components/Footer'
 import { FiUpload } from 'react-icons/fi'
-import { AiOutlineClose } from 'react-icons/ai'
-import { MdAdd } from 'react-icons/md'
+import { IngredientItem } from '../../components/IngredientItem'
+import { Link } from 'react-router-dom'
+
 
 export function EditDesserts() {
   return (
     <Container>
       <HeaderTwo />
-      <ButtonText><SlArrowLeft />voltar</ButtonText>
+      <Link to="/homeadm">
+        <ButtonText><SlArrowLeft />voltar</ButtonText>
+      </Link>
       <Main>
         <h1>Editar sobremesa</h1>
         <div className="imageAndNameDish">
@@ -28,12 +31,8 @@ export function EditDesserts() {
           <div className="ingredients">
             <p>Ingredientes</p>
             <div className="box">
-              <div className="ingredient">
-                <span>damasco</span><button><AiOutlineClose /></button>
-              </div>
-              <div className="add">
-                <span>Adicionar</span><button><MdAdd /></button>
-              </div>
+              <IngredientItem value="Bolo de morango" />
+              <IngredientItem placeholder="Adicionar" isNew />
             </div>
           </div>
           <div className="price">
