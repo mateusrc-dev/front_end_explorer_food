@@ -47,7 +47,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       color: ${({ theme }) => theme.COLORS.WHITE_200};
-      margin-top: 32px;
+      margin-top: 20px;
     }
     .input{
       display: flex;

@@ -1,11 +1,16 @@
-import { Container, Main } from './styles'
+import { Container, Main, ButtonText } from './styles'
 import { HeaderTwo } from '../../components/HeaderTwo'
 import { Footer } from '../../components/Footer'
+import { Link } from 'react-router-dom'
+import { SlArrowLeft } from 'react-icons/sl'
 
 export function RequestsAdm() {
   return (
     <Container>
       <HeaderTwo />
+      <Link to="/">
+        <ButtonText><SlArrowLeft />voltar</ButtonText>
+      </Link>
       <Main>
         <h1>Todos os Pedidos</h1>
         <table>

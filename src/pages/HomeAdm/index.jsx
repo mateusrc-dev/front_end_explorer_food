@@ -1,5 +1,5 @@
 //import { useRef, useLayoutEffect } from 'react'
-import { Container } from './styles'
+import { Container, Links } from './styles'
 import { HeaderTwo } from '../../components/HeaderTwo'
 import { Footer } from '../../components/Footer'
 import HomeImage from '../../assets/homeimage.png'
@@ -12,6 +12,7 @@ import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 export function HomeAdm() {
   const carousel = useRef(null)
@@ -60,12 +61,12 @@ export function HomeAdm() {
           <div className="logoText">
             <div className="addFoods">
               <span>Adicionar novos:</span>
-              <a>Pratos</a>
-              <a>Sobremesas</a>
-              <a>Bebidas</a>
+              <Links to="/editdish">Pratos</Links>
+              <Links to="/editdesserts">Sobremesas</Links>
+              <Links to="/editdrinks">Bebidas</Links>
             </div>
             <div className="requests">
-              <a>Administrar pedidos dos clientes</a>
+              <Links to="/requestsadm">Administrar pedidos dos clientes</Links>
             </div>
           </div>
         </div>
@@ -81,7 +82,7 @@ export function HomeAdm() {
             <div className="listFoods">
               <div className="cardFood" >
                 <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
+                <Link to="/details/1"><h2>Salada Ravanello<BiChevronRight /></h2></Link>
                 <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
                 <span className="price">R$ 25,97</span>
                 <div className="amountAndButton">

@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 104px 50px auto 77px;
   grid-template-areas: "header" "back" "content" "footer";
-  
 `;
 
 export const ButtonText = styled.a`
@@ -22,6 +21,7 @@ export const ButtonText = styled.a`
   font-weight: 500;
   font-size: 24px;
   line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
   svg {
     width: 22px;
     height: 22px;

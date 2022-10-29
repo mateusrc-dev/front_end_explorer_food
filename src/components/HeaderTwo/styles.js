@@ -30,10 +30,22 @@ export const Container = styled.header`
     }
   }
   .adm{
+    display: flex;
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
     color:  ${({theme}) => theme.COLORS.GRAY_300};
+  }
+`;
+
+export const Logout = styled.button`
+  border: none;
+  background: none;
+  padding-left: 37px;
+  svg {
+    color: ${({theme}) => theme.COLORS.WHITE_200};
+    width: 22px;
+    height: 22px;
   }
 `;

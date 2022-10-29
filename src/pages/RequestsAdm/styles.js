@@ -4,8 +4,29 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 104px auto 77px;
-  grid-template-areas: "header" "content" "footer";
+  grid-template-rows: 104px 50px auto 77px;
+  grid-template-areas: "header" "back" "content" "footer";
+`;
+
+export const ButtonText = styled.a`
+  margin-left: 125px;
+  margin-top: 24px;
+  width: 100px;
+  grid-area: back;  
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
+  svg {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
 `;
 
 export const Main = styled.div`
@@ -20,7 +41,7 @@ export const Main = styled.div`
     margin: 0 125px;
     width: 1400px;
     text-align: left;
-    border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     border-spacing: 0px;
     border-left: none;
@@ -32,7 +53,7 @@ export const Main = styled.div`
   }
   thead tr th {
     padding: 20px;
-    border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     width: 100%;
     height: 100%;
@@ -42,11 +63,11 @@ export const Main = styled.div`
     font-weight: 700;
     font-size: 14px;
     line-height: 160%;
-    color: ${({theme}) => theme.COLORS.WHITE_100};
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
     }
     tbody tr td {
     padding: 20px;
-    border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     width: 100%;
     height: 100%;
@@ -56,23 +77,23 @@ export const Main = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
-    color: ${({theme}) => theme.COLORS.GRAY_300};
+    color: ${({ theme }) => theme.COLORS.GRAY_300};
     select {
       background-color: transparent;
       padding: 10px;
       border-radius: 5px;
       width: 200px;
       color: white;
-      color: ${({theme}) => theme.COLORS.GRAY_300};
-      border: 1px solid ${({theme}) => theme.COLORS.GRAY_300};
+      color: ${({ theme }) => theme.COLORS.GRAY_300};
+      border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
       text-align: left;
       font-family: 'Roboto';
       font-weight: 400;
       font-size: 14px;
     }
     option {
-      color: ${({theme}) => theme.COLORS.GRAY_300};
-      background: ${({theme}) => theme.COLORS.BACKGROUND_600};   
+      color: ${({ theme }) => theme.COLORS.GRAY_300};
+      background: ${({ theme }) => theme.COLORS.BACKGROUND_600};   
     }
     }
 `;

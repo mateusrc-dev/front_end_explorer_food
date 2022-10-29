@@ -38,9 +38,6 @@ export const Container = styled.div`
       line-height: 24px;
       color: ${({ theme }) => theme.COLORS.WHITE_200};
     }
-    a:last-child{
-      margin-top: 10px;
-    }
     a{
       font-family: 'Poppins';
       font-weight: 500;

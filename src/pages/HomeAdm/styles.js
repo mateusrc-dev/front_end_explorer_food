@@ -1,4 +1,14 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+export const Links = styled(Link)`
+      padding: 2px 10px;
+      display: flex;
+      margin-left: -10px;
+      border-left: none;
+      font-style: italic;
+      color: ${({ theme }) => theme.COLORS.WHITE_100};
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -69,6 +79,7 @@ export const Container = styled.div`
       border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
       border-left: none;
       font-style: italic;
+      color: ${({ theme }) => theme.COLORS.WHITE_100};
     }
     a:last-child{
       border-radius: 0 10px 10px 0;
@@ -83,6 +94,7 @@ export const Container = styled.div`
       font-style: italic;
       border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
       border-top: none;
+      
   }
   }
   .logoText{

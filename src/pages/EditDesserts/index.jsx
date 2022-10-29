@@ -11,7 +11,7 @@ export function EditDesserts() {
   return (
     <Container>
       <HeaderTwo />
-      <Link to="/homeadm">
+      <Link to="/">
         <ButtonText><SlArrowLeft />voltar</ButtonText>
       </Link>
       <Main>

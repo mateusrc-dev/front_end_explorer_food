@@ -3,12 +3,12 @@ import { Container } from './styles'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
 
-export function SignUp() {
+export function SignUpAdm() {
   return (
     <Container>
       <header>
         <BsFillHexagonFill />
-        <h3>food explorer</h3>
+        <h3>food explorer administrador</h3>
       </header>
       <div className="createLogin">
         <h1>Faça login</h1>
@@ -21,8 +21,7 @@ export function SignUp() {
           <input type="text" id="password" placeholder="No mínimo 6 caracteres" />
         </div>
         <Button>Entrar</Button>
-        <Link to="/register"><a>Criar uma conta</a></Link>
-        <Link to="/adm"><a>Entrar como Administrador</a></Link>
+        <Link to="/"><a>Voltar para entrar como cliente</a></Link>
       </div>
     </Container >
   )

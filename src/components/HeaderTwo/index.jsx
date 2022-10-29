@@ -1,5 +1,6 @@
 import { BsFillHexagonFill } from 'react-icons/bs'
-import { Container } from './styles'
+import { Container, Logout } from './styles'
+import { FiLogOut } from 'react-icons/fi'
 
 
 export function HeaderTwo() {
@@ -11,6 +12,9 @@ export function HeaderTwo() {
       </div>
       <div className="adm">
         <p>Administrador</p>
+        <Logout>
+          <FiLogOut />
+        </Logout>
       </div>
     </Container>
   )
