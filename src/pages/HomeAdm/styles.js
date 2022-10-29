@@ -68,6 +68,7 @@ export const Container = styled.div`
       margin-left: -10px;
       border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
       border-left: none;
+      font-style: italic;
     }
     a:last-child{
       border-radius: 0 10px 10px 0;
