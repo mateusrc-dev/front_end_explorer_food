@@ -6,22 +6,22 @@ import { FiUpload } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
 import { MdAdd } from 'react-icons/md'
 
-export function EditDish() {
+export function EditDesserts() {
   return (
     <Container>
       <HeaderTwo />
       <ButtonText><SlArrowLeft />voltar</ButtonText>
       <Main>
-        <h1>Editar prato</h1>
+        <h1>Editar sobremesa</h1>
         <div className="imageAndNameDish">
           <div className="imagedish">
-            <p>Imagem do prato</p>
+            <p>Imagem da sobremesa</p>
             <label htmlFor="imagedish"><FiUpload />Selecione imagem</label>
             <input type="file" id="imagedish" />
           </div>
           <div className="namedish">
             <label htmlFor="namedish">Nome</label>
-            <input type="text" id="namedish" placeholder="Ex.: Salada Ceasar" />
+            <input type="text" id="namedish" placeholder="Ex.: Bolo de damasco" />
           </div>
         </div>
         <div className="ingredientsAndPriceDish">
@@ -29,7 +29,7 @@ export function EditDish() {
             <p>Ingredientes</p>
             <div className="box">
               <div className="ingredient">
-                <span>Pão Naan</span><button><AiOutlineClose /></button>
+                <span>damasco</span><button><AiOutlineClose /></button>
               </div>
               <div className="add">
                 <span>Adicionar</span><button><MdAdd /></button>
@@ -37,13 +37,13 @@ export function EditDish() {
             </div>
           </div>
           <div className="price">
-            <label htmlFor="price">Preço</label>
+            <label htmlFor="price">Nome</label>
             <input type="text" id="price" placeholder="R$ 00,00" />
           </div>
         </div>
         <div className="textarea">
           <p>Descrição</p>
-          <textarea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+          <textarea placeholder="Fale brevemente sobre a sobremesa, seus ingredientes e composição" />
         </div>
         <div className="button">
           <button className="addrequest">
