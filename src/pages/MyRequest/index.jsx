@@ -25,7 +25,7 @@ export function MyRequest() {
 
     <Container>
       <Header />
-      <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
+      <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
       <Main>
         <div className="columnOne">
           <h1>Meu pedido</h1>

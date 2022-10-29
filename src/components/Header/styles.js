@@ -37,6 +37,10 @@ export const Container = styled.header`
       font-size: 25px;
     }
   }
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }
 `;
 
 export const Logout = styled.button`

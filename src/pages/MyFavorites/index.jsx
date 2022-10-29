@@ -10,7 +10,7 @@ export function MyFavorites() {
   return (
     <Container>
       <Header />
-      <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
+      <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
       <Main>
 
         <div className="columnOne">

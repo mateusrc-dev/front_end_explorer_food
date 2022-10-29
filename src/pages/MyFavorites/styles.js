@@ -12,7 +12,8 @@ export const Container = styled.div`
 export const ButtonText = styled(Link)`
   margin-left: 125px;
   margin-top: 50px;
-  width: 100px;
+  white-space: nowrap;
+  width: 300px;
   grid-area: back;  
   display: flex;
   align-items: center;

@@ -17,11 +17,18 @@ export function Header() {
       <div className="gap">
         <Link to="/myfavorites"><a>Meus favoritos</a></Link>
         <Input placeholder="Busque pelas suas opções de prato" ><BiSearchAlt /></Input>
+        <div className="buttons">
         <Link to="/myrequest">
           <ButtonTwo>
-            <CgNotes />Meu pedido (0)
+            <CgNotes />Meu pedido atual (0)
           </ButtonTwo>
         </Link>
+        <Link to="/requests">
+          <ButtonTwo>
+            <CgNotes />Todos os meus pedidos (0)
+          </ButtonTwo>
+        </Link>
+        </div>
       </div>
       <Logout>
         <FiLogOut />
