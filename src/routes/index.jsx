@@ -4,9 +4,9 @@ import { AuthRoutes } from './auth.routes'
 import { AdmRoutes } from './adm.routes'
 
 export function Routes() {
-  return(
+  return (
     <BrowserRouter>
-      <AppRoutes />
+      <AuthRoutes />
     </BrowserRouter>
   )
 }

@@ -27,7 +27,7 @@ export const Container = styled.div`
     border-radius: 16px;
     width: 476px;
     height: 600px;
-    padding: 64px;
+    padding: 110px 64px 30px;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
     h1{
       margin-bottom: 32px;
@@ -38,6 +38,9 @@ export const Container = styled.div`
       line-height: 24px;
       color: ${({ theme }) => theme.COLORS.WHITE_200};
     }
+    a:last-child{
+      margin-top: 10px;
+    }
     a{
       font-family: 'Poppins';
       font-weight: 500;
@@ -47,13 +50,13 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       color: ${({ theme }) => theme.COLORS.WHITE_200};
-      margin-top: 20px;
+      margin-top: 32px;
     }
     .input{
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
       label {
         font-family: 'Roboto';
         font-style: normal;

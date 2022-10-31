@@ -3,7 +3,7 @@ import { Container } from './styles'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
 
-export function SignUpAdm() {
+export function SignInAdm() {
   return (
     <Container>
       <header>

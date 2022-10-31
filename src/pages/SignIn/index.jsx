@@ -1,9 +1,19 @@
+import { useAuth } from '../../hooks/auth'
+import { useContext } from "react"
+import { useState } from "react"
+import { api } from "../../services/api"
 import { BsFillHexagonFill } from 'react-icons/bs'
 import { Container } from './styles'
 import { Button } from '../../components/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export function SignIn() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { signIn } = useAuth()
+  function handleSignIn() {
+    signIn({email, password})
+  }
   return (
     <Container>
       <header>
@@ -11,21 +21,18 @@ export function SignIn() {
         <h3>food explorer</h3>
       </header>
       <div className="createLogin">
-        <h1>Crie a sua conta</h1>
-        <div className="input">
-          <label htmlFor="name">Seu nome</label>
-          <input type="text" id="name" placeholder="Exemplo: Mateus Carvalho" />
-        </div>
+        <h1>Faça login</h1>
         <div className="input">
           <label htmlFor="email">Email</label>
-          <input type="text" id="email" placeholder="Exemplo: exemplo@exemplo.com.br" />
+          <input type="text" id="email" placeholder="Exemplo: exemplo@exemplo.com.br" onChange={e => setEmail(e.target.value)}/>
         </div>
         <div className="input">
           <label htmlFor="password">Senha</label>
-          <input type="text" id="password" placeholder="No mínimo 6 caracteres" />
+          <input type="text" id="password" placeholder="No mínimo 6 caracteres" onChange={e => setPassword(e.target.value)} />
         </div>
-        <Button>Criar conta</Button>
-        <Link to="/"><a>Já tenho uma conta</a></Link>
+        <Button onClick={handleSignIn}>Entrar</Button>
+        <Link to="/register"><a>Criar uma conta</a></Link>
+        <Link to="/adm"><a>Entrar como Administrador</a></Link>
       </div>
     </Container >
   )
