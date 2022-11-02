@@ -19,12 +19,22 @@ import { ButtonTwo } from '../../components/ButtonTwo'
 import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
-import { Quant } from '../../components/Quant'
+import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
 import { Favorite } from '../../components/Favorite'
 
 export function Home() {
   const [search, setSearch] = useState("")
   const [foods, setFoods] = useState([])
+  const [request, setRequest] = useState([])
+
+
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await api.get("/request")
+      setRequest(response.data.requests)
+    }
+    fetchRequests()
+  }, [])
 
   useEffect(() => {
     async function fetchFoods() {
@@ -33,7 +43,6 @@ export function Home() {
     }
     fetchFoods()
   }, [search])
-
 
   const carousel = useRef(null)
   const carouselTwo = useRef(null)
@@ -90,7 +99,7 @@ export function Home() {
           <div className="buttons">
             <Link to="/myrequest">
               <ButtonTwo>
-                <CgNotes />Meu pedido atual (0)
+                <CgNotes />Meu pedido atual ({request.length})
               </ButtonTwo>
             </Link>
             <Link to="/requests">
@@ -131,13 +140,10 @@ export function Home() {
                     <p>{food.description}</p>
                     <span className="price">R$ {food.price}</span>
                     <div className="amountAndButton">
-                      <Quant />
-                      <Button>
-                        <CgNotes />
-                        incluir
-                      </Button>
+                      <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+
                     </div>
-                    <Favorite dish_id={food.id}/>
+                    <Favorite dish_id={food.id} />
                   </div>
                 ))
               }

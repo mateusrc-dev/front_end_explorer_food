@@ -29,7 +29,7 @@ export function SignInAdm() {
           <input type="password" id="password" placeholder="No mínimo 6 caracteres" onChange={e => setPassword(e.target.value)} />
         </div>
         <Button onClick={handleSignIn}>Entrar</Button>
-        <Link to="/"><a>Voltar para entrar como cliente</a></Link>
+        <Link to="/">Voltar para entrar como cliente</Link>
       </div>
     </Container >
   )

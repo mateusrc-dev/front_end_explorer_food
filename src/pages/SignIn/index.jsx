@@ -30,7 +30,7 @@ export function SignIn() {
         </div>
         <Button onClick={handleSignIn}>Entrar</Button>
         <Link to="/register"><a>Criar uma conta</a></Link>
-        <Link to="/adm"><a>Entrar como Administrador</a></Link>
+        <Link to="/adm">Entrar como Administrador</Link>
       </div>
     </Container >
   )

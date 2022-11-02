@@ -1,10 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Main, ButtonText } from './styles'
 import { SlArrowLeft } from 'react-icons/sl'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Button } from '../../components/Button'
-import Salada from '../../assets/saladaravanello.png'
 import { HiOutlineCreditCard } from 'react-icons/hi'
 import Pix from '../../assets/layer1.svg'
 import QrCode from '../../assets/qrcode 1.svg'
@@ -12,17 +11,48 @@ import Pag from '../../assets/Vector.svg'
 import { FiClock } from 'react-icons/fi'
 import { FiAlertTriangle } from 'react-icons/fi'
 import { BsCheckCircle } from 'react-icons/bs'
-import { BiListCheck } from 'react-icons/bi'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { api } from "../../services/api"
 
 export function MyRequest() {
- 
   const [background, setBackground] = useState(true)
   const [backgroundTwo, setBackgroundTwo] = useState(true)
   const [button, setButton] = useState(true)
+  const [request, setRequest] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await api.get("/request")
+      setRequest(response.data.requests)
+    }
+    fetchRequests()
+  }, [])
+
+  let sum = 0
+  for (var i = 0; i < request.length; i++) {
+    sum = sum + (request[i]['price'] * request[i]['amount'])
+  }
+
+  async function handlePay() {
+    if (sum == 0) {
+      alert("Escolha algum item na página anterior para realizar o pagamento!")
+      navigate("/")
+      return
+    }
+    let details = []
+    for (var i = 0; i < request.length; i++) {
+      details.push(request[i]['amount'] + "x " + request[i]['name'])
+    }
+
+    let status = "🔴&nbsp;&nbsp;Pendente"
+
+    await api.post("/allrequests", { status, details }).then(() => {alert("Pagamento finalizado com sucesso, pedido realizado com sucesso!")}).catch(error => {if(error.response){alert(error.response.data.message)}else{alert("Não foi possível finalizar pagamento!")}})
+    await api.delete("/request")
+    navigate("/")
+  }
 
   return (
-
     <Container>
       <Header />
       <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
@@ -30,40 +60,26 @@ export function MyRequest() {
         <div className="columnOne">
           <h1>Meu pedido</h1>
           <div className="requests">
-            <div className="request">
-              <img src={Salada} alt="imagem do prato" />
-              <div className="Text">
-                <div className="text">
-                  <span className="name">1x Salada Radish</span><span className="price">R$ 25,97</span>
+            {
+              request.map(request => (
+                <div className="request" key={String(request.id)}>
+                  <img src={`${api.defaults.baseURL}/files/${request.image}`} alt="imagem do prato" />
+                  <div className="Text">
+                    <div className="text">
+                      <span className="name">{request.amount}x {request.name}</span><span className="price">R$ {Number(request.price) * Number(request.amount)}</span>
+                    </div>
+                    <p>Excluir</p>
+                  </div>
                 </div>
-                <p>Excluir</p>
-              </div>
-            </div>
-            <div className="request">
-              <img src={Salada} alt="imagem do prato" />
-              <div className="Text">
-                <div className="text">
-                  <span className="name">1x Salada Radish</span><span className="price">R$ 25,97</span>
-                </div>
-                <p>Excluir</p>
-              </div>
-            </div>
-            <div className="request">
-              <img src={Salada} alt="imagem do prato" />
-              <div className="Text">
-                <div className="text">
-                  <span className="name">1x Salada Radish</span><span className="price">R$ 25,97</span>
-                </div>
-                <p>Excluir</p>
-              </div>
-            </div>
+              ))
+            }
           </div>
-          <h2>Total: R$ 103,88</h2>
+          <h2>R$ {sum} </h2>
         </div>
         <div className="columnTwo">
           <h1>Pagamento</h1>
           <div className="headerTable">
-            <div className={background ? "pix" : "pixTwo"}  onClick={() => setBackground(!background)}>
+            <div className={background ? "pix" : "pixTwo"} onClick={() => setBackground(!background)}>
               <img src={Pix} alt="pix" /><p>PIX</p>
             </div>
             <div className={backgroundTwo ? "credit" : "creditTwo"} onClick={() => setBackgroundTwo(!backgroundTwo)}>
@@ -90,7 +106,7 @@ export function MyRequest() {
                   </label>
                 </div>
                 <div className="button" onClick={() => setButton(!button)}>
-                  <Button><img src={Pag} alt="pag" />Finalizar pagamento</Button>
+                  <Button onClick={handlePay} ><img src={Pag} alt="pag" />Finalizar pagamento</Button>
                 </div>
               </div>
             </div>
@@ -109,7 +125,6 @@ export function MyRequest() {
             <div className={!button ? "buttonOne" : "buttonTwo"}>
               <BsCheckCircle />
               <p>Pagamento aprovado!</p>
-              <Link to="/requests"><a><BiListCheck className="svg"/>Ver todos os pedidos</a></Link>
             </div>
           </div>
         </div>
