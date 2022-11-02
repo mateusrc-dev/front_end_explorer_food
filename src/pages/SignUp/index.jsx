@@ -38,7 +38,7 @@ export function SignUp() {
         </div>
         <div className="input">
           <label htmlFor="password">Senha</label>
-          <input type="text" id="password" placeholder="No mínimo 6 caracteres" onChange={e => setPassword(e.target.value)}/>
+          <input type="password" id="password" placeholder="No mínimo 6 caracteres" onChange={e => setPassword(e.target.value)}/>
         </div>
         <Button onClick={handleSignUp}>Criar conta</Button>
         <Link to="/"><a>Já tenho uma conta</a></Link>

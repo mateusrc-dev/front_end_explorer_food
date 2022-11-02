@@ -4,7 +4,7 @@ import { EditDish } from '../pages/EditDish'
 import { EditDrinks } from '../pages/EditDrinks'
 import { RequestsAdm } from '../pages/RequestsAdm'
 import { HomeAdm } from '../pages/HomeAdm'
-import { Details } from '../pages/Details'
+import { DetailsAdm } from '../pages/DetailsAdm'
 
 export function AdmRoutes() {
   return (
@@ -13,8 +13,8 @@ export function AdmRoutes() {
       <Route path="/editdish" element={<EditDish />} />
       <Route path="/editdrinks" element={<EditDrinks />} />
       <Route path="/requestsadm" element={<RequestsAdm />} />
-      <Route path="/" element={<HomeAdm />} />
-      <Route path="/details/:id" element={<Details />} />
+      <Route path="/adm" element={<HomeAdm />} />
+      <Route path="/detailsadm/:id" element={<DetailsAdm />} />
     </Routes>
   )
 }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  
   display: flex;
   align-items: center;
   //como passamos propriedades dentro de Container no arquivo jxs podemos recuperar essa propriedade aqui, podemos acessar essa propriedade fazendo interpolação (propriedade é uma variável)

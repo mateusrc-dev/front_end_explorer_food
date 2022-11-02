@@ -82,7 +82,7 @@ export function HomeAdm() {
             <div className="listFoods">
               <div className="cardFood" >
                 <img src={Salada} alt="imagem do prato" />
-                <Link to="/details/1"><h2>Salada Ravanello<BiChevronRight /></h2></Link>
+                <Link to="/detailsadm/1"><h2>Salada Ravanello<BiChevronRight /></h2></Link>
                 <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
                 <span className="price">R$ 25,97</span>
                 <div className="amountAndButton">

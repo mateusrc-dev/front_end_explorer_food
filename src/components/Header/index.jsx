@@ -6,8 +6,10 @@ import { ButtonTwo } from '../ButtonTwo'
 import { Input } from '../Input'
 import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/auth'
 
 export function Header() {
+  const { signOut } = useAuth()
   return (
     <Container>
       <div className="logo">
@@ -18,19 +20,19 @@ export function Header() {
         <Link to="/myfavorites"><a>Meus favoritos</a></Link>
         <Input placeholder="Busque pelas suas opções de prato" ><BiSearchAlt /></Input>
         <div className="buttons">
-        <Link to="/myrequest">
-          <ButtonTwo>
-            <CgNotes />Meu pedido atual (0)
-          </ButtonTwo>
-        </Link>
-        <Link to="/requests">
-          <ButtonTwo>
-            <CgNotes />Todos os meus pedidos (0)
-          </ButtonTwo>
-        </Link>
+          <Link to="/myrequest">
+            <ButtonTwo>
+              <CgNotes />Meu pedido atual (0)
+            </ButtonTwo>
+          </Link>
+          <Link to="/requests">
+            <ButtonTwo>
+              <CgNotes />Todos os meus pedidos (0)
+            </ButtonTwo>
+          </Link>
         </div>
       </div>
-      <Logout>
+      <Logout onClick={signOut}>
         <FiLogOut />
       </Logout>
     </Container>

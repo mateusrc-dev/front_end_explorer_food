@@ -8,7 +8,7 @@ export function RequestsAdm() {
   return (
     <Container>
       <HeaderTwo />
-      <Link to="/">
+      <Link to="/adm">
         <ButtonText><SlArrowLeft />voltar</ButtonText>
       </Link>
       <Main>

@@ -128,37 +128,12 @@ export const Main = styled.main`
       border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
       background: transparent;
       border-radius: 5px;
-      padding: 16px;
+      padding: 6px 20px;
       min-height: 50px;
       color: ${({ theme }) => theme.COLORS.WHITE_200};
+      flex-wrap: wrap;
     }
-    .ingredient{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      width: 118px;
-      height: 32px;
-      background: ${({ theme }) => theme.COLORS.COLOR_BORDER_900};
-      border-radius: 8px;
-      button {
-        background: none;
-        border: none;
-      }
-      span{
-        font-family: 'Roboto';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-        color:  ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-      svg{
-        color:  ${({ theme }) => theme.COLORS.WHITE_200};
-        width: 12px;
-        height: 12px;
-        margin-top: 5px;
-      }
-    }
+    
     .add{
       display: flex;
       justify-content: center;
