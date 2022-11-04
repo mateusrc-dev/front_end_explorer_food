@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: 104px 50px auto 77px;
   grid-template-areas: "header" "back" "content" "footer";
@@ -23,7 +23,7 @@ export const ButtonText = styled(Link)`
   font-size: 24px;
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
-  white-space: nowrap;
+
   svg {
     width: 22px;
     height: 22px;
@@ -33,7 +33,6 @@ export const ButtonText = styled(Link)`
 
 export const Main = styled.div`
   width: 100%;
-  height: 100vh;
   grid-area: content;
   h1{
     padding: 0 125px;
@@ -42,24 +41,24 @@ export const Main = styled.div`
   table{
     border-radius: 10px 10px 0 0;
     margin: 0 125px;
-    width: 1400px;
     text-align: left;
     border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     border-spacing: 0px;
     border-left: none;
     border-bottom: none;
-    white-space: nowrap;
+    margin-bottom: 80px;
   }
   thead tr th:first-child {
     border-radius: 10px 0 0 0;
+    padding: 20px 30px;
   }
   thead tr th {
-    padding: 20px;
+    white-space: nowrap;
+    text-align: left;
+    padding: 20px 300px 20px 20px;
     border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
     background: transparent;
-    width: 100%;
-    height: 100%;
     border-top: none;
     border-right: none;
     font-family: 'Roboto';
@@ -68,12 +67,15 @@ export const Main = styled.div`
     line-height: 160%;
     color: ${({theme}) => theme.COLORS.WHITE_100};
     }
+    tbody tr td:first-child {
+      white-space: nowrap;
+    }
     tbody tr td {
-    padding: 20px;
     border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     width: 100%;
     height: 100%;
+    padding: 20px;
     border-top: none;
     border-right: none;
     font-family: 'Roboto';  
@@ -82,5 +84,29 @@ export const Main = styled.div`
     line-height: 160%;
     color: ${({theme}) => theme.COLORS.GRAY_300};
     }
+    button {
+    position: absolute;
+    margin-left: 210px;
+    background-color: ${({theme}) => theme.COLORS.RED_200};
+    color: ${({theme}) => theme.COLORS.WHITE_200};
+    height: 30px;
+    padding: 0 10px;
+    border: 0;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    gap: 8px;
+  svg {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: -20px;
+    width: 26px;
+    height: 22px;
+  }
+  }
+  .none {
+    display: none;
+  }
 `;
 

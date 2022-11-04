@@ -2,8 +2,26 @@ import { Container, Main, ButtonText } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
+import { useState, useEffect } from 'react'
+import { api } from "../../services/api"
+import { BsTrashFill } from "react-icons/bs"
 
 export function Requests() {
+  const [request, setRequest] = useState([])
+
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await api.get("/allrequests")
+      console.log(response.data.allRequests)
+      setRequest(response.data.allRequests)
+    }
+    fetchRequests()
+  }, [request])
+
+  async function handleDelete(id) {
+    await api.delete(`/allrequests/${id}`)
+  }
+
   return (
     <Container>
       <Header />
@@ -20,24 +38,16 @@ export function Requests() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>🔴&nbsp;&nbsp;Pendente</td>
-              <td>00000003</td>
-              <td>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</td>
-              <td>20/05 às 18h00</td>
-            </tr>
-            <tr>
-              <td>🟡&nbsp;&nbsp;Preparando</td>
-              <td>00000002</td>
-              <td>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</td>
-              <td>20/05 às 18h00</td>
-            </tr>
-            <tr>
-              <td>🟢&nbsp;&nbsp;Entregue</td>
-              <td>00000001</td>
-              <td>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</td>
-              <td>20/05 às 18h00</td>
-            </tr>
+            {
+              request.map(request => (
+                <tr>
+                  <td>{request.status}</td>
+                  <td>{request.id}</td>
+                  <td>{request.details}</td>
+                  <td>{request.created_at} <button onClick={() => handleDelete(request.id)} className={request.status === "🟢Entregue" ? "" : "none"}><BsTrashFill />Excluir</button></td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </Main>

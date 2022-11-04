@@ -25,7 +25,7 @@ export function AmountAndButtonInclude({ image, price, name }) {
       return
     }
     await api.post("/request", { name, price, image, amount }).then(() => { alert("Pedido incluído!") })
-    window.location.reload();
+    //window.location.reload();
   }
   return (
     <Container>

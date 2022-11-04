@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 104px 50px auto 77px;
   grid-template-areas: "header" "back" "content" "footer";
+  white-space: nowrap;
 `;
 
 export const ButtonText = styled(Link)`

@@ -25,16 +25,25 @@ import { Favorite } from '../../components/Favorite'
 export function Home() {
   const [search, setSearch] = useState("")
   const [foods, setFoods] = useState([])
+  const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
 
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await api.get("/allrequests")
+      console.log(response.data.allRequests)
+      setRequest(response.data.allRequests)
+    }
+    fetchRequests()
+  }, [request])
 
   useEffect(() => {
     async function fetchRequests() {
       const response = await api.get("/request")
-      setRequest(response.data.requests)
+      setRequests(response.data.requests)
     }
     fetchRequests()
-  }, [])
+  }, [requests])
 
   useEffect(() => {
     async function fetchFoods() {
@@ -99,12 +108,12 @@ export function Home() {
           <div className="buttons">
             <Link to="/myrequest">
               <ButtonTwo>
-                <CgNotes />Meu pedido atual ({request.length})
+                <CgNotes />Meu pedido atual ({requests.length})
               </ButtonTwo>
             </Link>
             <Link to="/requests">
               <ButtonTwo>
-                <CgNotes />Todos os meus pedidos (0)
+                <CgNotes />Todos os meus pedidos ({request.length})
               </ButtonTwo>
             </Link>
           </div>

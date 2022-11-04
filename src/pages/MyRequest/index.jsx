@@ -45,7 +45,7 @@ export function MyRequest() {
       details.push(request[i]['amount'] + "x " + request[i]['name'])
     }
 
-    let status = "🔴&nbsp;&nbsp;Pendente"
+    let status = "🔴Pendente"
 
     await api.post("/allrequests", { status, details }).then(() => {alert("Pagamento finalizado com sucesso, pedido realizado com sucesso!")}).catch(error => {if(error.response){alert(error.response.data.message)}else{alert("Não foi possível finalizar pagamento!")}})
     await api.delete("/request")
