@@ -25,7 +25,6 @@ export function Header() {
   useEffect(() => {
     async function fetchRequests() {
       const response = await api.get("/allrequests")
-      console.log(response.data.allRequests)
       setRequest(response.data.allRequests)
     }
     fetchRequests()

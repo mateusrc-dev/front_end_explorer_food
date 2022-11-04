@@ -7,7 +7,7 @@ export const Container = styled.div`
   grid-template-rows: 104px auto 77px;
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
-  width: 30px;
+  width: 20px;
   }
   main::-webkit-scrollbar-thumb {
   background: ${({ theme }) => theme.COLORS.BACKGROUND_100};

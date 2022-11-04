@@ -2,13 +2,14 @@ import { Container, ButtonText, Main } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
-import Salada from '../../assets/saladaravanello.png'
 import { useState, useEffect } from 'react'
 import { api } from "../../services/api"
 
 export function MyFavorites() {
 
   const [favoritesDish, setFavoritesDish] = useState([])
+  const [favoritesDrink, setFavoritesDrink] = useState([])
+  const [favoritesDessert, setFavoritesDessert] = useState([])
 
   useEffect(() => {
     async function fetchFavoritesDish() {
@@ -19,6 +20,23 @@ export function MyFavorites() {
     fetchFavoritesDish()
   }, [])
 
+  useEffect(() => {
+    async function fetchFavoritesDish() {
+      const response = await api.get("/favoritesdrinks")
+      console.log(response.data)
+      setFavoritesDrink(response.data.favoritesDrinks)
+    }
+    fetchFavoritesDish()
+  }, [])
+
+  useEffect(() => {
+    async function fetchFavoritesDish() {
+      const response = await api.get("/favoritesdesserts")
+      console.log(response.data)
+      setFavoritesDessert(response.data.favoritesDesserts)
+    }
+    fetchFavoritesDish()
+  }, [])
 
   return (
     <Container>
@@ -47,29 +65,37 @@ export function MyFavorites() {
         <div className="columnTwo">
           <h1>Sobremesas favoritas</h1>
           <div className="requests">
-            <div className="request">
-              <img src={Salada} alt="imagem do prato" />
-              <div className="Text">
-                <div className="text">
-                  <span className="name">Salada Radish</span>
+          {
+              favoritesDessert.map(fav => (
+                <div className="request" key={String(fav.id)}>
+                  <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                  <div className="Text">
+                    <div className="text">
+                      <span className="name">{fav.name}</span>
+                    </div>
+                    <p>{fav.description}</p>
+                  </div>
                 </div>
-                <p>descrição da sobremesa...</p>
-              </div>
-            </div>
+              ))
+            }
           </div>
         </div>
         <div className="columnTwo">
           <h1>Bebidas favoritas</h1>
           <div className="requests">
-            <div className="request">
-              <img src={Salada} alt="imagem do prato" />
-              <div className="Text">
-                <div className="text">
-                  <span className="name">Salada Radish</span>
+          {
+              favoritesDrink.map(fav => (
+                <div className="request" key={String(fav.id)}>
+                  <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                  <div className="Text">
+                    <div className="text">
+                      <span className="name">{fav.name}</span>
+                    </div>
+                    <p>{fav.description}</p>
+                  </div>
                 </div>
-                <p>descrição da bebida...</p>
-              </div>
-            </div>
+              ))
+            }
           </div>
         </div>
       </Main>

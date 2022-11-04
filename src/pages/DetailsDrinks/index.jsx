@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
 import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
 import { Img } from '../../components/Img'
 
-export function Details() {
+export function DetailsDrinks() {
   const [data, setData] = useState({})
   const [ingredients, setIngredients] = useState([])
   const params = useParams()
@@ -16,7 +16,7 @@ export function Details() {
   console.log(ingredients)
   useEffect(() => {
     async function fetchFood() {
-      const response = await api.get(`/dishes/${params.id}`)
+      const response = await api.get(`/drinks/${params.id}`)
       setData(response.data)
       setIngredients(response.data.ingredients)
     }
