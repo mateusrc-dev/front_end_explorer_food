@@ -1,4 +1,4 @@
-import { Container, ButtonText, Main } from './styles'
+import { Container, ButtonText } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
@@ -41,10 +41,9 @@ export function MyFavorites() {
   return (
     <Container>
       <Header />
-      <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
-      <Main>
-
+      <main>
         <div className="columnOne">
+        <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
           <h1>Pratos favoritos</h1>
           <div className="requests">
             {
@@ -63,9 +62,9 @@ export function MyFavorites() {
           </div>
         </div>
         <div className="columnTwo">
-          <h1>Sobremesas favoritas</h1>
+          <h1 className="title">Sobremesas favoritas</h1>
           <div className="requests">
-          {
+            {
               favoritesDessert.map(fav => (
                 <div className="request" key={String(fav.id)}>
                   <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
@@ -81,9 +80,9 @@ export function MyFavorites() {
           </div>
         </div>
         <div className="columnTwo">
-          <h1>Bebidas favoritas</h1>
+          <h1 className="title">Bebidas favoritas</h1>
           <div className="requests">
-          {
+            {
               favoritesDrink.map(fav => (
                 <div className="request" key={String(fav.id)}>
                   <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
@@ -98,7 +97,7 @@ export function MyFavorites() {
             }
           </div>
         </div>
-      </Main>
+      </main>
       <Footer />
     </Container>
   )

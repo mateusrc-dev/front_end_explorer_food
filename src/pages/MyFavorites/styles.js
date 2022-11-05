@@ -5,46 +5,42 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 104px 50px auto 77px;
-  grid-template-areas: "header" "back" "content" "footer";
-  
-`;
-
-export const ButtonText = styled(Link)`
-  margin-left: 125px;
-  margin-top: 50px;
-  white-space: nowrap;
-  width: 300px;
-  grid-area: back;  
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 140%;
-  color: ${({ theme }) => theme.COLORS.WHITE_200};
-  svg {
-    width: 22px;
-    height: 22px;
-    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  grid-template-rows: 104px auto 77px;
+  grid-template-areas: "header" "content" "footer";
+  main::-webkit-scrollbar {
+  width: 20px;
   }
-`;
-
-export const Main = styled.div`
+  main::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main::-webkit-scrollbar-thumb:hover {
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main {
   grid-area: content;
   padding: 0 125px;
   display: flex;
   gap: 50px;
+  overflow: auto;
   h1{
-    margin: 34px 0;
+    margin: 10px 0;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+  }
+  .title {
+    margin-top: 40px;
   }
   h2{
     margin-top: 20px;
@@ -321,4 +317,27 @@ export const Main = styled.div`
     display: none;
   }
   }
+}
 `;
+
+export const ButtonText = styled(Link)`
+  margin-top: 10px;
+  white-space: nowrap;
+  width: 300px;
+  grid-area: back;  
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
+  svg {
+    width: 16px;
+    height: 16px;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
+`;
+

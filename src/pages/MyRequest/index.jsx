@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Container, Main, ButtonText } from './styles'
+import { Container, ButtonText } from './styles'
 import { SlArrowLeft } from 'react-icons/sl'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -47,7 +47,7 @@ export function MyRequest() {
 
     let status = "🔴Pendente"
 
-    await api.post("/allrequests", { status, details }).then(() => {alert("Pagamento finalizado com sucesso, pedido realizado com sucesso!")}).catch(error => {if(error.response){alert(error.response.data.message)}else{alert("Não foi possível finalizar pagamento!")}})
+    await api.post("/allrequests", { status, details }).then(() => { alert("Pagamento finalizado com sucesso, pedido realizado com sucesso!") }).catch(error => { if (error.response) { alert(error.response.data.message) } else { alert("Não foi possível finalizar pagamento!") } })
     await api.delete("/request")
     navigate("/")
   }
@@ -55,9 +55,9 @@ export function MyRequest() {
   return (
     <Container>
       <Header />
-      <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
-      <Main>
+      <main>
         <div className="columnOne">
+        <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
           <h1>Meu pedido</h1>
           <div className="requests">
             {
@@ -77,7 +77,7 @@ export function MyRequest() {
           <h2>R$ {sum} </h2>
         </div>
         <div className="columnTwo">
-          <h1>Pagamento</h1>
+          <h1 className="titleTwo">Pagamento</h1>
           <div className="headerTable">
             <div className={background ? "pix" : "pixTwo"} onClick={() => setBackground(!background)}>
               <img src={Pix} alt="pix" /><p>PIX</p>
@@ -128,7 +128,7 @@ export function MyRequest() {
             </div>
           </div>
         </div>
-      </Main>
+      </main>
       <Footer />
     </Container>
   )

@@ -34,7 +34,7 @@ export function DetailsDrinks() {
           <div className="ingredients">
             {
               ingredients.map(ingredient => (
-                <span>
+                <span key={String(ingredient.id)}>
                   <Img imgName={ingredient.name}/>
                   {ingredient.name}
                 </span>

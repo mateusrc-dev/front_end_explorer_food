@@ -40,7 +40,7 @@ export function Requests() {
           <tbody>
             {
               request.map(request => (
-                <tr>
+                <tr key={String(request.id)}>
                   <td>{request.status}</td>
                   <td>{request.id}</td>
                   <td>{request.details}</td>
