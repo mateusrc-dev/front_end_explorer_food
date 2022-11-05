@@ -28,9 +28,7 @@ export function Details() {
       <Header />
       <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
       <Main>
-        <div className="image">
-          <img src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
-        </div>
+          <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
         <div className="textDetails">
           <h1>{data.name}</h1>
           <p>{data.description}</p>

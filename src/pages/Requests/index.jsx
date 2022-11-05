@@ -1,4 +1,4 @@
-import { Container, Main, ButtonText } from './styles'
+import { Container, ButtonText } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
@@ -25,8 +25,8 @@ export function Requests() {
   return (
     <Container>
       <Header />
-      <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
-      <Main>
+      <main>
+        <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
         <h1>Pedidos</h1>
         <table>
           <thead>
@@ -50,7 +50,7 @@ export function Requests() {
             }
           </tbody>
         </table>
-      </Main>
+      </main>
       <Footer />
     </Container>
   )

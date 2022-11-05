@@ -101,8 +101,10 @@ export const Main = styled.main`
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
   }
-  img {
+  .image {
     border-radius: 50%;
+    width: 350px;
+    height: 350px;
   }
   svg {
     color: ${({ theme }) => theme.COLORS.WHITE_200};

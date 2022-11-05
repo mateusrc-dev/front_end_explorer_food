@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    display: fixed;
-    margin-top: -435px;
-    margin-left: 145px;
+  display: flex;
+  margin-left: 0px;
+  margin-top: 20px;
+  
   svg {
     color: ${({ theme }) => theme.COLORS.GRAY_400};
     

@@ -84,7 +84,7 @@ export const Container = styled.div`
     height: 512px;
     .arrowOne{
       position: absolute;
-      width: 50px;
+      width: 80px;
       height: 512px;
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_000};
       position: absolute;
@@ -109,7 +109,7 @@ export const Container = styled.div`
     }
     .arrowTwo{
       position: absolute;
-      width: 50px;
+      width: 80px;
       right: 0;
       height: 512px;
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_300};
@@ -151,7 +151,9 @@ export const Container = styled.div`
       background: ${({ theme }) => theme.COLORS.BACKGROUND_400};
       width: 300px;
       height: 512px;
-      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       h2{
         color: ${({ theme }) => theme.COLORS.WHITE_100};
         display: flex;
@@ -167,20 +169,25 @@ export const Container = styled.div`
         }
       }
       p{
+        margin: 18px auto 0px;
         width: 220px;
         font-family: 'Roboto';
         font-weight: 400;
         font-size: 14px;
-        line-height: 160%;
-        margin: 18px auto 0px;
         text-align: center;
         color: ${({ theme }) => theme.COLORS.GRAY_300};
+
+        display: -webkit-box;
+        text-overflow: ellipsis; 
+        overflow: hidden; 
+        -webkit-line-clamp: 2; 
+        -webkit-box-orient: vertical;
       }
       img {
         border-radius: 50%;
         width: 176px;
         height: 176px;
-        margin: 56px 62px 16px 62px;
+        margin: 10px 62px 16px 62px;
       }
       svg {
         color: ${({ theme }) => theme.COLORS.WHITE_200};
@@ -239,13 +246,13 @@ export const Header = styled.header`
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 32px;
+    gap: 15px;
   }
   .logo {
     display: flex;
     align-items: center;
-    gap: 11px;
-    padding-right: 37px;
+    gap: 15px;
+    padding-right: 25px;
     svg {
       color: ${({ theme }) => theme.COLORS.BLUE_100};
       width: 29.2px;
@@ -260,14 +267,14 @@ export const Header = styled.header`
   }
   .buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
   }
 `;
 
 export const Logout = styled.button`
   border: none;
   background: none;
-  padding-left: 37px;
+  padding-left: 25px;
   svg {
     color: ${({theme}) => theme.COLORS.WHITE_200};
     width: 22px;

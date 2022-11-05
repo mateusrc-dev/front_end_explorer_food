@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 104px 50px auto 77px;
   grid-template-areas: "header" "back" "content" "footer";
-  white-space: nowrap;
+  
 `;
 
 export const ButtonText = styled(Link)`
@@ -36,13 +36,13 @@ export const Main = styled.div`
   grid-area: content;
   padding: 0 125px;
   display: flex;
-  gap: 200px;
+  gap: 50px;
   h1{
     margin: 34px 0;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 20px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
   }

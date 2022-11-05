@@ -18,13 +18,13 @@ export const Container = styled.header`
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 32px;
+    gap: 15px;
   }
   .logo {
     display: flex;
     align-items: center;
-    gap: 11px;
-    padding-right: 37px;
+    gap: 10px;
+    padding-right: 20px;
     svg {
       color: ${({ theme }) => theme.COLORS.BLUE_100};
       width: 29.2px;
@@ -39,14 +39,14 @@ export const Container = styled.header`
   }
   .buttons {
     display: flex;
-    gap: 20px;
+    gap: 10px;
   }
 `;
 
 export const Logout = styled.button`
   border: none;
   background: none;
-  padding-left: 37px;
+  padding-left: 20px;
   svg {
     color: ${({theme}) => theme.COLORS.WHITE_200};
     width: 22px;

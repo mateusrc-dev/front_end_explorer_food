@@ -1,20 +1,82 @@
-//import { useRef, useLayoutEffect } from 'react'
-import { Container, Links } from './styles'
-import { HeaderTwo } from '../../components/HeaderTwo'
+import { useState, useEffect } from "react"
+import { api } from "../../services/api"
 import { Footer } from '../../components/Footer'
 import HomeImage from '../../assets/homeimage.png'
-import Salada from '../../assets/saladaravanello.png'
-import { RiSubtractFill } from 'react-icons/ri'
-import { RiAddLine } from 'react-icons/ri'
-import { Button } from '../../components/Button'
-import { CgNotes } from 'react-icons/cg'
 import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
+import { BsFillHexagonFill } from 'react-icons/bs'
+import { FiLogOut } from 'react-icons/fi'
+import { Container, Logout, Header, Input, Links } from './styles'
+import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
+import { useAuthAdm } from '../../hooks/authAdm'
+import { GoTrashcan } from 'react-icons/go'
 
 export function HomeAdm() {
+  const [search, setSearch] = useState("")
+  const [foods, setFoods] = useState([])
+  const [foodsDrinks, setFoodsDrinks] = useState([])
+  const [foodsDesserts, setFoodsDesserts] = useState([])
+  const [requests, setRequests] = useState([])
+  const [request, setRequest] = useState([])
+
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await api.get("/allrequests")
+      setRequest(response.data.allRequests)
+    }
+    fetchRequests()
+  }, [request])
+
+  useEffect(() => {
+    async function fetchRequests() {
+      const response = await api.get("/request")
+      setRequests(response.data.requests)
+    }
+    fetchRequests()
+  }, [requests])
+
+  useEffect(() => {
+    async function fetchFoods() {
+      const response = await api.get(`/dishes/?name=${search}`)
+      setFoods(response.data.dishes)
+    }
+    fetchFoods()
+  }, [search, foods])
+
+  useEffect(() => {
+    async function fetchFoodsDrinks() {
+      const response = await api.get(`/drinks/?name=${search}`)
+      setFoodsDrinks(response.data.drinks)
+    }
+    fetchFoodsDrinks()
+  }, [search, foodsDrinks])
+
+  useEffect(() => {
+    async function fetchFoodsDesserts() {
+      const response = await api.get(`/desserts/?name=${search}`)
+      setFoodsDesserts(response.data.desserts)
+    }
+    fetchFoodsDesserts()
+  }, [search, foodsDesserts])
+
+  async function handleDeleteDish(id) {
+    if (confirm("Tem certeza que deseja deletar este prato?"))
+    await api.delete(`/dishes/${id}`)
+  }
+
+  async function handleDeleteDessert(id) {
+    if (confirm("Tem certeza que deseja deletar esta sobremesa?"))
+    await api.delete(`/desserts/${id}`)
+  }
+
+  async function handleDeleteDrink(id) {
+    if (confirm("Tem certeza que deseja deletar esta bebida?"))
+    await api.delete(`/drinks/${id}`)
+  }
+
   const carousel = useRef(null)
   const carouselTwo = useRef(null)
   const carouselThree = useRef(null)
@@ -52,9 +114,26 @@ export function HomeAdm() {
     carouselThree.current.scrollLeft += carouselThree.current.offsetWidth
   }
 
+  const { signOut } = useAuthAdm()
+
   return (
     <Container>
-      <HeaderTwo />
+      <Header>
+        <div className="logo">
+          <BsFillHexagonFill />
+          <span>food explorer</span>
+        </div>
+        <div className="gap">
+          <Input >
+            <BiSearchAlt />
+            <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
+          </Input>
+        </div>
+        <Logout onClick={signOut}>
+          <FiLogOut />
+        </Logout>
+      </Header>
+
       <main>
         <div className="logoHome">
           <img src={HomeImage} alt="imagem da home" />
@@ -69,6 +148,7 @@ export function HomeAdm() {
               <Links to="/requestsadm">Administrar pedidos dos clientes</Links>
             </div>
           </div>
+
         </div>
         <h2 id="title">Pratos principais</h2>
         <div className="container">
@@ -80,84 +160,21 @@ export function HomeAdm() {
           </div>
           <div ref={carousel} className="listFood">
             <div className="listFoods">
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <Link to="/detailsadm/1"><h2>Salada Ravanello<BiChevronRight /></h2></Link>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
+              {
+                foods.map(food => (
+                  <div className="cardFood" key={String(food.id)} >
+                    <button className="button" onClick={() => handleDeleteDish(food.id)}>
+                      <GoTrashcan />
+                    </button>
+                    <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
+                    <Link to={`/detailsadm/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
+                    <p>{food.description}</p>
+                    <span className="price">R$ {food.price}</span>
+                    <div>
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -171,84 +188,19 @@ export function HomeAdm() {
           </div>
           <div ref={carouselTwo} className="listFood">
             <div className="listFoods">
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
+              {
+                foodsDesserts.map(food => (
+                  <div className="cardFood" key={String(food.id)} >
+                    <button className="button" onClick={() => handleDeleteDessert(food.id)}>
+                      <GoTrashcan />
+                    </button>
+                    <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
+                    <Link to={`/detailsadmdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
+                    <p>{food.description}</p>
+                    <span className="price">R$ {food.price}</span>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -262,84 +214,19 @@ export function HomeAdm() {
           </div>
           <div ref={carouselThree} className="listFood">
             <div className="listFoods">
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
-              <div className="cardFood" >
-                <img src={Salada} alt="imagem do prato" />
-                <h2>Salada Ravanello<BiChevronRight /></h2>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim</p>
-                <span className="price">R$ 25,97</span>
-                <div className="amountAndButton">
-                  <span className="amount"><a><RiSubtractFill /></a> 01 <a><RiAddLine /></a></span>
-                  <Button>
-                    <CgNotes />
-                    incluir
-                  </Button>
-                </div>
-              </div>
+              {
+                foodsDrinks.map(food => (
+                  <div className="cardFood" key={String(food.id)} >
+                    <button className="button" onClick={() => handleDeleteDrink(food.id)}>
+                      <GoTrashcan />
+                    </button>
+                    <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
+                    <Link to={`/detailsadmdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
+                    <p>{food.description}</p>
+                    <span className="price">R$ {food.price}</span>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -348,5 +235,12 @@ export function HomeAdm() {
     </Container>
   )
 }
+
+
+
+/*
+
+
+*/
 
 

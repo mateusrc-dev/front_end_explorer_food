@@ -3,37 +3,31 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
-  grid-template-rows: 104px 50px auto 77px;
-  grid-template-areas: "header" "back" "content" "footer";
-`;
-
-export const ButtonText = styled(Link)`
-  margin-left: 125px;
-  margin-top: 50px;
-  width: 300px;
-  grid-area: back;  
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 140%;
-  color: ${({ theme }) => theme.COLORS.WHITE_200};
-
-  svg {
-    width: 22px;
-    height: 22px;
-    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  grid-template-rows: 104px auto 77px;
+  grid-template-areas: "header" "content" "footer";
+  main::-webkit-scrollbar {
+  width: 20px;
   }
-`;
-
-export const Main = styled.div`
-  width: 100%;
-  grid-area: content;
+  main::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main::-webkit-scrollbar-thumb:hover {
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main {  
+    grid-area: content;
+    width: 100%;
+    overflow-y: auto;
   h1{
     padding: 0 125px;
     margin: 34px 0;
@@ -42,7 +36,7 @@ export const Main = styled.div`
     border-radius: 10px 10px 0 0;
     margin: 0 125px;
     text-align: left;
-    border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     border-spacing: 0px;
     border-left: none;
@@ -51,13 +45,13 @@ export const Main = styled.div`
   }
   thead tr th:first-child {
     border-radius: 10px 0 0 0;
-    padding: 20px 30px;
+    padding: 20px;
   }
   thead tr th {
     white-space: nowrap;
     text-align: left;
-    padding: 20px 300px 20px 20px;
-    border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
+    padding: 20px 200px 20px 20px;
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     border-top: none;
     border-right: none;
@@ -65,13 +59,14 @@ export const Main = styled.div`
     font-weight: 700;
     font-size: 14px;
     line-height: 160%;
-    color: ${({theme}) => theme.COLORS.WHITE_100};
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
     }
     tbody tr td:first-child {
       white-space: nowrap;
     }
     tbody tr td {
-    border: 1px solid ${({theme}) => theme.COLORS.BACKGROUND_600};
+    position: relative;
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
     width: 100%;
     height: 100%;
@@ -82,13 +77,14 @@ export const Main = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
-    color: ${({theme}) => theme.COLORS.GRAY_300};
+    color: ${({ theme }) => theme.COLORS.GRAY_300};
     }
     button {
     position: absolute;
-    margin-left: 210px;
-    background-color: ${({theme}) => theme.COLORS.RED_200};
-    color: ${({theme}) => theme.COLORS.WHITE_200};
+    margin-left: 120px;
+    margin-top: -5px;
+    background-color: ${({ theme }) => theme.COLORS.RED_200};
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
     height: 30px;
     padding: 0 10px;
     border: 0;
@@ -108,5 +104,28 @@ export const Main = styled.div`
   .none {
     display: none;
   }
+}
+
 `;
+
+export const ButtonText = styled(Link)`
+  margin-left: 125px;
+  margin-top: 50px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
+  svg {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
+`;
+
 

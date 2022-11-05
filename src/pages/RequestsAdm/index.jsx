@@ -1,7 +1,6 @@
-import { Container, Main, ButtonText } from './styles'
+import { Container, ButtonText } from './styles'
 import { HeaderTwo } from '../../components/HeaderTwo'
 import { Footer } from '../../components/Footer'
-import { Link } from 'react-router-dom'
 import { SlArrowLeft } from 'react-icons/sl'
 import { useState, useEffect } from 'react'
 import { api } from "../../services/api"
@@ -46,11 +45,9 @@ export function RequestsAdm() {
 return (
   <Container>
     <HeaderTwo />
-    <Link to="/adm">
-      <ButtonText><SlArrowLeft />voltar</ButtonText>
-    </Link>
-    <Main>
-      <h1 /*onClick={() => handleOptionOne(33)}*/>Todos os Pedidos</h1>
+    <main>
+      <ButtonText to="/adm"><SlArrowLeft />voltar</ButtonText>
+      <h1 >Todos os Pedidos</h1>
       <table>
         <thead>
           <tr>
@@ -81,7 +78,7 @@ return (
           }
         </tbody>
       </table>
-    </Main>
+    </main>
     <Footer />
   </Container>
 )

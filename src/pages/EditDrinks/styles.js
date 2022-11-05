@@ -1,37 +1,33 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 104px 50px auto 77px;
-  grid-template-areas: "header" "back" "content" "footer";
-`;
-
-export const ButtonText = styled.a`
-  margin-left: 125px;
-  margin-top: 24px;
-  width: 100px;
-  grid-area: back;  
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 140%;
-  color: ${({ theme }) => theme.COLORS.WHITE_200};
-  svg {
-    width: 22px;
-    height: 22px;
-    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  grid-template-rows: 104px auto 77px;
+  grid-template-areas: "header" "content" "footer";
+  main::-webkit-scrollbar {
+  width: 20px;
   }
-`;
-
-export const Main = styled.main`
+  main::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main::-webkit-scrollbar-thumb:hover {
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main {
   padding: 0 125px;
   grid-area: content;
+  overflow: auto;
   h1 {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -230,4 +226,25 @@ export const Main = styled.main`
       line-height: 24px;
       color: ${({ theme }) => theme.COLORS.WHITE_200}; 
   }
+}
 `;
+
+export const ButtonText = styled(Link)`
+  margin-top: 24px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 140%;
+  color: ${({ theme }) => theme.COLORS.WHITE_200};
+  svg {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
+`;
+

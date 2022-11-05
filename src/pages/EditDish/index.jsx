@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { api } from "../../services/api"
 import { useNavigate } from "react-router-dom"
-import { Container, ButtonText, Main } from './styles'
+import { Container, ButtonText } from './styles'
 import { SlArrowLeft } from 'react-icons/sl'
 import { HeaderTwo } from '../../components/HeaderTwo'
 import { Footer } from '../../components/Footer'
 import { FiUpload } from 'react-icons/fi'
 import { IngredientItem } from '../../components/IngredientItem'
-import { Link } from 'react-router-dom'
 
 export function EditDish() {
   const [name, setName] = useState("")
@@ -62,10 +61,8 @@ export function EditDish() {
   return (
     <Container>
       <HeaderTwo />
-      <Link to="/adm">
-        <ButtonText><SlArrowLeft />voltar</ButtonText>
-      </Link>
-      <Main>
+      <main>
+          <ButtonText to="/adm"><SlArrowLeft />voltar</ButtonText>
         <h1>Editar prato</h1>
         <div className="imageAndNameDish">
           <div className="imagedish">
@@ -104,7 +101,7 @@ export function EditDish() {
             Adicionar pedido
           </button>
         </div>
-      </Main>
+      </main>
       <Footer />
     </Container >
   )

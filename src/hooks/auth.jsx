@@ -24,6 +24,7 @@ function AuthProvider({ children }) {
     localStorage.removeItem("@explorerfood: token")
     localStorage.removeItem("@explorerfood: user")
     setData({})
+    
   }
   useEffect(() => {
     const token = localStorage.getItem("@explorerfood: token")

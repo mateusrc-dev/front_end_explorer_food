@@ -40,7 +40,7 @@ export function Header() {
       </div>
       <div className="gap">
         <Link to="/myfavorites">Meus favoritos</Link>
-        <Input placeholder="Busque pelas suas opções de prato" ><BiSearchAlt /></Input>
+        <Input placeholder="Busque pelas suas refeições" ><BiSearchAlt /></Input>
         <div className="buttons">
           <Link to="/myrequest">
             <ButtonTwo>

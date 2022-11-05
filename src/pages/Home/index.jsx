@@ -117,7 +117,7 @@ export function Home() {
           <Link to="/myfavorites"><a>Meus favoritos</a></Link>
           <Input >
             <BiSearchAlt />
-            <input type="text" placeholder="Busque pelas suas opções de prato" onChange={e => setSearch(e.target.value)} />
+            <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
           </Input>
           <div className="buttons">
             <Link to="/myrequest">
@@ -158,15 +158,14 @@ export function Home() {
               {
                 foods.map(food => (
                   <div className="cardFood" key={String(food.id)} >
+                    <Favorite dish_id={food.id} />
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/details/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
-                    <p>{food.description}</p>
+                    <div className="description"><p>{food.description}</p></div>
                     <span className="price">R$ {food.price}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
-
                     </div>
-                    <Favorite dish_id={food.id} />
                   </div>
                 ))
               }
@@ -186,15 +185,14 @@ export function Home() {
             {
                 foodsDesserts.map(food => (
                   <div className="cardFood" key={String(food.id)} >
+                    <FavoriteDesserts dessert_id={food.id} />
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
                     <span className="price">R$ {food.price}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
-
                     </div>
-                    <FavoriteDesserts dessert_id={food.id} />
                   </div>
                 ))
               }
@@ -214,15 +212,14 @@ export function Home() {
             {
                 foodsDrinks.map(food => (
                   <div className="cardFood" key={String(food.id)} >
+                    <FavoriteDrinks drink_id={food.id} />
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
                     <span className="price">R$ {food.price}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
-
                     </div>
-                    <FavoriteDrinks drink_id={food.id} />
                   </div>
                 ))
               }

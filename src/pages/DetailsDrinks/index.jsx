@@ -12,8 +12,7 @@ export function DetailsDrinks() {
   const [data, setData] = useState({})
   const [ingredients, setIngredients] = useState([])
   const params = useParams()
-
-  console.log(ingredients)
+  
   useEffect(() => {
     async function fetchFood() {
       const response = await api.get(`/drinks/${params.id}`)
@@ -28,9 +27,7 @@ export function DetailsDrinks() {
       <Header />
       <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
       <Main>
-        <div className="image">
-          <img src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
-        </div>
+          <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
         <div className="textDetails">
           <h1>{data.name}</h1>
           <p>{data.description}</p>
