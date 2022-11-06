@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BsFillHexagonFill } from 'react-icons/bs'
 import { CgNotes } from 'react-icons/cg'
@@ -10,8 +9,10 @@ import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { api } from "../../services/api"
+import { useState, useEffect } from "react"
 
 export function Header() {
+  
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
 

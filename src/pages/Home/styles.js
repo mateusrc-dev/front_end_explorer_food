@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
  @media (max-width: 600px) {
   height: 100%;
+  min-width: 600px;
 }
   width: 100%;
   height: 100vh;
@@ -291,24 +292,15 @@ export const Header = styled.header`
   height: 150px;
   width: 600px;
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
  }
  .favorites{
   @media (max-width: 600px) {
-  margin-left: -12px;
+  margin-left: 45px;
   margin-top: 0px;
- }
- .input {
-  svg {
-      
-      width: 20.2px;
-      height: 20.2px;
-    }
-  @media (max-width: 600px) {
-  width: 200px;
- }
  }
  }
   grid-area: header;
@@ -318,32 +310,29 @@ export const Header = styled.header`
   border: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 20px;
   padding: 0 125px;
   white-space: nowrap;
   animation: topdown 1s;
   a{
     color: ${({theme}) => theme.COLORS.WHITE_200};
   }
-  .gap {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    gap: 15px;
-    @media (max-width: 600px) {    
-    gap: 20px;
-    flex-direction: column;
-  }
-  }
+ 
   .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding-right: 25px;
+    gap: 10px;
+    width: 100%;
   .hexagon{
-      width: 70.2px;
-      height: 70.2px;
+      min-width: 30.2px;
+      min-height: 30.2px;
       color: ${({ theme }) => theme.COLORS.BLUE_100};
+        @media (max-width: 600px) {
+        position: absolute;
+        margin-top: -10px;
+        margin-left: 20px;
+      }
   }
     span {
       font-family: 'Roboto';
@@ -375,16 +364,18 @@ export const Header = styled.header`
 export const Logout = styled.button`
   border: none;
   background: none;
-  padding-left: 25px;
+  padding-left: 10px;
   svg {
     color: ${({theme}) => theme.COLORS.WHITE_200};
     width: 22px;
     height: 22px;
   }
- 
 `;
 
 export const Input = styled.div`
+@media (max-width: 600px) {
+  width: 280px;
+ }
   background-color: ${({theme}) => theme.COLORS.BACKGROUND_500};
   width: 100%;
   height: 48px;
@@ -394,17 +385,14 @@ export const Input = styled.div`
   padding: 16px;
   input {
     color: ${({theme}) => theme.COLORS.WHITE_200};
-    padding-left: 16px;
     width: 100%;
     background: transparent;
     border: none;
+    padding-left: 16px;
   }
   svg {
     color: ${({theme}) => theme.COLORS.GRAY_100};
     width: 19.5px;
     height: 19.5px;
-  }
-
-
- 
+  } 
 `;

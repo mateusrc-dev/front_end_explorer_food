@@ -122,28 +122,26 @@ export function Home() {
           <span>food explorer</span>
           <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
           <Input className="input" >
-            <BiSearchAlt />
-            <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
+            <BiSearchAlt className="inputSvg" />
+            <input type="text"  placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
           </Input>
         </div>
-      
-        
-          <div className="buttons">
-            <Link to="/myrequest">
-              <ButtonTwo>
-                <CgNotes />Meu pedido atual ({requests.length})
-              </ButtonTwo>
-            </Link>
-            <Link to="/requests">
-              <ButtonTwo>
-                <CgNotes />Todos os meus pedidos ({request.length})
-              </ButtonTwo>
-            </Link>
-            <Logout onClick={handleSignOut} className="back"  >
-              <FiLogOut />
-            </Logout>
-          </div>
-        
+        <div className="buttons">
+          <Link to="/myrequest">
+            <ButtonTwo>
+              <CgNotes />Meu pedido atual ({requests.length})
+            </ButtonTwo>
+          </Link>
+          <Link to="/requests">
+            <ButtonTwo>
+              <CgNotes />Todos os meus pedidos ({request.length})
+            </ButtonTwo>
+          </Link>
+          <Logout onClick={handleSignOut} className="back"  >
+            <FiLogOut />
+          </Logout>
+        </div>
+
       </Header>
 
       <main>

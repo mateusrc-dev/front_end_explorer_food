@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.footer`
+@media (max-width: 600px) {
+      width: 600px;
+  }
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   grid-area: footer;
   width: 100%;
@@ -11,6 +14,9 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
   animation: downtop 1s;
+  @media (max-width: 600px) {
+    padding: 0px;
+  }
   .logo {
     display: flex;
     align-items: center;
@@ -23,6 +29,7 @@ export const Container = styled.footer`
       font-size: 25px;
       line-height: 29px;
     }
+    
     svg {
       color: ${({ theme }) => theme.COLORS.COLOR_FOOTER};
       width: 29.2px;

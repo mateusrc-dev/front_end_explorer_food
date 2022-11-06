@@ -116,8 +116,8 @@ export function MyRequest() {
                 </div>
               </div>
             </div>
-            <div className={background && backgroundTwo ? "aguardandopagamentoOne" : "aguardandopagamentoTwo"}>
-              <div className={button ? "aguardandopagamentoOne" : "aguardandopagamentoTwo"}>
+            <div className={background && backgroundTwo ? "payOne" : "payTwo"}>
+              <div className={button ? "payOne" : "payTwo"}>
                 <FiClock />
                 <p>Aguardando pagamento!</p>
               </div>

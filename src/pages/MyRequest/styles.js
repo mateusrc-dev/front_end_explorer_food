@@ -281,7 +281,7 @@ export const Container = styled.div`
   .formnone {
     display: none;
   }
-  .aguardandopagamentoOne {
+  .payOne {
     display: flex;
     display: flex;
     flex-direction: column;
@@ -298,7 +298,7 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.GRAY_300};
     }
   }
-  .aguardandopagamentoTwo{
+  .payTwo{
     display: none;
   }
   .alertOne{
