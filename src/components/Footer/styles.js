@@ -10,6 +10,7 @@ export const Container = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation: downtop 1s;
   .logo {
     display: flex;
     align-items: center;
@@ -36,4 +37,14 @@ export const Container = styled.footer`
     font-size: 14px;
     line-height: 18px;
   }
+  @keyframes downtop {
+      0% {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 `;

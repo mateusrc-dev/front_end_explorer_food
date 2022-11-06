@@ -38,9 +38,21 @@ export const Container = styled.div`
     font-size: 20px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    animation: scale 1s;
+    @keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
+  
   }
   .title {
-    margin-top: 40px;
+    margin-top: 45px;
   }
   h2{
     margin-top: 20px;
@@ -54,6 +66,17 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    animation: scale 1s;
+    @keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
   }
   .request{
     display: flex;

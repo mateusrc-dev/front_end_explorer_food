@@ -28,6 +28,18 @@ export const Container = styled.div`
   padding: 0 125px;
   grid-area: content;
   overflow: auto;
+  animation: scale 1s;
+@keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
+  
   h1 {
     margin-top: 24px;
     margin-bottom: 24px;

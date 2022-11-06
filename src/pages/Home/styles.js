@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+ @media (max-width: 600px) {
+  height: 100%;
+}
   width: 100%;
   height: 100vh;
   display: grid;
@@ -27,31 +30,69 @@ export const Container = styled.div`
     width: 100%;
     grid-area: content;
     overflow: auto;
-    
   .none {
     display: none;
   }
   #title{
+    @media (max-width: 600px) {
+      padding: 48px 0px 40px;
+  }
     padding: 48px 125px 40px;
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 32px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    animation: left 1s;
   }
+  @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
   .logoHome {
+    @media (max-width: 600px) {
+      width: 600px;
+      margin: 100px 0 0 0;
+      height: 150px;
+  }
     margin: 0 auto;
     margin-top: 80px;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_200};
     width: 1120px;
     height: 260px;
     display: flex;
+    animation: topdown 1s;
     img {
+      @media (max-width: 600px) {
+      width: 200px;
+      height: 150px;
+      margin-top: 0px;
+  }
       margin-top: -50px;
       margin-left: -40px;
     }
   }
+  
+  @keyframes topdown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
   .logoText{
+    @media (max-width: 600px) {
+    margin-left: -650px;
+  }
     margin-left: -500px;
     display: flex;
     flex-direction: column;
@@ -59,9 +100,10 @@ export const Container = styled.div`
     align-items: start;
     justify-content: center;
     white-space: nowrap;
-  
-  
   h1 {
+    @media (max-width: 600px) {
+      font-size: 20px;
+  }
       margin-left: 600px;
       font-family: 'Poppins';
       font-weight: 500;
@@ -82,6 +124,21 @@ export const Container = styled.div`
     position: relative;
     margin: 0px 125px;
     height: 512px;
+    animation: scale 1s;
+    @media (max-width: 600px) {
+      margin: 0;
+      width: 600px;
+    }
+    @keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
     .arrowOne{
       position: absolute;
       width: 80px;
@@ -229,6 +286,31 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
+ @media (max-width: 600px) {
+  padding: 0px;
+  height: 150px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+ }
+ .favorites{
+  @media (max-width: 600px) {
+  margin-left: -12px;
+  margin-top: 0px;
+ }
+ .input {
+  svg {
+      
+      width: 20.2px;
+      height: 20.2px;
+    }
+  @media (max-width: 600px) {
+  width: 200px;
+ }
+ }
+ }
   grid-area: header;
   height: 104px;
   width: 100%;
@@ -239,6 +321,7 @@ export const Header = styled.header`
   justify-content: center;
   padding: 0 125px;
   white-space: nowrap;
+  animation: topdown 1s;
   a{
     color: ${({theme}) => theme.COLORS.WHITE_200};
   }
@@ -247,28 +330,46 @@ export const Header = styled.header`
     width: 100%;
     align-items: center;
     gap: 15px;
+    @media (max-width: 600px) {    
+    gap: 20px;
+    flex-direction: column;
+  }
   }
   .logo {
     display: flex;
     align-items: center;
     gap: 15px;
     padding-right: 25px;
-    svg {
+  .hexagon{
+      width: 70.2px;
+      height: 70.2px;
       color: ${({ theme }) => theme.COLORS.BLUE_100};
-      width: 29.2px;
-      height: 29.2px;
-    }
+  }
     span {
       font-family: 'Roboto';
       color: ${({theme}) => theme.COLORS.WHITE_200};
       font-weight: bold;
       font-size: 25px;
+      padding-right: 25px;
+      @media (max-width: 600px) {
+        font-size: 0px;
+      }
     }
   }
   .buttons {
     display: flex;
     gap: 15px;
   }
+  @keyframes topdown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 `;
 
 export const Logout = styled.button`
@@ -280,6 +381,7 @@ export const Logout = styled.button`
     width: 22px;
     height: 22px;
   }
+ 
 `;
 
 export const Input = styled.div`
@@ -302,4 +404,7 @@ export const Input = styled.div`
     width: 19.5px;
     height: 19.5px;
   }
+
+
+ 
 `;

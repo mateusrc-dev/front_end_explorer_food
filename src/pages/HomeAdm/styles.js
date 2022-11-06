@@ -48,6 +48,17 @@ export const Container = styled.div`
     font-size: 32px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    animation: right 1s;
+  @keyframes right {
+      0% {
+        opacity: 0;
+        transform: translateX(30px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
   }
   .logoHome {
     margin: 0 auto;
@@ -56,7 +67,17 @@ export const Container = styled.div`
     width: 1120px;
     height: 260px;
     display: flex;
-    
+    animation: left 1s;
+  @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
     img {
       margin-top: -50px;
       margin-left: -40px;
@@ -128,6 +149,17 @@ export const Container = styled.div`
     position: relative;
     margin: 0px 125px;
     height: 512px;
+    animation: scale 1s;
+ @keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
     .arrowOne{
       width: 80px;
       height: 512px;
@@ -283,6 +315,17 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 0 125px;
   white-space: nowrap;
+  animation: topdown 1s;
+  @keyframes topdown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
   a{
     color: ${({ theme }) => theme.COLORS.WHITE_200};
   }

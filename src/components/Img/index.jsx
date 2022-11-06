@@ -50,7 +50,7 @@ export function Img({ imgName }) {
         <img src={rabanete} alt="imagem da salada" />
       </Container>
     )
-  } else if (imgName === "ameixa") {
+  } else if (imgName === "ameixas") {
     return (
       <Container>
         <img src={ameixa} alt="imagem da salada" />

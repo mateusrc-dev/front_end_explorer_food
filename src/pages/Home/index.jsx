@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api"
 import { Footer } from '../../components/Footer'
@@ -26,6 +27,7 @@ export function Home() {
   const [foodsDesserts, setFoodsDesserts] = useState([])
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
+
 
   useEffect(() => {
     async function fetchRequests() {
@@ -105,20 +107,27 @@ export function Home() {
   }
 
   const { signOut } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate("/")
+    signOut()
+  }
 
   return (
     <Container>
       <Header>
         <div className="logo">
-          <BsFillHexagonFill />
+          <BsFillHexagonFill className="hexagon" />
           <span>food explorer</span>
-        </div>
-        <div className="gap">
-          <Link to="/myfavorites"><a>Meus favoritos</a></Link>
-          <Input >
+          <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
+          <Input className="input" >
             <BiSearchAlt />
             <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
           </Input>
+        </div>
+      
+        
           <div className="buttons">
             <Link to="/myrequest">
               <ButtonTwo>
@@ -130,11 +139,11 @@ export function Home() {
                 <CgNotes />Todos os meus pedidos ({request.length})
               </ButtonTwo>
             </Link>
+            <Logout onClick={handleSignOut} className="back"  >
+              <FiLogOut />
+            </Logout>
           </div>
-        </div>
-        <Logout onClick={signOut}>
-          <FiLogOut />
-        </Logout>
+        
       </Header>
 
       <main>
@@ -162,7 +171,7 @@ export function Home() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/details/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <div className="description"><p>{food.description}</p></div>
-                    <span className="price">R$ {food.price}</span>
+                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")} </span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
                     </div>
@@ -182,14 +191,14 @@ export function Home() {
           </div>
           <div ref={carouselTwo} className="listFood">
             <div className="listFoods">
-            {
+              {
                 foodsDesserts.map(food => (
                   <div className="cardFood" key={String(food.id)} >
                     <FavoriteDesserts dessert_id={food.id} />
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {food.price}</span>
+                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
                     </div>
@@ -209,14 +218,14 @@ export function Home() {
           </div>
           <div ref={carouselThree} className="listFood">
             <div className="listFoods">
-            {
+              {
                 foodsDrinks.map(food => (
                   <div className="cardFood" key={String(food.id)} >
                     <FavoriteDrinks drink_id={food.id} />
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {food.price}</span>
+                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
                     </div>

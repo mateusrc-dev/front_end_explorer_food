@@ -27,7 +27,7 @@ export function DetailsAdmDrinks() {
   async function handleDeleteDrink(id) {
     if (confirm("Tem certeza que deseja deletar esta bebida?")) {
       await api.delete(`/drinks/${id}`)
-    navigate("/adm")
+    navigate(-1)
     }
   }
 
@@ -53,7 +53,7 @@ export function DetailsAdmDrinks() {
             }
           </div>
           <div className="finishBuy">
-            <span className="price">R$ {data.price}</span>
+            <span className="price">R$ {String(Number(data.price).toFixed(2)).replace(".", ",")}</span>
             <button className="button" onClick={() => handleDeleteDrink(data.id)}>
               <GoTrashcan /> Excluir
             </button>

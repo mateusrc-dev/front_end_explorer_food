@@ -32,6 +32,17 @@ export const Container = styled.div`
   h1{
     padding: 0 125px;
     margin: 15px 0;
+    animation: left 1s;
+  @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
   }
   table{
     border-radius: 10px 10px 0 0;
@@ -43,6 +54,17 @@ export const Container = styled.div`
     border-left: none;
     border-bottom: none;
     margin-bottom: 80px;
+    animation: scale 1s;
+@keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
   }
   thead tr th:first-child {
     border-radius: 10px 0 0 0;

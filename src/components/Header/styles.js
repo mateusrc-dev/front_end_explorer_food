@@ -11,6 +11,7 @@ export const Container = styled.header`
   justify-content: center;
   padding: 0 125px;
   white-space: nowrap;
+  animation: topdown 1s;
   a{
     color: ${({theme}) => theme.COLORS.WHITE_200};
   }
@@ -41,6 +42,16 @@ export const Container = styled.header`
     display: flex;
     gap: 10px;
   }
+  @keyframes topdown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 `;
 
 export const Logout = styled.button`

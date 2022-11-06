@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api"
 import { Footer } from '../../components/Footer'
@@ -115,6 +116,13 @@ export function HomeAdm() {
   }
 
   const { signOut } = useAuthAdm()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate("/adm")
+    signOut()
+  }
+  
 
   return (
     <Container>
@@ -129,7 +137,7 @@ export function HomeAdm() {
             <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
           </Input>
         </div>
-        <Logout onClick={signOut}>
+        <Logout onClick={handleSignOut}>
           <FiLogOut />
         </Logout>
       </Header>
@@ -169,7 +177,7 @@ export function HomeAdm() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsadm/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {food.price}</span>
+                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                     <div>
                     </div>
                   </div>
@@ -197,7 +205,7 @@ export function HomeAdm() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsadmdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {food.price}</span>
+                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                   </div>
                 ))
               }
@@ -223,7 +231,7 @@ export function HomeAdm() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsadmdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {food.price}</span>
+                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                   </div>
                 ))
               }

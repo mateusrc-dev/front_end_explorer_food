@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { BsFillHexagonFill } from 'react-icons/bs'
 import { CgNotes } from 'react-icons/cg'
 import { FiLogOut } from 'react-icons/fi'
@@ -31,6 +32,12 @@ export function Header() {
   }, [request])
 
   const { signOut } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate("/")
+    signOut()
+  }
   
   return (
     <Container>
@@ -54,7 +61,7 @@ export function Header() {
           </Link>
         </div>
       </div>
-      <Logout onClick={signOut}>
+      <Logout onClick={handleSignOut}>
         <FiLogOut />
       </Logout>
     </Container>

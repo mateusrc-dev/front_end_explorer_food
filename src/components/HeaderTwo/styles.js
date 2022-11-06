@@ -11,6 +11,17 @@ export const Container = styled.header`
   justify-content: space-between;;
   padding: 0 125px;
   white-space: nowrap;
+  animation: topdown 1s;
+  @keyframes topdown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
   .logo {
     display: flex;
     align-items: center;

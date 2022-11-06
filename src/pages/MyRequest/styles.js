@@ -31,16 +31,27 @@ export const Container = styled.div`
   gap: 150px;
   overflow: auto;
   h1{
-    margin: 10px 0;
+    margin: 0px 0;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    animation: left 1s;
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
   }
   .titleTwo{
-    margin: 65px 0 10px 0;
+    margin: 0px 0 10px 0;
   }
   h2{
     margin-top: 20px;
@@ -49,11 +60,33 @@ export const Container = styled.div`
     font-size: 20px;
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    animation: left 1s;
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
   }
   .requests{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    animation: left 1s;
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px)
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
   }
   .request{
     display: flex;
@@ -72,7 +105,7 @@ export const Container = styled.div`
   .Text{
     display: flex;
     flex-direction: column;
-    p{
+    a{
       font-family: 'Roboto';
       font-weight: 400;
       font-size: 12px;
@@ -100,6 +133,7 @@ export const Container = styled.div`
    
     .headerTable{
       display:flex;
+      
     }
   .pix{
       border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
@@ -322,7 +356,7 @@ export const Container = styled.div`
 `;
 
 export const ButtonText = styled(Link)`
-  margin-top: 20px;
+  margin-top: 10px;
   white-space: nowrap;
   width: 300px;
   display: flex;

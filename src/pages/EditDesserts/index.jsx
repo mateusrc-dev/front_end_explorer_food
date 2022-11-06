@@ -90,7 +90,7 @@ export function EditDesserts() {
           </div>
           <div className="price">
             <label htmlFor="price">Preço</label>
-            <input type="text" id="price" placeholder="R$ 00,00" onChange={e => setPrice(e.target.value)} />
+            <input type="number" id="price" placeholder="00,00" onChange={e => setPrice(e.target.value)} />
           </div>
         </div>
         <div className="textarea">

@@ -27,7 +27,13 @@ export function MyRequest() {
       setRequest(response.data.requests)
     }
     fetchRequests()
-  }, [])
+  }, [request])
+
+  async function handleDelete(id) {
+    if (confirm("Tem certeza que deseja apagar este item?")) {
+      await api.delete(`/requestdelete/${id}`)
+    }
+  }
 
   let sum = 0
   for (var i = 0; i < request.length; i++) {
@@ -57,7 +63,7 @@ export function MyRequest() {
       <Header />
       <main>
         <div className="columnOne">
-        <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
+          <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
           <h1>Meu pedido</h1>
           <div className="requests">
             {
@@ -66,15 +72,15 @@ export function MyRequest() {
                   <img src={`${api.defaults.baseURL}/files/${request.image}`} alt="imagem do prato" />
                   <div className="Text">
                     <div className="text">
-                      <span className="name">{request.amount}x {request.name}</span><span className="price">R$ {Number(request.price) * Number(request.amount)}</span>
+                      <span className="name">{request.amount}x {request.name}</span><span className="price">R$ {String(Number(request.price * request.amount).toFixed(2)).replace(".", ",")}</span>
                     </div>
-                    <p>Excluir</p>
+                    <a onClick={() => handleDelete(request.id)}>Excluir</a>
                   </div>
                 </div>
               ))
             }
           </div>
-          <h2>R$ {sum} </h2>
+          <h2>R$ {String(Number(sum).toFixed(2)).replace(".", ",")} </h2>
         </div>
         <div className="columnTwo">
           <h1 className="titleTwo">Pagamento</h1>

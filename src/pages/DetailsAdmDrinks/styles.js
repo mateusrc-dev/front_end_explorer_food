@@ -36,6 +36,17 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   gap: 50px;
+  animation: scale 1s;
+@keyframes scale {
+      0% {
+        opacity: 0;
+        transform: scale(1.2)
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0)
+      }
+    }
   .textDetails {
     width: 550px;
   h1 {
