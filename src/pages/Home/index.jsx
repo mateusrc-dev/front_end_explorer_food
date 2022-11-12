@@ -19,6 +19,7 @@ import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
 import { Favorite } from '../../components/Favorite'
 import { FavoriteDesserts } from '../../components/FavoriteDesserts'
 import { FavoriteDrinks } from '../../components/FavoriteDrinks'
+import { RiAlertFill } from 'react-icons/ri'
 
 export function Home() {
   const [search, setSearch] = useState("")
@@ -123,7 +124,7 @@ export function Home() {
           <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
           <Input className="input" >
             <BiSearchAlt className="inputSvg" />
-            <input type="text"  placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
+            <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
           </Input>
         </div>
         <div className="buttons">
@@ -161,7 +162,11 @@ export function Home() {
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carousel} className="listFood">
-            <div className="listFoods">
+            <div className={foods.length === 0 ? "searchNone" : "none"}>
+              <p>Não foi encontrado nenhum prato!</p>
+              <RiAlertFill />
+            </div>
+            <div className={foods.length === 0 ? "none" : "listFoods"}>
               {
                 foods.map(food => (
                   <div className="cardFood" key={String(food.id)} >
@@ -188,7 +193,11 @@ export function Home() {
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carouselTwo} className="listFood">
-            <div className="listFoods">
+          <div className={foodsDesserts.length === 0 ? "searchNone" : "none"}>
+              <p>Não foi encontrada nenhuma sobremesa!</p>
+              <RiAlertFill />
+            </div>
+            <div className={foodsDesserts.length === 0 ? "none" : "listFoods"}>
               {
                 foodsDesserts.map(food => (
                   <div className="cardFood" key={String(food.id)} >
@@ -215,7 +224,11 @@ export function Home() {
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carouselThree} className="listFood">
-            <div className="listFoods">
+          <div className={foodsDrinks.length === 0 ? "searchNone" : "none"}>
+              <p>Não foi encontrada nenhuma bebida!</p>
+              <RiAlertFill />
+            </div>
+            <div className={foodsDrinks.length === 0 ? "none" : "listFoods"}>
               {
                 foodsDrinks.map(food => (
                   <div className="cardFood" key={String(food.id)} >

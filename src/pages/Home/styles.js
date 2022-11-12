@@ -121,6 +121,7 @@ export const Container = styled.div`
       line-height: 140%;
     }
   }
+
   .container {
     position: relative;
     margin: 0px 125px;
@@ -200,6 +201,24 @@ export const Container = styled.div`
       overflow-x: hidden;
       scroll-behavior: smooth;
       width: 100%;
+  }
+  .searchNone {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    font-weight: 700;
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_500};
+    width: 100%;
+    height: 512px;
+    svg {
+      width: 200px;
+      height: 200px;
+      margin:  0 auto;
+    }
   }
   .listFoods{
     display: flex;
