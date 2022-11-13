@@ -33,6 +33,7 @@ export function Home() {
   const { signOut } = useAuth()
   const navigate = useNavigate()
 
+
   function handleSignOut() {
     navigate("/")
     signOut()
@@ -122,7 +123,7 @@ export function Home() {
           <BsFillHexagonFill className="hexagon" />
           <span>food explorer</span>
           <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
-          <Input placeholder="Busque pelas suas refeições" >
+          <Input placeholder="Busque pelas suas refeições" value={search} >
             <BiSearchAlt />
           </Input>
         </div>

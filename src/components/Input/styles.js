@@ -34,4 +34,8 @@ export const Container = styled.div`
   button:hover {
     background: ${({theme}) => theme.COLORS.BACKGROUND_100};
   }
+  /*datalist{
+    min-width: 100px;
+    background: red;
+  }*/
 `;

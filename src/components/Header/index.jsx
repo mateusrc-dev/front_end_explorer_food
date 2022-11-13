@@ -50,7 +50,7 @@ export function Header() {
       </div>
       <div className="gap">
         <Link to="/myfavorites">Meus favoritos</Link>
-        <Input placeholder="Busque pelas suas refeições"  >
+        <Input placeholder="Busque pelas suas refeições"  value={search}>
           <BiSearchAlt />
         </Input>
         <div className="buttons">
@@ -67,7 +67,7 @@ export function Header() {
         </div>
       </div>
       <div className={search.length !== 0 ? "searchAlert" : "none"}>
-        <RiAlertFill className="svgAlert"/><p>Aperte enter ou no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
+        <RiAlertFill className="svgAlert"/><p>Aperte enter ou clique no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
       </div>
       <Logout onClick={handleSignOut}>
         <FiLogOut />
