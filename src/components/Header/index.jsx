@@ -10,11 +10,13 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { api } from "../../services/api"
 import { useState, useEffect } from "react"
+import { useInput } from '../../hooks/input'
+import { RiAlertFill } from 'react-icons/ri'
 
 export function Header() {
-  
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
+  const { search } = useInput()
 
   useEffect(() => {
     async function fetchRequests() {
@@ -39,7 +41,7 @@ export function Header() {
     navigate("/")
     signOut()
   }
-  
+
   return (
     <Container>
       <div className="logo">
@@ -48,7 +50,9 @@ export function Header() {
       </div>
       <div className="gap">
         <Link to="/myfavorites">Meus favoritos</Link>
-        <Input placeholder="Busque pelas suas refeições" ><BiSearchAlt /></Input>
+        <Input placeholder="Busque pelas suas refeições"  >
+          <BiSearchAlt />
+        </Input>
         <div className="buttons">
           <Link to="/myrequest">
             <ButtonTwo>
@@ -61,6 +65,9 @@ export function Header() {
             </ButtonTwo>
           </Link>
         </div>
+      </div>
+      <div className={search.length !== 0 ? "searchAlert" : "none"}>
+        <RiAlertFill className="svgAlert"/><p>Aperte enter ou no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
       </div>
       <Logout onClick={handleSignOut}>
         <FiLogOut />

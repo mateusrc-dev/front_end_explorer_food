@@ -52,6 +52,48 @@ export const Container = styled.header`
         transform: translateY(0)
       }
     }
+  .none {
+    display: none;
+  }
+
+  .searchAlert {
+    position: absolute;
+    background: ${({theme}) => theme.COLORS.BLUE_100};
+    font-family: 'Roboto';
+    color: ${({theme}) => theme.COLORS.WHITE_200};
+    font-weight: bold;
+    font-size: 16px;
+    right: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 440px;
+    height: 120px;
+    white-space: normal;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+    animation: topdownalert 1s;
+  }
+  .svgAlert {
+    width: 50px;
+    height: 50px;
+  }
+  @keyframes topdownalert {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px)
+      }
+      80% {
+        transform: translateY(5px)
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 `;
 
 export const Logout = styled.button`

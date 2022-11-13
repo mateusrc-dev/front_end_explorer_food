@@ -10,25 +10,33 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
 import { BsFillHexagonFill } from 'react-icons/bs'
 import { FiLogOut } from 'react-icons/fi'
-import { Container, Logout, Header, Input } from './styles'
+import { Container, Logout, Header } from './styles'
 import { ButtonTwo } from '../../components/ButtonTwo'
 import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
+import { useInput } from '../../hooks/input'
 import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
 import { Favorite } from '../../components/Favorite'
 import { FavoriteDesserts } from '../../components/FavoriteDesserts'
 import { FavoriteDrinks } from '../../components/FavoriteDrinks'
 import { RiAlertFill } from 'react-icons/ri'
+import { Input } from '../../components/Input'
 
 export function Home() {
-  const [search, setSearch] = useState("")
   const [foods, setFoods] = useState([])
   const [foodsDrinks, setFoodsDrinks] = useState([])
   const [foodsDesserts, setFoodsDesserts] = useState([])
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
+  const { search } = useInput()
+  const { signOut } = useAuth()
+  const navigate = useNavigate()
 
+  function handleSignOut() {
+    navigate("/")
+    signOut()
+  }
 
   useEffect(() => {
     async function fetchRequests() {
@@ -107,14 +115,6 @@ export function Home() {
     carouselThree.current.scrollLeft += carouselThree.current.offsetWidth
   }
 
-  const { signOut } = useAuth()
-  const navigate = useNavigate()
-
-  function handleSignOut() {
-    navigate("/")
-    signOut()
-  }
-
   return (
     <Container>
       <Header>
@@ -122,9 +122,8 @@ export function Home() {
           <BsFillHexagonFill className="hexagon" />
           <span>food explorer</span>
           <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
-          <Input className="input" >
-            <BiSearchAlt className="inputSvg" />
-            <input type="text" placeholder="Busque pelas suas refeições" onChange={e => setSearch(e.target.value)} />
+          <Input placeholder="Busque pelas suas refeições" >
+            <BiSearchAlt />
           </Input>
         </div>
         <div className="buttons">
@@ -142,10 +141,10 @@ export function Home() {
             <FiLogOut />
           </Logout>
         </div>
-
       </Header>
 
       <main>
+
         <div className="logoHome">
           <img src={HomeImage} alt="imagem da home" />
           <div className="logoText">
@@ -193,7 +192,7 @@ export function Home() {
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carouselTwo} className="listFood">
-          <div className={foodsDesserts.length === 0 ? "searchNone" : "none"}>
+            <div className={foodsDesserts.length === 0 ? "searchNone" : "none"}>
               <p>Não foi encontrada nenhuma sobremesa!</p>
               <RiAlertFill />
             </div>
@@ -224,7 +223,7 @@ export function Home() {
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carouselThree} className="listFood">
-          <div className={foodsDrinks.length === 0 ? "searchNone" : "none"}>
+            <div className={foodsDrinks.length === 0 ? "searchNone" : "none"}>
               <p>Não foi encontrada nenhuma bebida!</p>
               <RiAlertFill />
             </div>
@@ -246,6 +245,7 @@ export function Home() {
             </div>
           </div>
         </div>
+
       </main>
       <Footer />
     </Container>

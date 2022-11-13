@@ -12,15 +12,16 @@ export function SignIn() {
   function handleSignIn() {
     signIn({ email, password })
   }
+
   return (
     <Container>
-      <header>
+      <header >
         <BsFillHexagonFill />
         <h3>food explorer</h3>
       </header>
-      <div className="createLogin">
+      <div className="createLogin" >
         <h1>Faça login</h1>
-        <div className="input">
+        <div className="input" >
           <label htmlFor="email">Email</label>
           <input type="text" id="email" placeholder="Exemplo: exemplo@exemplo.com.br" onChange={e => setEmail(e.target.value)} />
         </div>
