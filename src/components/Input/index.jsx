@@ -1,55 +1,50 @@
 import { useNavigate } from 'react-router-dom'
 import { Container } from './styles'
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { useInput } from '../../hooks/input'
 import { api } from "../../services/api"
+import { SearchResults } from '../SearchResults'
 
 export function Input({ children, placeholder, value }) {
-  const [search, setSearch] = useState("")
   const [option, setOption] = useState([])
   const navigate = useNavigate()
   const input = useRef(null)
 
-  useEffect(() => {
-    async function fetchOptions() {
-      const response = await api.get(`/search/?search=${search}`)
+
+  async function searchInput(e) {
+    if (e.target.value.length == 0) {
+      setOption([])
+      return
+    } 
+      const response = await api.get(`/search/?search=${value}`)
       setOption(response.data.Search)
-    }
-    fetchOptions()
-  }, [search])
-
-
-  function searchInput(e) {
+    
     if (e.key === 'Enter') {
-      api.post("/search", { search: e.target.value })
-      navigate("/")
+      if (e.target.value.length == 0) {
+        alert("Digite algo para pesquisar!")
+      } else {
+        api.post("/search", { search: e.target.value })
+        navigate("/")
+      }
     }
   }
 
   async function handleSearch() {
-    await api.post("/search", { search: value })
-    navigate("/")
+    if (value.length == 0) {
+      alert("Digite algo para pesquisar!")
+    } else {
+      await api.post("/search", { search: value })
+      navigate("/")
+    }
   }
 
   const { handleStates } = useInput()
 
   return (
     <Container>
-      <input ref={input} type="search" list="list" value={value} placeholder={placeholder} onKeyDown={(e) => searchInput(e)} onChange={(e) => handleStates(e.target.value)} />
+      <input ref={input} type="search"   value={value} placeholder={placeholder} onKeyDown={(e) => searchInput(e)} onChange={(e) => handleStates(e.target.value)} />
       <button onClick={handleSearch}>{children}</button>
-
-      <datalist id="list">
-        {
-          option.map(option => (
-            <option>{option.search}</option>
-          ))
-        }
-      </datalist>
-
-      <div className="List">
-
-      </div>
-
+      <SearchResults option={option} setOption={setOption} value={value} />
     </Container>
   )
 }

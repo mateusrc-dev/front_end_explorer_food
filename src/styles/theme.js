@@ -1,11 +1,13 @@
 export default {
   COLORS: {
+    BACKGROUND_1100: "rgba(0, 0, 0, 0.60)",
+    BACKGROUND_1000: "rgba(0, 0, 0, 0.40)",
     BACKGROUND_900: "#1E1E1E",
     BACKGROUND_800: "#00111A",
     BACKGROUND_700: "rgba(255, 255, 255, 0.05)",
     BACKGROUND_600: "#000C12",
     BACKGROUND_500: "#0D1D25",
-    BACKGROUND_400: "rgba(0, 0, 0, 0.32)",
+    BACKGROUND_400: "rgba(0, 0, 0, 0.30)",
     BACKGROUND_300: "linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%)",
     BACKGROUND_200: "linear-gradient(180deg, #091E26 0%, #00131C 100%)",
     BACKGROUND_100: "#001119",
