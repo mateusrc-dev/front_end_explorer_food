@@ -3,22 +3,23 @@ import { Container } from './styles'
 import { useState, useRef } from "react"
 import { useInput } from '../../hooks/input'
 import { api } from "../../services/api"
-import { SearchResults } from '../SearchResults'
+import { FaClock } from "react-icons/fa"
+import { CgClose } from 'react-icons/cg'
+import { CgCloseR } from 'react-icons/cg'
 
 export function Input({ children, placeholder, value }) {
   const [option, setOption] = useState([])
   const navigate = useNavigate()
   const input = useRef(null)
 
-
   async function searchInput(e) {
     if (e.target.value.length == 0) {
       setOption([])
       return
-    } 
-      const response = await api.get(`/search/?search=${value}`)
-      setOption(response.data.Search)
-    
+    }
+    const response = await api.get(`/search/?search=${value}`)
+    setOption(response.data.Search)
+
     if (e.key === 'Enter') {
       if (e.target.value.length == 0) {
         alert("Digite algo para pesquisar!")
@@ -40,11 +41,40 @@ export function Input({ children, placeholder, value }) {
 
   const { handleStates } = useInput()
 
+  async function handleDelete(id) {
+    await api.delete(`/search/${id}`)
+    const response = await api.get(`/search/?search=${value}`)
+    setOption(response.data.Search)
+  }
+
+  function HandleSearch(option) {
+    handleStates(option)
+    setOption([])
+  }
+
+  function closeSearch() {
+    setOption([])
+  }
+
+  const resultList = option.map((option, idx) => {
+    const { id, search } = option
+    const delay = `${idx + 1}00ms`
+    return (
+      <li className="li" key={id} style={{ '--delay': delay }}><FaClock /> <p onClick={() => HandleSearch(search)} >{search}</p> <a onClick={() => handleDelete(id)} className="trash" title="Excluir"><CgClose /></a></li>
+    )
+  })
+
   return (
     <Container>
-      <input ref={input} type="search"   value={value} placeholder={placeholder} onKeyDown={(e) => searchInput(e)} onChange={(e) => handleStates(e.target.value)} />
+      <input ref={input} type="search" value={value} placeholder={placeholder} onKeyDown={(e) => searchInput(e)} onChange={(e) => handleStates(e.target.value)} />
       <button onClick={handleSearch}>{children}</button>
-      <SearchResults option={option} setOption={setOption} value={value} />
+
+      <div className={option.length === 0 ? "none" : "searchResults"}>
+        <a onClick={closeSearch} className="close" title="Fechar"><CgCloseR  /></a>
+        <ul>
+          {resultList}
+        </ul>
+      </div>
 
     </Container>
   )
