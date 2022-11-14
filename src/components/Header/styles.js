@@ -19,13 +19,13 @@ export const Container = styled.header`
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
   }
   .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-right: 20px;
+    padding-right: 25px;
     svg {
       color: ${({ theme }) => theme.COLORS.BLUE_100};
       width: 29.2px;

@@ -10,6 +10,7 @@ export const Container = styled.div`
     //border-radius: 5px 5px 10px 10px;
 
     width: 276px;
+   
     .li {
       list-style-type: none;
       display: flex;
@@ -17,6 +18,19 @@ export const Container = styled.div`
       padding: 5px;
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_1000};
       transition: all 0.3s;
+      animation: left 1s;
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(50px)
+      }
+    
+
+      100% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
     }
     .li:first-child {
       border-radius: 10px 10px 0 0;

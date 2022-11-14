@@ -45,6 +45,7 @@ export function Input({ children, placeholder, value }) {
       <input ref={input} type="search"   value={value} placeholder={placeholder} onKeyDown={(e) => searchInput(e)} onChange={(e) => handleStates(e.target.value)} />
       <button onClick={handleSearch}>{children}</button>
       <SearchResults option={option} setOption={setOption} value={value} />
+
     </Container>
   )
 }
