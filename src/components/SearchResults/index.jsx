@@ -25,7 +25,7 @@ export function SearchResults({option, setOption, value}) {
         <ul>
           {
             option.map(option => (
-              <li onClick={() => handleSearch(option.search)} className="li" key={option.id}><FaClock /> <p>{option.search}</p> <a onClick={() => handleDelete(option.id)} className="trash" title="Excluir"><CgClose /></a></li>
+              <li className="li" key={option.id}><FaClock /> <p onClick={() => handleSearch(option.search)} >{option.search}</p> <a onClick={() => handleDelete(option.id)} className="trash" title="Excluir"><CgClose /></a></li>
             ))
           }
         </ul>

@@ -17,7 +17,6 @@ export const Container = styled.div`
       padding: 5px;
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_1000};
       transition: all 0.3s;
-      cursor: pointer;
     }
     .li:first-child {
       border-radius: 10px 10px 0 0;
@@ -33,6 +32,7 @@ export const Container = styled.div`
       padding: 0 10px;
       color: ${({ theme }) => theme.COLORS.WHITE_100};
       transition: all 0.3s;
+      cursor: pointer;
     }
   }
   svg {
