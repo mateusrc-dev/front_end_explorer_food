@@ -146,7 +146,7 @@ export function Home() {
 
       <main>
       <div className={search.length !== 0 ? "searchAlert" : "none"}>
-        <RiAlertFill className="svgAlert"/><p>Aperte enter ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
+        <RiAlertFill className="svgAlert"/><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
       </div>
         <div className="logoHome">
           <img src={HomeImage} alt="imagem da home" />

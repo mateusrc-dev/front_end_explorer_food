@@ -67,7 +67,7 @@ export function Header() {
         </div>
       </div>
       <div className={search.length !== 0 ? "searchAlert" : "none"}>
-        <RiAlertFill className="svgAlert"/><p>Aperte enter ou clique no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
+        <RiAlertFill className="svgAlert"/><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
       </div>
       <Logout onClick={handleSignOut}>
         <FiLogOut />
