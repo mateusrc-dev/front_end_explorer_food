@@ -12,6 +12,7 @@ export const Container = styled.header`
   padding: 0 125px;
   white-space: nowrap;
   animation: topdown 1s;
+  
   a{
     color: ${({theme}) => theme.COLORS.WHITE_200};
   }
@@ -63,35 +64,33 @@ export const Container = styled.header`
     color: ${({theme}) => theme.COLORS.WHITE_200};
     font-weight: bold;
     font-size: 16px;
-    right: 160px;
+    right: 0px;
+    top: 105px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 440px;
+    width: 400px;
     height: 120px;
     white-space: normal;
     padding: 10px;
     text-align: center;
-    border-radius: 0 0 8px 8px;
-    animation: topdownalert 1s;
+    border-radius: 0px 0 8px 8px;
+    animation: leftAlert 1s;
   }
   .svgAlert {
     width: 50px;
     height: 50px;
   }
-  @keyframes topdownalert {
-      0% {
+  @keyframes leftAlert {
+    0% {
         opacity: 0;
-        transform: translateY(-40px)
-      }
-      80% {
-        transform: translateY(5px)
+        height: 0;
       }
 
       100% {
         opacity: 1;
-        transform: translateY(0)
+        height: 120px;
       }
     }
 `;

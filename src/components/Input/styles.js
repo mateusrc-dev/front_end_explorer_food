@@ -42,6 +42,7 @@ export const Container = styled.div`
   }
   .searchResults{
     position: absolute;
+    z-index: 4;
     top: 76px;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_400};
     border-radius: 5px 5px 10px 10px;

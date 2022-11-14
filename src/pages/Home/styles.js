@@ -31,6 +31,43 @@ export const Container = styled.div`
     width: 100%;
     grid-area: content;
     overflow: auto;
+  .searchAlert {
+    position: absolute;
+    z-index: 3;
+    background: ${({theme}) => theme.COLORS.BLUE_100};
+    font-family: 'Roboto';
+    color: ${({theme}) => theme.COLORS.WHITE_200};
+    font-weight: bold;
+    font-size: 16px;
+    right: 20px;
+    top: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 120px;
+    white-space: normal;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0px 0 8px 8px;
+    animation: leftAlert 1s;
+  }
+  .svgAlert {
+    width: 50px;
+    height: 50px;
+  }
+  @keyframes leftAlert {
+    0% {
+        opacity: 0;
+        height: 0;
+      }
+
+      100% {
+        opacity: 1;
+        height: 120px;
+      }
+    }
   .none {
     display: none;
   }
@@ -121,12 +158,14 @@ export const Container = styled.div`
       line-height: 140%;
     }
   }
-
+  
   .container {
     position: relative;
+    display: flex;
     margin: 0px 125px;
     height: 512px;
     animation: scale 1s;
+    z-index: 2;
     @media (max-width: 600px) {
       margin: 0;
       width: 600px;
@@ -143,10 +182,10 @@ export const Container = styled.div`
     }
     .arrowOne{
       position: absolute;
+      z-index: 1;
       width: 80px;
       height: 512px;
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_000};
-      position: absolute;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -168,11 +207,11 @@ export const Container = styled.div`
     }
     .arrowTwo{
       position: absolute;
+      z-index: 0;
       width: 80px;
       right: 0;
       height: 512px;
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_300};
-      position: absolute;
       display: flex;
       align-items: center;
       justify-content: center;
