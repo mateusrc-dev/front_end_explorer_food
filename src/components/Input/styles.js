@@ -51,7 +51,7 @@ export const Container = styled.div`
     height: 200px;
     overflow-y:auto;
     .close {
-      right: 0px;
+      right: 10px;
       position: absolute;
       cursor: pointer;
     }
