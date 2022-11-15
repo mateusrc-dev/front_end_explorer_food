@@ -6,6 +6,9 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 600px) {
+    min-width: 600px;
+  }
   header {
     margin-left: 150px;
     display: flex;
@@ -16,6 +19,9 @@ export const Container = styled.div`
     font-size: 42px;
     line-height: 50px;
     color: ${({ theme }) => theme.COLORS.WHITE_200};
+    @media (max-width: 600px) {
+    margin-left: 0px;
+  }
     svg {
       color: ${({ theme }) => theme.COLORS.BLUE_100};
       width: 50px;

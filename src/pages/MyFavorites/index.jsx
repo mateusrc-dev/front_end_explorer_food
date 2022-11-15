@@ -14,7 +14,6 @@ export function MyFavorites() {
   useEffect(() => {
     async function fetchFavoritesDish() {
       const response = await api.get("/favoritesdishes")
-      console.log(response.data)
       setFavoritesDish(response.data.favoritesDishes)
     }
     fetchFavoritesDish()
@@ -23,7 +22,6 @@ export function MyFavorites() {
   useEffect(() => {
     async function fetchFavoritesDish() {
       const response = await api.get("/favoritesdrinks")
-      console.log(response.data)
       setFavoritesDrink(response.data.favoritesDrinks)
     }
     fetchFavoritesDish()
@@ -32,7 +30,6 @@ export function MyFavorites() {
   useEffect(() => {
     async function fetchFavoritesDish() {
       const response = await api.get("/favoritesdesserts")
-      console.log(response.data)
       setFavoritesDessert(response.data.favoritesDesserts)
     }
     fetchFavoritesDish()

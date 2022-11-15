@@ -1,10 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
- @media (max-width: 600px) {
-  height: 100%;
-  min-width: 600px;
-}
+  overflow: hidden;
   width: 100%;
   height: 100vh;
   display: grid;
@@ -31,6 +28,12 @@ export const Container = styled.div`
     width: 100%;
     grid-area: content;
     overflow: auto;
+    @media (max-width: 600px) {
+    margin-top: 46px;
+    margin-bottom: 40px;
+    height: 100%;
+    min-width: 600px;
+  }
   .searchAlert {
     position: absolute;
     z-index: 3;
@@ -52,6 +55,9 @@ export const Container = styled.div`
     text-align: center;
     border-radius: 0px 0 8px 8px;
     animation: leftAlert 1s;
+    @media (max-width: 600px) {
+        display: none;
+      }
   }
   .svgAlert {
     width: 50px;
@@ -156,6 +162,9 @@ export const Container = styled.div`
       font-weight: 400;
       font-size: 16px;
       line-height: 140%;
+      @media (max-width: 600px) {
+    font-size: 14px;
+  }
     }
   }
   

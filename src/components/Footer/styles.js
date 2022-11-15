@@ -4,6 +4,9 @@ export const Container = styled.footer`
 @media (max-width: 600px) {
       width: 600px;
   }
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   grid-area: footer;
   width: 100%;

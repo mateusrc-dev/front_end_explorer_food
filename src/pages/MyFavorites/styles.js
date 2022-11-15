@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
+  overflow: hidden;
   grid-template-rows: 104px auto 77px;
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
@@ -30,6 +31,19 @@ export const Container = styled.div`
   display: flex;
   gap: 50px;
   overflow: auto;
+  @media (max-width: 600px) {
+  height: 100%;
+  min-width: 600px;
+  flex-direction: column;
+  padding: 0;
+  gap: 0;
+  margin-top: 46px;
+}
+.columnTwo:last-child {
+  @media (max-width: 600px) {
+  margin-bottom: 100px;
+}
+}
   h1{
     margin: 10px 0;
     font-family: 'Poppins';

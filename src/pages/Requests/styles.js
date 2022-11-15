@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
+  overflow: hidden;
   grid-template-rows: 104px auto 77px;
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
@@ -28,8 +29,13 @@ export const Container = styled.div`
     grid-area: content;
     width: 100%;
     overflow-y: auto;
-  h1{
     padding: 0 125px;
+    @media (max-width: 600px) {
+    height: 100%;
+    min-width: 600px;
+    padding: 0;
+  }
+  h1{
     margin: 34px 0;
     animation: left 1s;
   }
@@ -45,7 +51,7 @@ export const Container = styled.div`
     }
   table{
     border-radius: 10px 10px 0 0;
-    margin: 0 125px;
+    width: 100%;
     text-align: left;
     border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
@@ -54,6 +60,9 @@ export const Container = styled.div`
     border-bottom: none;
     margin-bottom: 80px;
     animation: scale 1s;
+    @media (max-width: 600px) {
+    max-width: 600px;
+  }
     @keyframes scale {
       0% {
         opacity: 0;
@@ -68,6 +77,9 @@ export const Container = styled.div`
   thead tr th:first-child {
     border-radius: 10px 0 0 0;
     padding: 20px;
+    @media (max-width: 600px) {
+    padding: 0;
+  }
   }
   thead tr th {
     white-space: nowrap;
@@ -82,16 +94,21 @@ export const Container = styled.div`
     font-size: 14px;
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    @media (max-width: 600px) {
+    padding:  20px 5px;
+    font-size: 12px;
+  }
     }
     tbody tr td:first-child {
       white-space: nowrap;
+      @media (max-width: 600px) {
+        white-space: normal;
+  }
     }
     tbody tr td {
     position: relative;
     border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
-    width: 100%;
-    height: 100%;
     padding: 20px;
     border-top: none;
     border-right: none;
@@ -100,6 +117,10 @@ export const Container = styled.div`
     font-size: 14px;
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.GRAY_300};
+    @media (max-width: 600px) {
+        font-size: 12px;
+        padding: 5px;
+  }
     }
     button {
     position: absolute;
@@ -131,7 +152,6 @@ export const Container = styled.div`
 `;
 
 export const ButtonText = styled(Link)`
-  margin-left: 125px;
   margin-top: 50px;
   width: 300px;
   display: flex;

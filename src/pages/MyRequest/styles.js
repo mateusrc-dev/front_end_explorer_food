@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
+  overflow: hidden;
   grid-template-rows: 104px auto 77px;
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
@@ -30,6 +31,14 @@ export const Container = styled.div`
   display: flex;
   gap: 150px;
   overflow: auto;
+  @media (max-width: 600px) {
+    height: 100%;
+    min-width: 600px;
+    flex-direction: column;
+    padding: 0;
+    gap: 40px;
+    margin-top: 46px;
+ }
   h1{
     margin: 0px 0;
     font-family: 'Poppins';
@@ -133,7 +142,7 @@ export const Container = styled.div`
    
     .headerTable{
       display:flex;
-      
+      width:580px;
     }
   .pix{
       border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
@@ -234,7 +243,7 @@ export const Container = styled.div`
       background: transparent;
       border-radius: 0 0 5px 5px;
       border-top: none;
-      width: 600px;
+      width: 580px;
       height: 350px;
       display: flex;
       align-items: center;

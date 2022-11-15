@@ -1,14 +1,31 @@
 import styled from 'styled-components'
 
 export const Container = styled.header`
-  grid-area: header;
+@media (max-width: 600px) {
+  padding: 0px;
+  height: 150px;
+  width: 600px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+ }
+ .favorites{
+  @media (max-width: 600px) {
+  margin-left: 65px;
+  margin-top: 0px;
+ }
+ }
+ grid-area: header;
   height: 104px;
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   border: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 20px;
   padding: 0 125px;
   white-space: nowrap;
   animation: topdown 1s;
@@ -26,17 +43,25 @@ export const Container = styled.header`
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-right: 25px;
-    svg {
+    width: 100%;
+    .hexagon {
       color: ${({ theme }) => theme.COLORS.BLUE_100};
       width: 29.2px;
       height: 29.2px;
+      @media (max-width: 600px) {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
     }
     span {
       font-family: 'Roboto';
       color: ${({theme}) => theme.COLORS.WHITE_200};
       font-weight: bold;
       font-size: 25px;
+      @media (max-width: 600px) {
+        font-size: 0px;
+      }
     }
   }
   .buttons {
@@ -77,6 +102,9 @@ export const Container = styled.header`
     text-align: center;
     border-radius: 0px 0 8px 8px;
     animation: leftAlert 1s;
+    @media (max-width: 600px) {
+        display: none;
+      }
   }
   .svgAlert {
     width: 50px;
