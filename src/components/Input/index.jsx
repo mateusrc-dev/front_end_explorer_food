@@ -22,7 +22,7 @@ export function Input({ children, placeholder, value }) {
     const response = await api.get(`/search/?search=${value}`)
     setOption(response.data.Search)
   }
-  
+
   async function SearchInput(e) {
     if (e.key === 'Enter') {
       if (e.target.value.length == 0) {
@@ -51,7 +51,7 @@ export function Input({ children, placeholder, value }) {
 
   function HandleSearch(option) {
     handleStates(option)
-    //setOption(option)
+    setOption([])
   }
 
   function closeSearch() {
