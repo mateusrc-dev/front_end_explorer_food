@@ -11,15 +11,19 @@ export function Input({ children, placeholder, value }) {
   const [option, setOption] = useState([])
   const navigate = useNavigate()
   const input = useRef(null)
+  const { handleStates } = useInput()
 
   async function searchInput(e) {
+    handleStates(e.target.value)
     if (e.target.value.length == 0) {
       setOption([])
       return
     }
     const response = await api.get(`/search/?search=${value}`)
     setOption(response.data.Search)
-
+  }
+  
+  async function SearchInput(e) {
     if (e.key === 'Enter') {
       if (e.target.value.length == 0) {
         alert("Digite algo para pesquisar!")
@@ -39,8 +43,6 @@ export function Input({ children, placeholder, value }) {
     }
   }
 
-  const { handleStates } = useInput()
-
   async function handleDelete(id) {
     await api.delete(`/search/${id}`)
     const response = await api.get(`/search/?search=${value}`)
@@ -49,7 +51,7 @@ export function Input({ children, placeholder, value }) {
 
   function HandleSearch(option) {
     handleStates(option)
-    setOption([])
+    //setOption(option)
   }
 
   function closeSearch() {
@@ -66,11 +68,11 @@ export function Input({ children, placeholder, value }) {
 
   return (
     <Container>
-      <input ref={input} type="search" value={value} placeholder={placeholder} onKeyDown={(e) => searchInput(e)} onChange={(e) => handleStates(e.target.value)} />
+      <input ref={input} type="search" value={value} placeholder={placeholder} onKeyDown={(e) => SearchInput(e)} onChange={(e) => searchInput(e)} />
       <button onClick={handleSearch}>{children}</button>
 
       <div className={option.length === 0 ? "none" : "searchResults"}>
-        <a onClick={closeSearch} className="close" title="Fechar"><CgCloseR  /></a>
+        <a onClick={closeSearch} className="close" title="Fechar"><CgCloseR /></a>
         <ul>
           {resultList}
         </ul>
