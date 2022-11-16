@@ -13,6 +13,7 @@ import { useState, useEffect } from "react"
 import { useInput } from '../../hooks/input'
 import { RiAlertFill } from 'react-icons/ri'
 
+
 export function Header() {
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
@@ -44,34 +45,34 @@ export function Header() {
 
   return (
     <Container>
-      <div className="logo">
-        <BsFillHexagonFill className="hexagon" />
-        <span>food explorer</span>
-        <div className="gap">
-          <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
-          <Input placeholder="Busque pelas suas refeições" value={search}>
-            <BiSearchAlt />
-          </Input>
+        <div className="logo" >
+          <BsFillHexagonFill className="hexagon" />
+          <span>food explorer</span>
+          <div className="gap">
+            <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
+            <Input placeholder="Busque pelas suas refeições" value={search}>
+              <BiSearchAlt />
+            </Input>
+          </div>
         </div>
-      </div>
-      <div className="buttons">
-        <Link to="/myrequest">
-          <ButtonTwo>
-            <CgNotes />Meu pedido atual ({requests.length})
-          </ButtonTwo>
-        </Link>
-        <Link to="/requests">
-          <ButtonTwo>
-            <CgNotes />Todos os meus pedidos ({request.length})
-          </ButtonTwo>
-        </Link>
-        <div className={search.length !== 0 ? "searchAlert" : "none"}>
-          <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
+        <div className="buttons">
+          <Link to="/myrequest">
+            <ButtonTwo>
+              <CgNotes />Meu pedido atual ({requests.length})
+            </ButtonTwo>
+          </Link>
+          <Link to="/requests">
+            <ButtonTwo>
+              <CgNotes />Todos os meus pedidos ({request.length})
+            </ButtonTwo>
+          </Link>
+          <div className={search.length !== 0 ? "searchAlert" : "none"}>
+            <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
+          </div>
+          <Logout onClick={handleSignOut}>
+              <FiLogOut />
+          </Logout>
         </div>
-        <Logout onClick={handleSignOut}>
-          <FiLogOut />
-        </Logout>
-      </div>
     </Container>
   )
 }

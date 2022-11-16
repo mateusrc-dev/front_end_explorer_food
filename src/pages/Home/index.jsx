@@ -22,6 +22,8 @@ import { FavoriteDesserts } from '../../components/FavoriteDesserts'
 import { FavoriteDrinks } from '../../components/FavoriteDrinks'
 import { RiAlertFill } from 'react-icons/ri'
 import { Input } from '../../components/Input'
+import { HiLightBulb } from 'react-icons/hi'
+import { HiOutlineLightBulb } from 'react-icons/hi'
 
 export function Home() {
   const [foods, setFoods] = useState([])
@@ -32,7 +34,7 @@ export function Home() {
   const { search } = useInput()
   const { signOut } = useAuth()
   const navigate = useNavigate()
-
+  const [statePage, setStatePage] = useState(true)
 
   function handleSignOut() {
     navigate("/")
@@ -145,9 +147,9 @@ export function Home() {
       </Header>
 
       <main>
-      <div className={search.length !== 0 ? "searchAlert" : "none"}>
-        <RiAlertFill className="svgAlert"/><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
-      </div>
+        <div className={search.length !== 0 ? "searchAlert" : "none"}>
+          <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
+        </div>
         <div className="logoHome">
           <img src={HomeImage} alt="imagem da home" />
           <div className="logoText">

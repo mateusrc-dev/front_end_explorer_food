@@ -5,8 +5,8 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  overflow: hidden;
   grid-template-rows: 104px auto 77px;
+  overflow: hidden;
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
   width: 20px;
@@ -163,11 +163,16 @@ export const ButtonText = styled(Link)`
   font-size: 24px;
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
+  @media (max-width: 600px) {
+    margin-left: 0;
+  }
   svg {
     width: 22px;
     height: 22px;
     color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
 `;
+
+
 
 

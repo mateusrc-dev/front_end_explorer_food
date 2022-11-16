@@ -17,10 +17,9 @@ export const Container = styled.header`
   margin-top: 0px;
  }
  }
- grid-area: header;
+  grid-area: header;
   height: 104px;
   width: 100%;
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   border: none;
   display: flex;
   align-items: center;
@@ -30,6 +29,8 @@ export const Container = styled.header`
   white-space: nowrap;
   animation: topdown 1s;
   
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+ 
   a{
     color: ${({theme}) => theme.COLORS.WHITE_200};
   }
@@ -46,8 +47,8 @@ export const Container = styled.header`
     width: 100%;
     .hexagon {
       color: ${({ theme }) => theme.COLORS.BLUE_100};
-      width: 29.2px;
-      height: 29.2px;
+      min-width: 29.2px;
+      min-height: 29.2px;
       @media (max-width: 600px) {
         position: absolute;
         left: 10px;
@@ -132,4 +133,5 @@ export const Logout = styled.button`
     width: 22px;
     height: 22px;
   }
+  
 `;
