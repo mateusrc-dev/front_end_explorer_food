@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Container = styled.header`
-
  .favoritesDark{
   color: ${({ theme }) => theme.COLORS.WHITE_200};
   @media (max-width: 600px) {

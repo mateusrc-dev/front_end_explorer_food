@@ -7,6 +7,23 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 104px 50px auto 77px;
   grid-template-areas: "header" "back" "content" "footer";
+  main::-webkit-scrollbar {
+  width: 20px;
+  }
+  main::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
+  main::-webkit-scrollbar-thumb:hover {
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+  border-radius: 20px;
+  width: 1px;
+  background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
+  border: 5px solid rgba(0, 0, 0, 0);
+  }
 `;
 
 export const ButtonText = styled(Link)`
@@ -23,6 +40,10 @@ export const ButtonText = styled(Link)`
   font-size: 24px;
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
+  @media (max-width: 600px) {
+  margin-top: 70px;
+  margin-left: 0;
+ }
   svg {
     width: 22px;
     height: 22px;
@@ -37,6 +58,24 @@ export const Main = styled.main`
   align-items: center;
   gap: 50px;
   animation: scale 1s;
+  @media (max-width: 600px) {
+  padding: 0px;
+  width: 600px;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  margin-top: 40px;
+ }
+ 
+ .image {
+  @media (max-width: 600px) {
+  margin-top: 450px;
+ }
+ }
 @keyframes scale {
       0% {
         opacity: 0;
@@ -48,6 +87,9 @@ export const Main = styled.main`
       }
     }
   .textDetails {
+    @media (max-width: 600px) {
+  margin-bottom: 50px;
+ }
     width: 550px;
   h1 {
     color: ${({ theme }) => theme.COLORS.WHITE_100};

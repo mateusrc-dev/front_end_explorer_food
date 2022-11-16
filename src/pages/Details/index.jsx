@@ -28,7 +28,7 @@ export function Details() {
       <Header />
       <ButtonText to="/"><SlArrowLeft />voltar</ButtonText>
       <Main>
-          <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
+        <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
         <div className="textDetails">
           <h1>{data.name}</h1>
           <p>{data.description}</p>
@@ -36,7 +36,7 @@ export function Details() {
             {
               ingredients.map(ingredient => (
                 <span key={String(ingredient.id)}>
-                  <Img imgName={ingredient.name}/>
+                  <Img imgName={ingredient.name} />
                   {ingredient.name}
                 </span>
               ))
