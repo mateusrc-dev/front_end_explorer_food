@@ -7,6 +7,7 @@ import GlobalStyles from './styles/global'
 import { AuthProvider } from './hooks/auth'
 import { AuthProviderAdm } from './hooks/authAdm'
 import { InputProvider } from './hooks/input'
+import { StatePageProvider } from './hooks/statePage'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <AuthProviderAdm>
           <InputProvider>
-            <Routes />
+            <StatePageProvider>
+              <Routes />
+            </StatePageProvider>
           </InputProvider>
         </AuthProviderAdm>
       </AuthProvider>

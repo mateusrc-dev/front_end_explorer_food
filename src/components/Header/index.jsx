@@ -12,12 +12,14 @@ import { api } from "../../services/api"
 import { useState, useEffect } from "react"
 import { useInput } from '../../hooks/input'
 import { RiAlertFill } from 'react-icons/ri'
-
+import { StatePage } from '../StatePage'
+import { useStatePage } from '../../hooks/statePage'
 
 export function Header() {
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
   const { search } = useInput()
+  const { statePage } = useStatePage()
 
   useEffect(() => {
     async function fetchRequests() {
@@ -45,11 +47,12 @@ export function Header() {
 
   return (
     <Container>
+      <div className={statePage ? "light" : "dark"}>
         <div className="logo" >
-          <BsFillHexagonFill className="hexagon" />
-          <span>food explorer</span>
+          <BsFillHexagonFill className={statePage ? "hexagonLight" : "hexagonDark"} />
+          <span className={statePage ? "spanLight" : "spanDark"}>food explorer</span>
           <div className="gap">
-            <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
+            <Link className={statePage ? "favoritesLight" : "favoritesDark"} to="/myfavorites">Meus favoritos</Link>
             <Input placeholder="Busque pelas suas refeições" value={search}>
               <BiSearchAlt />
             </Input>
@@ -70,9 +73,11 @@ export function Header() {
             <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para pesquisar, a página será redirecionada para o início!</p>
           </div>
           <Logout onClick={handleSignOut}>
-              <FiLogOut />
+            <FiLogOut className={statePage ? "LogoutDark" : "LogoutLight"} />
           </Logout>
         </div>
+        <StatePage StatePage={statePage}/>
+      </div>
     </Container>
   )
 }
