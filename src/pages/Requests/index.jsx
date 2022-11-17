@@ -5,9 +5,11 @@ import { SlArrowLeft } from 'react-icons/sl'
 import { useState, useEffect } from 'react'
 import { api } from "../../services/api"
 import { BsTrashFill } from "react-icons/bs"
+import { useStatePage } from '../../hooks/statePage'
 
 export function Requests() {
   const [request, setRequest] = useState([])
+  const { statePage } = useStatePage()
 
   useEffect(() => {
     async function fetchRequests() {
@@ -24,26 +26,26 @@ export function Requests() {
   return (
     <Container>
       <Header />
-      <main>
-        <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
-        <h1>Pedidos</h1>
-        <table>
+      <main className={statePage ? "light" : "dark"}>
+        <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"}/><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
+        <h1 className={statePage ? "h1Light" : "h1Dark"}>Pedidos</h1>
+        <table className={statePage ? "tableLight" : "tableDark"}>
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Código</th>
-              <th>Detalhamento</th>
-              <th>Data e hora</th>
+              <th className={statePage ? "thLight" : "thDark"}>Status</th>
+              <th className={statePage ? "thLight" : "thDark"}>Código</th>
+              <th className={statePage ? "thLight" : "thDark"}>Detalhamento</th>
+              <th className={statePage ? "thLight" : "thDark"}>Data e hora</th>
             </tr>
           </thead>
           <tbody>
             {
               request.map(request => (
                 <tr key={String(request.id)}>
-                  <td>{request.status}</td>
-                  <td>{request.id}</td>
-                  <td>{request.details}</td>
-                  <td>{request.created_at} <button onClick={() => handleDelete(request.id)} className={request.status === "🟢Entregue" ? "" : "none"}><BsTrashFill />Excluir</button></td>
+                  <td className={statePage ? "tdLight" : "tdDark"}>{request.status}</td>
+                  <td className={statePage ? "tdLight" : "tdDark"}>{request.id}</td>
+                  <td className={statePage ? "tdLight" : "tdDark"}>{request.details}</td>
+                  <td className={statePage ? "tdLight" : "tdDark"}>{request.created_at} <button onClick={() => handleDelete(request.id)} className={request.status === "🟢Entregue" ? "" : "none"}><BsTrashFill />Excluir</button></td>
                 </tr>
               ))
             }

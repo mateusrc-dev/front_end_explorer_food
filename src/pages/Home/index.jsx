@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api"
 import { Footer } from '../../components/Footer'
@@ -9,7 +8,6 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
 import { Container } from './styles'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../hooks/auth'
 import { useInput } from '../../hooks/input'
 import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
 import { Favorite } from '../../components/Favorite'
@@ -26,8 +24,6 @@ export function Home() {
   const [requests, setRequests] = useState([])
   const [request, setRequest] = useState([])
   const { search } = useInput()
-  const { signOut } = useAuth()
-  const navigate = useNavigate()
   const { statePage } = useStatePage()
 
   useEffect(() => {

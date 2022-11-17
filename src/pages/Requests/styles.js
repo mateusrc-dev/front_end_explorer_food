@@ -25,6 +25,13 @@ export const Container = styled.div`
   background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
   border: 5px solid rgba(0, 0, 0, 0);
   }
+  main.light {
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
+    
+  }
+  main.dark {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900}; 
+  }
   main {  
     grid-area: content;
     width: 100%;
@@ -35,9 +42,15 @@ export const Container = styled.div`
     min-width: 600px;
     padding: 0;
   }
-  h1{
+  .h1Dark{
     margin: 34px 0;
     animation: left 1s;
+  }
+  .h1Light{
+    margin: 34px 0;
+    animation: left 1s;
+    font-weight: bold;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_900}; 
   }
   @keyframes left {
       0% {
@@ -49,7 +62,7 @@ export const Container = styled.div`
         transform: translateX(0)
       }
     }
-  table{
+  .tableDark{
     border-radius: 10px 10px 0 0;
     width: 100%;
     text-align: left;
@@ -60,9 +73,27 @@ export const Container = styled.div`
     border-bottom: none;
     margin-bottom: 80px;
     animation: scale 1s;
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
     @media (max-width: 600px) {
     max-width: 600px;
   }
+}
+  .tableLight{
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    text-align: left;
+    border: 1px solid ${({ theme }) => theme.COLORS.WHITE_200};
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_900}; 
+    background: transparent;
+    border-spacing: 0px;
+    border-left: none;
+    border-bottom: none;
+    margin-bottom: 80px;
+    animation: scale 1s;
+    @media (max-width: 600px) {
+    max-width: 600px;
+  }
+}
     @keyframes scale {
       0% {
         opacity: 0;
@@ -72,8 +103,7 @@ export const Container = styled.div`
         opacity: 1;
         transform: scale(1.0)
       }
-    }
-  }
+    } 
   thead tr th:first-child {
     border-radius: 10px 0 0 0;
     padding: 20px;
@@ -81,7 +111,7 @@ export const Container = styled.div`
     padding: 0;
   }
   }
-  thead tr th {
+  .thDark {
     white-space: nowrap;
     text-align: left;
     padding: 20px 200px 20px 20px;
@@ -93,7 +123,23 @@ export const Container = styled.div`
     font-weight: 700;
     font-size: 14px;
     line-height: 160%;
-    color: ${({ theme }) => theme.COLORS.WHITE_100};
+    @media (max-width: 600px) {
+    padding:  20px 5px;
+    font-size: 12px;
+  }
+    }
+    .thLight {
+    white-space: nowrap;
+    text-align: left;
+    padding: 20px 200px 20px 20px;
+    border: 1px solid ${({ theme }) => theme.COLORS.WHITE_200};
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 160%;
     @media (max-width: 600px) {
     padding:  20px 5px;
     font-size: 12px;
@@ -105,7 +151,7 @@ export const Container = styled.div`
         white-space: normal;
   }
     }
-    tbody tr td {
+    .tdDark {
     position: relative;
     border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_600};
     background: transparent;
@@ -117,11 +163,25 @@ export const Container = styled.div`
     font-size: 14px;
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.GRAY_300};
+  }
+  .tdLight {
+    position: relative;
+    border: 1px solid ${({ theme }) => theme.COLORS.WHITE_200};
+    background: transparent;
+    padding: 20px;
+    border-top: none;
+    border-right: none;
+    font-family: 'Roboto';  
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  }
     @media (max-width: 600px) {
         font-size: 12px;
         padding: 5px;
   }
-    }
+    
     button {
     position: absolute;
     margin-left: 120px;
@@ -166,10 +226,24 @@ export const ButtonText = styled(Link)`
   @media (max-width: 600px) {
     margin-left: 0;
   }
-  svg {
+  .svgDark {
     width: 22px;
     height: 22px;
     color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
+  .svgLight {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+}
+  
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+  .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+    
   }
 `;
 

@@ -65,7 +65,7 @@ export function MyRequest() {
       <Header />
       <main className={statePage ? "light" : "dark"}>
         <div className="columnOne">
-          <ButtonText to="/" ><SlArrowLeft className={statePage ? "svgLight" : "svgDark"}/><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
+          <ButtonText to="/" ><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
           <h1 className={statePage ? "h1Light" : "h1Dark"}>Meu pedido</h1>
           <div className="requests">
             {
@@ -88,13 +88,17 @@ export function MyRequest() {
           <h1 className={statePage ? "h1Light" : "h1Dark"}>Pagamento</h1>
           <div className="headerTable">
             <div className={background ? "pix" : "pixTwo"} onClick={() => setBackground(!background)}>
-              <img src={Pix} alt="pix" /><p className={statePage ? "light" : "dark"}>PIX</p>
+              <div className={statePage ? "pixLight" : "pixDark"}>
+                <img src={Pix} alt="pix" /><p className={statePage ? "light" : "dark"}>PIX</p>
+              </div>
             </div>
             <div className={backgroundTwo ? "credit" : "creditTwo"} onClick={() => setBackgroundTwo(!backgroundTwo)}>
-              <HiOutlineCreditCard /><p className={statePage ? "light" : "dark"}>Crédito</p>
+              <div className={statePage ? "creditLight" : "creditDark"}>
+                <HiOutlineCreditCard /><p className={statePage ? "light" : "dark"}>Crédito</p>
+              </div>
             </div>
           </div>
-          <div className="row">
+          <div className={statePage ? "rowLight" : "rowDark"}>
             <div className="image">
               <div className={button ? "img" : "imgnone"}>
                 <img className={!background && backgroundTwo ? "img" : "imgnone"} src={QrCode} alt="qrcode" />
@@ -131,7 +135,7 @@ export function MyRequest() {
               </div>
             </div>
             <div className={!button ? "buttonOne" : "buttonTwo"}>
-              <BsCheckCircle  className={statePage ? "svgLight" : "svgDark"} />
+              <BsCheckCircle className={statePage ? "svgLight" : "svgDark"} />
               <p className={statePage ? "light" : "dark"}>Pagamento aprovado!</p>
             </div>
           </div>

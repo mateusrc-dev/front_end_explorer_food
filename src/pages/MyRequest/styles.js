@@ -207,16 +207,31 @@ export const Container = styled.div`
   }
   
     }
+  .pixDark {
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    border-radius: 5px 0 0 0;
+    width: 300px;
+    height: 80px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .pixLight {
+    border: 1px solid ${({ theme }) => theme.COLORS.WHITE_200};
+    border-radius: 5px 0 0 0;
+    width: 300px;
+    height: 80px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
   .pix{
-      border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
-      background: transparent;
-      border-radius: 5px 0 0 0;
-      width: 300px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
+      
+     
       p{
         font-family: 'Roboto';
         font-weight: 400;
@@ -234,6 +249,8 @@ export const Container = styled.div`
       border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
       background: ${({ theme }) => theme.COLORS.BACKGROUND_700};
       border-radius: 5px 0 0 0;
+      border-left: none;
+      border-right: none;
       width: 300px;
       height: 80px;
       display: flex;
@@ -253,17 +270,32 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.WHITE_200};
       }
   }
-  .credit{
+  .creditDark {
       border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
       background: transparent;
       border-radius: 0 5px 0 0;
       border-left: none;
-      width: 300px;
+      width: 280px;
       height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 14px;
+  }
+  .creditLight {
+      border: 1px solid ${({ theme }) => theme.COLORS.WHITE_200};
+      background: transparent;
+      border-radius: 0 5px 0 0;
+      border-left: none;
+      width: 280px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+  }
+  .credit{
+      
       p{
         font-family: 'Roboto';
         font-weight: 400;
@@ -282,6 +314,7 @@ export const Container = styled.div`
       background:  ${({ theme }) => theme.COLORS.BACKGROUND_700};
       border-radius: 0 5px 0 0;
       border-left: none;
+      border-right: none;
       width: 300px;
       height: 80px;
       display: flex;
@@ -301,8 +334,20 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.WHITE_200};
       }
   }
-  .row{
+  .rowDark{
       border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
+      background: transparent;
+      border-radius: 0 0 5px 5px;
+      border-top: none;
+      width: 580px;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+  }
+  .rowLight{
+      border: 1px solid ${({ theme }) => theme.COLORS.WHITE_200};
       background: transparent;
       border-radius: 0 0 5px 5px;
       border-top: none;
