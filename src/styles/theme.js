@@ -1,5 +1,8 @@
 export default {
   COLORS: {
+    BACKGROUND_1400: "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #7C7C8A 100%)",
+    BACKGROUND_1300: "linear-gradient(90deg, #7C7C8A 0%, rgba(0, 0, 0, 0) 100%)",
+    BACKGROUND_1200: "linear-gradient(180deg, #FFFFFF 0%, #C4C4CC 100%)",
     BACKGROUND_1100: "rgba(0, 0, 0, 0.60)",
     BACKGROUND_1000: "rgba(0, 0, 0, 0.40)",
     BACKGROUND_900: "#1E1E1E",

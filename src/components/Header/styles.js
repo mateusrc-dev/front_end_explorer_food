@@ -141,7 +141,7 @@ export const Container = styled.header`
     color: ${({theme}) => theme.COLORS.WHITE_200};
     font-weight: bold;
     font-size: 16px;
-    right: 0px;
+    right: 30px;
     top: 105px;
     display: flex;
     flex-direction: column;

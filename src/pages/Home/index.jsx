@@ -30,11 +30,6 @@ export function Home() {
   const navigate = useNavigate()
   const { statePage } = useStatePage()
 
-  function handleSignOut() {
-    navigate("/")
-    signOut()
-  }
-
   useEffect(() => {
     async function fetchRequests() {
       const response = await api.get("/allrequests")
@@ -115,23 +110,23 @@ export function Home() {
   return (
     <Container>
       <Header />
-      <main>
+      <main className={statePage ? "light" : "dark"}>
         <div className={search.length !== 0 ? "searchAlert" : "none"}>
           <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
         </div>
-        <div className="logoHome">
+        <div className={statePage ? "logoHomeLight" : "logoHomeDark"}>
           <img src={HomeImage} alt="imagem da home" />
-          <div className="logoText">
-            <h1>Sabores inigualáveis </ h1>
+          <div className={statePage ? "logoTextLight" : "logoTextDark"}>
+            <h1 >Sabores inigualáveis </ h1>
             <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
           </div>
         </div>
-        <h2 id="title">Pratos principais</h2>
+        <h2 className={statePage ? "textLight" : "textDark"}>Pratos principais</h2>
         <div className="container">
-          <div className="arrowOne" onClick={handleLeftClick}>
+          <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClick}>
             <button ><IoIosArrowBack /></button>
           </div>
-          <div className="arrowTwo" onClick={handleRightClick}>
+          <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClick}>
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carousel} className="listFood">
@@ -147,7 +142,7 @@ export function Home() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/details/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <div className="description"><p>{food.description}</p></div>
-                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")} </span>
+                    <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")} </span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
                     </div>
@@ -157,12 +152,12 @@ export function Home() {
             </div>
           </div>
         </div>
-        <h2 id="title">Sobremesas</h2>
+        <h2 className={statePage ? "textLight" : "textDark"}>Sobremesas</h2>
         <div className="container">
-          <div className="arrowOne" onClick={handleLeftClickTwo}>
+          <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClickTwo}>
             <button ><IoIosArrowBack /></button>
           </div>
-          <div className="arrowTwo" onClick={handleRightClickTwo}>
+          <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClickTwo}>
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carouselTwo} className="listFood">
@@ -178,7 +173,7 @@ export function Home() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
+                    <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
                     </div>
@@ -188,12 +183,12 @@ export function Home() {
             </div>
           </div>
         </div>
-        <h2 id="title">Bebidas</h2>
+        <h2 className={statePage ? "textLight" : "textDark"}>Bebidas</h2>
         <div className="container">
-          <div className="arrowOne" onClick={handleLeftClickThree}>
+          <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClickThree}>
             <button ><IoIosArrowBack /></button>
           </div>
-          <div className="arrowTwo" onClick={handleRightClickThree}>
+          <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClickThree}>
             <button ><IoIosArrowForward /></button>
           </div>
           <div ref={carouselThree} className="listFood">
@@ -209,7 +204,7 @@ export function Home() {
                     <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
                     <Link to={`/detailsdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
                     <p>{food.description}</p>
-                    <span className="price">R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
+                    <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
                     <div className="amountAndButton">
                       <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
                     </div>

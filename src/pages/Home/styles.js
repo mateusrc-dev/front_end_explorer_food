@@ -24,6 +24,14 @@ export const Container = styled.div`
   background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
   border: 5px solid rgba(0, 0, 0, 0);
   }
+  main.light {
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
+    
+  }
+  main.dark {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900}; 
+  }
+
   main {
     width: 100%;
     grid-area: content;
@@ -77,7 +85,7 @@ export const Container = styled.div`
   .none {
     display: none;
   }
-  #title{
+  .textDark{
     @media (max-width: 600px) {
       padding: 48px 0px 40px;
   }
@@ -87,6 +95,18 @@ export const Container = styled.div`
     font-size: 32px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+    animation: left 1s;
+  }
+  .textLight{
+    @media (max-width: 600px) {
+      padding: 48px 0px 40px;
+  }
+    padding: 48px 125px 40px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 140%;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     animation: left 1s;
   }
   @keyframes left {
@@ -99,7 +119,7 @@ export const Container = styled.div`
         transform: translateX(0)
       }
     }
-  .logoHome {
+  .logoHomeDark {
     @media (max-width: 600px) {
       width: 600px;
       margin: 100px 0 0 0;
@@ -108,6 +128,29 @@ export const Container = styled.div`
     margin: 0 auto;
     margin-top: 80px;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_200};
+    width: 1120px;
+    height: 260px;
+    display: flex;
+    animation: topdown 1s;
+    img {
+      @media (max-width: 600px) {
+      width: 200px;
+      height: 150px;
+      margin-top: 0px;
+  }
+      margin-top: -50px;
+      margin-left: -40px;
+    }
+  }
+  .logoHomeLight {
+    @media (max-width: 600px) {
+      width: 600px;
+      margin: 100px 0 0 0;
+      height: 150px;
+  }
+    margin: 0 auto;
+    margin-top: 80px;
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_1200};
     width: 1120px;
     height: 260px;
     display: flex;
@@ -133,7 +176,7 @@ export const Container = styled.div`
         transform: translateY(0)
       }
     }
-  .logoText{
+  .logoTextDark{
     @media (max-width: 600px) {
     margin-left: -650px;
   }
@@ -167,6 +210,40 @@ export const Container = styled.div`
   }
     }
   }
+  .logoTextLight{
+    @media (max-width: 600px) {
+    margin-left: -650px;
+  }
+    margin-left: -500px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: start;
+    justify-content: center;
+    white-space: nowrap;
+  h1 {
+    @media (max-width: 600px) {
+      font-size: 20px;
+  }
+      margin-left: 600px;
+      font-family: 'Poppins';
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 140%;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    }
+    p {
+      margin-left: 600px;
+      font-family: 'Poppins';
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 140%;
+      @media (max-width: 600px) {
+    font-size: 14px;
+  }
+    }
+  }
   
   .container {
     position: relative;
@@ -189,7 +266,7 @@ export const Container = styled.div`
         transform: scale(1.0)
       }
     }
-    .arrowOne{
+    .arrowOneDark{
       position: absolute;
       z-index: 1;
       width: 80px;
@@ -214,7 +291,32 @@ export const Container = styled.div`
       transform: scale(1.5);
     }
     }
-    .arrowTwo{
+    .arrowOneLight{
+      position: absolute;
+      z-index: 1;
+      width: 80px;
+      height: 512px;
+      background:  ${({ theme }) => theme.COLORS.BACKGROUND_1300};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      svg{
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    }
+    button {
+      background: none;
+      border: none;
+      transition: transform 1s;
+    }
+    button:hover {
+      transform: scale(1.5);
+    }
+    }
+    .arrowTwoDark{
       position: absolute;
       z-index: 0;
       width: 80px;
@@ -238,7 +340,32 @@ export const Container = styled.div`
     button:hover {
       transform: scale(1.5);
     }
+  }
+  .arrowTwoLight{
+      position: absolute;
+      z-index: 0;
+      width: 80px;
+      right: 0;
+      height: 512px;
+      background:  ${({ theme }) => theme.COLORS.BACKGROUND_1400};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
+    button {
+      background: none;
+      border: none;
+      transition: transform 1s;
+    }
+    button:hover {
+      transform: scale(1.5);
+    }
+  }
   }
   .container:last-child{
     margin-bottom: 60px;
@@ -319,12 +446,24 @@ export const Container = styled.div`
         width: 18px;
         height: 18px;
     }
-    .price {
+    .priceDark {
       font-family: 'Roboto';
       font-weight: 400;
       font-size: 32px;
       line-height: 160%;
       color: ${({ theme }) => theme.COLORS.BLUE_200};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    .priceLight {
+      font-family: 'Roboto';
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 160%;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
       display: flex;
       align-items: center;
       justify-content: center;
