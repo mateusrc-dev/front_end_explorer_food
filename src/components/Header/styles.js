@@ -33,7 +33,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
   padding: 0 125px;
   white-space: nowrap;
   animation: topdown 1s;
@@ -57,7 +57,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
   padding: 0 125px;
   white-space: nowrap;
   animation: topdown 1s;
@@ -190,7 +190,7 @@ export const Container = styled.header`
 export const Logout = styled.button`
   border: none;
   background: none;
-  padding-left: 20px;
+  padding-left: 10px;
   .LogoutDark {
     color: ${({theme}) => theme.COLORS.BACKGROUND_800};
     width: 22px;

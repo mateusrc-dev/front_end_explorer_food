@@ -3,16 +3,11 @@ import { useState, useEffect } from "react"
 import { api } from "../../services/api"
 import { Footer } from '../../components/Footer'
 import HomeImage from '../../assets/homeimage.png'
-import { CgNotes } from 'react-icons/cg'
 import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
-import { BsFillHexagonFill } from 'react-icons/bs'
-import { FiLogOut } from 'react-icons/fi'
-import { Container, Logout, Header } from './styles'
-import { ButtonTwo } from '../../components/ButtonTwo'
-import { BiSearchAlt } from 'react-icons/bi'
+import { Container } from './styles'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { useInput } from '../../hooks/input'
@@ -21,9 +16,8 @@ import { Favorite } from '../../components/Favorite'
 import { FavoriteDesserts } from '../../components/FavoriteDesserts'
 import { FavoriteDrinks } from '../../components/FavoriteDrinks'
 import { RiAlertFill } from 'react-icons/ri'
-import { Input } from '../../components/Input'
-import { HiLightBulb } from 'react-icons/hi'
-import { HiOutlineLightBulb } from 'react-icons/hi'
+import { Header } from '../../components/Header'
+import { useStatePage } from '../../hooks/statePage'
 
 export function Home() {
   const [foods, setFoods] = useState([])
@@ -34,7 +28,7 @@ export function Home() {
   const { search } = useInput()
   const { signOut } = useAuth()
   const navigate = useNavigate()
-  const [statePage, setStatePage] = useState(true)
+  const { statePage } = useStatePage()
 
   function handleSignOut() {
     navigate("/")
@@ -120,32 +114,7 @@ export function Home() {
 
   return (
     <Container>
-      <Header>
-        <div className="logo">
-          <BsFillHexagonFill className="hexagon" />
-          <span>food explorer</span>
-          <Link className="favorites" to="/myfavorites">Meus favoritos</Link>
-          <Input placeholder="Busque pelas suas refeições" value={search} >
-            <BiSearchAlt />
-          </Input>
-        </div>
-        <div className="buttons">
-          <Link to="/myrequest">
-            <ButtonTwo>
-              <CgNotes />Meu pedido atual ({requests.length})
-            </ButtonTwo>
-          </Link>
-          <Link to="/requests">
-            <ButtonTwo>
-              <CgNotes />Todos os meus pedidos ({request.length})
-            </ButtonTwo>
-          </Link>
-          <Logout onClick={handleSignOut} className="back"  >
-            <FiLogOut />
-          </Logout>
-        </div>
-      </Header>
-
+      <Header />
       <main>
         <div className={search.length !== 0 ? "searchAlert" : "none"}>
           <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>

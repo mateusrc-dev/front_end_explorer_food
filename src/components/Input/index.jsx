@@ -6,12 +6,14 @@ import { api } from "../../services/api"
 import { FaClock } from "react-icons/fa"
 import { CgClose } from 'react-icons/cg'
 import { CgCloseR } from 'react-icons/cg'
+import { useStatePage } from '../../hooks/statePage'
 
 export function Input({ children, placeholder, value }) {
   const [option, setOption] = useState([])
   const navigate = useNavigate()
   const input = useRef(null)
   const { handleStates } = useInput()
+  const { statePage } = useStatePage()
 
   async function searchInput(e) {
     handleStates(e.target.value)
@@ -68,9 +70,8 @@ export function Input({ children, placeholder, value }) {
 
   return (
     <Container>
-      <input ref={input} type="search" value={value} placeholder={placeholder} onKeyDown={(e) => SearchInput(e)} onChange={(e) => searchInput(e)} />
+      <input className={statePage ? "light" : "dark"} ref={input} type="search" value={value} placeholder={placeholder} onKeyDown={(e) => SearchInput(e)} onChange={(e) => searchInput(e)} />
       <button onClick={handleSearch}>{children}</button>
-
       <div className={option.length === 0 ? "none" : "searchResults"}>
         <a onClick={closeSearch} className="close" title="Fechar"><CgCloseR /></a>
         <ul>

@@ -4,21 +4,35 @@ export const Container = styled.div`
 @media (max-width: 600px) {
   width: 280px;
  }
+ 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
   width: 100%;
   height: 48px;
   display: flex;
   align-items: center;
   border-radius: 5px;
-  input {
-    color: ${({ theme }) => theme.COLORS.WHITE_200};
-    width: 100%;
+ 
+  input.dark{
     background: transparent;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
     border: none;
-    padding-left: 10px;
+    padding: 10px;
     height: 100%;
     transition: all 1s;
+    width: 100%;
   }
+
+  input.light{
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+    border: none;
+    padding: 10px;
+    height: 100%;
+    transition: all 1s;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
   input:focus {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_600};
     
@@ -35,6 +49,7 @@ export const Container = styled.div`
     width: 50px;
     border-left: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_400};
     transition: all 1s;
+    border-radius: 0 5px 5px 0;
   }
 
   button:hover {

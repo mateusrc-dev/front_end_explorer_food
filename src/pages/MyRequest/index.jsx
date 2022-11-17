@@ -13,6 +13,7 @@ import { FiAlertTriangle } from 'react-icons/fi'
 import { BsCheckCircle } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { api } from "../../services/api"
+import { useStatePage } from '../../hooks/statePage'
 
 export function MyRequest() {
   const [background, setBackground] = useState(true)
@@ -20,6 +21,7 @@ export function MyRequest() {
   const [button, setButton] = useState(true)
   const [request, setRequest] = useState([])
   const navigate = useNavigate()
+  const { statePage } = useStatePage()
 
   useEffect(() => {
     async function fetchRequests() {
@@ -59,12 +61,12 @@ export function MyRequest() {
   }
 
   return (
-    <Container>
+    <Container >
       <Header />
-      <main>
+      <main className={statePage ? "light" : "dark"}>
         <div className="columnOne">
-          <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
-          <h1>Meu pedido</h1>
+          <ButtonText to="/" ><SlArrowLeft className={statePage ? "svgLight" : "svgDark"}/><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
+          <h1 className={statePage ? "h1Light" : "h1Dark"}>Meu pedido</h1>
           <div className="requests">
             {
               request.map(request => (
@@ -72,24 +74,24 @@ export function MyRequest() {
                   <img src={`${api.defaults.baseURL}/files/${request.image}`} alt="imagem do prato" />
                   <div className="Text">
                     <div className="text">
-                      <span className="name">{request.amount}x {request.name}</span><span className="price">R$ {String(Number(request.price * request.amount).toFixed(2)).replace(".", ",")}</span>
+                      <span className={statePage ? "nameLight" : "nameDark"}>{request.amount}x {request.name}</span><span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(request.price * request.amount).toFixed(2)).replace(".", ",")}</span>
                     </div>
-                    <a onClick={() => handleDelete(request.id)}>Excluir</a>
+                    <a onClick={() => handleDelete(request.id)} className={statePage ? "deleteLight" : "deleteDark"}>Excluir</a>
                   </div>
                 </div>
               ))
             }
           </div>
-          <h2>R$ {String(Number(sum).toFixed(2)).replace(".", ",")} </h2>
+          <h2 className={statePage ? "resultLight" : "resultDark"}>R$ {String(Number(sum).toFixed(2)).replace(".", ",")} </h2>
         </div>
         <div className="columnTwo">
-          <h1 className="titleTwo">Pagamento</h1>
+          <h1 className={statePage ? "h1Light" : "h1Dark"}>Pagamento</h1>
           <div className="headerTable">
             <div className={background ? "pix" : "pixTwo"} onClick={() => setBackground(!background)}>
-              <img src={Pix} alt="pix" /><p>PIX</p>
+              <img src={Pix} alt="pix" /><p className={statePage ? "light" : "dark"}>PIX</p>
             </div>
             <div className={backgroundTwo ? "credit" : "creditTwo"} onClick={() => setBackgroundTwo(!backgroundTwo)}>
-              <HiOutlineCreditCard /><p>Crédito</p>
+              <HiOutlineCreditCard /><p className={statePage ? "light" : "dark"}>Crédito</p>
             </div>
           </div>
           <div className="row">
@@ -100,14 +102,14 @@ export function MyRequest() {
             </div>
             <div className={!backgroundTwo && background ? "form" : "formnone"}  >
               <div className={button ? "form" : "formnone"}>
-                <label className="input" htmlFor="num">Número do Cartão
+                <label className="input" htmlFor="num"><p className={statePage ? "light" : "dark"}>Número do Cartão</p>
                   <input type="text" placeholder="0000 0000 0000 0000" id="num" />
                 </label>
                 <div className="valAndCvc">
-                  <label className="input" htmlFor="val">Validade
+                  <label className="input" htmlFor="val"><p className={statePage ? "light" : "dark"}>Validade</p>
                     <input type="text" placeholder="04/25" id="val" />
                   </label>
-                  <label className="input" htmlFor="cvc">CVC
+                  <label className="input" htmlFor="cvc"><p className={statePage ? "light" : "dark"}>CVC</p>
                     <input type="text" placeholder="04/25" id="cvc" />
                   </label>
                 </div>
@@ -118,19 +120,19 @@ export function MyRequest() {
             </div>
             <div className={background && backgroundTwo ? "payOne" : "payTwo"}>
               <div className={button ? "payOne" : "payTwo"}>
-                <FiClock />
-                <p>Aguardando pagamento!</p>
+                <FiClock className={statePage ? "svgLight" : "svgDark"} />
+                <p className={statePage ? "light" : "dark"}>Aguardando pagamento!</p>
               </div>
             </div>
             <div className={!background && !backgroundTwo ? "alertOne" : "alertTwo"}>
               <div className={button ? "alertOne" : "alertTwo"}>
-                <FiAlertTriangle />
-                <p>Selecione apenas uma opção!</p>
+                <FiAlertTriangle className={statePage ? "svgLight" : "svgDark"} />
+                <p className={statePage ? "light" : "dark"}>Selecione apenas uma opção!</p>
               </div>
             </div>
             <div className={!button ? "buttonOne" : "buttonTwo"}>
-              <BsCheckCircle />
-              <p>Pagamento aprovado!</p>
+              <BsCheckCircle  className={statePage ? "svgLight" : "svgDark"} />
+              <p className={statePage ? "light" : "dark"}>Pagamento aprovado!</p>
             </div>
           </div>
         </div>

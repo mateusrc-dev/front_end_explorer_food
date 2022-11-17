@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
+  
   width: 100%;
   height: 100vh;
   display: grid;
@@ -25,12 +26,22 @@ export const Container = styled.div`
   background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
   border: 5px solid rgba(0, 0, 0, 0);
   }
+  
+  
+  main.light {
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
+    
+  }
+  main.dark {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    
+  }
   main{
-  grid-area: content;
-  padding: 0 125px;
-  display: flex;
-  gap: 150px;
-  overflow: auto;
+    grid-area: content;
+    padding: 0 125px;
+    display: flex;
+    gap: 150px;
+    overflow: auto;
   @media (max-width: 600px) {
     height: 100%;
     min-width: 600px;
@@ -39,8 +50,8 @@ export const Container = styled.div`
     gap: 40px;
     margin-top: 46px;
  }
-  h1{
-    margin: 0px 0;
+  .h1Dark{
+    margin: 20px 0;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -48,6 +59,17 @@ export const Container = styled.div`
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
     animation: left 1s;
+  }
+  .h1Light{
+    margin: 20px 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 140%;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    animation: left 1s;
+  }
     @keyframes left {
       0% {
         opacity: 0;
@@ -58,11 +80,11 @@ export const Container = styled.div`
         transform: translateX(0)
       }
     }
-  }
+  
   .titleTwo{
     margin: 0px 0 10px 0;
   }
-  h2{
+  .resultDark{
     margin-top: 20px;
     font-family: 'Poppins';
     font-weight: 500;
@@ -70,6 +92,16 @@ export const Container = styled.div`
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
     animation: left 1s;
+  }
+  .resultLight{
+    margin-top: 20px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 160%;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    animation: left 1s;
+  }
     @keyframes left {
       0% {
         opacity: 0;
@@ -80,7 +112,6 @@ export const Container = styled.div`
         transform: translateX(0)
       }
     }
-  }
   .requests{
     display: flex;
     flex-direction: column;
@@ -114,15 +145,22 @@ export const Container = styled.div`
   .Text{
     display: flex;
     flex-direction: column;
-    a{
+    .deleteDark{
       font-family: 'Roboto';
       font-weight: 400;
       font-size: 12px;
       line-height: 160%;
       color: ${({ theme }) => theme.COLORS.RED_300};
     }
+    .deleteLight{
+      font-family: 'Roboto';
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 160%;
+      color: ${({ theme }) => theme.COLORS.GRAY_300};
+    }
   }
-  .name {
+  .nameDark {
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 20px;
@@ -130,7 +168,15 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.WHITE_100};
     margin-right: 10px;
   }
-  .price {
+  .nameLight {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 160%;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    margin-right: 10px;
+  }
+  .priceDark {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -138,11 +184,28 @@ export const Container = styled.div`
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.GRAY_300}
   }
+  .priceLight {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 160%;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_900}
+  }
+
   .columnTwo{
    
     .headerTable{
       display:flex;
       width:580px;
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+  .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};  
+  }
+  
     }
   .pix{
       border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
@@ -268,8 +331,14 @@ export const Container = styled.div`
       flex-direction: row;
       gap: 20px;
     }
+    .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+    }
+    .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};  
+    }
    
-     
     label {
       font-family: 'Roboto';
       font-style: normal;
@@ -290,6 +359,13 @@ export const Container = styled.div`
   .formnone {
     display: none;
   }
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+    }
+    .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};  
+    }
   .payOne {
     display: flex;
     display: flex;
@@ -301,10 +377,15 @@ export const Container = styled.div`
     font-size: 24px;
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.GRAY_300};
-    svg {
+    .svgDark {
       width: 104px;
       height: 104px;
       color: ${({ theme }) => theme.COLORS.GRAY_300};
+    }
+    .svgLight {
+      width: 104px;
+      height: 104px;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
   }
   .payTwo{
@@ -320,9 +401,15 @@ export const Container = styled.div`
     font-size: 24px;
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.GRAY_300};
-    svg {
+    .svgDark {
       width: 104px;
       height: 104px;
+      color: ${({ theme }) => theme.COLORS.GRAY_300};
+    }
+    .svgLight {
+      width: 104px;
+      height: 104px;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
   }
   .alertTwo{
@@ -352,9 +439,15 @@ export const Container = styled.div`
       width: 30px;
       height: 30px;
     }
-    svg {
+    .svgDark {
       width: 104px;
       height: 104px;
+      color: ${({ theme }) => theme.COLORS.GRAY_300};
+    }
+    .svgLight {
+      width: 104px;
+      height: 104px;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     }
   }
   .buttonTwo{
@@ -365,7 +458,8 @@ export const Container = styled.div`
 `;
 
 export const ButtonText = styled(Link)`
-  margin-top: 10px;
+  
+  margin-top: 30px;
   white-space: nowrap;
   width: 300px;
   display: flex;
@@ -377,10 +471,25 @@ export const ButtonText = styled(Link)`
   font-size: 24px;
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
-  svg {
+  .svgDark {
     width: 22px;
     height: 22px;
     color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
+  .svgLight {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+}
+  
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+  .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+    
+  }
+  
 `;
 
