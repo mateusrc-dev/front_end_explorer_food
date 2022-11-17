@@ -1,7 +1,7 @@
 import { Container } from './styles'
 import { useStatePage } from '../../hooks/statePage'
-import { FaLightbulb } from 'react-icons/fa'
-import { FaRegLightbulb } from 'react-icons/fa'
+import { BsLightbulbOff } from 'react-icons/bs'
+import { BsLightbulb } from 'react-icons/bs'
 
 export function StatePage({StatePage}) {
   const { handleStatesPages } = useStatePage()
@@ -13,7 +13,7 @@ export function StatePage({StatePage}) {
   return (
     <Container>
       <div onClick={handleState} className="statePage">
-        {StatePage ? <FaLightbulb className="svgState" /> : <FaRegLightbulb className="svgState" />}
+        {StatePage ? <BsLightbulb className="svgState" /> : <BsLightbulbOff className="svgState" />}
       </div>
     </Container>
   )
