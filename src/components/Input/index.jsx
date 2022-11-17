@@ -17,12 +17,13 @@ export function Input({ children, placeholder, value }) {
 
   async function searchInput(e) {
     handleStates(e.target.value)
-    if (e.target.value.length == 0) {
+    if (e.target.value.length === 0) {
       setOption([])
       return
-    }
+    } else if (e.target.value.length !== 0) {
     const response = await api.get(`/search/?search=${value}`)
     setOption(response.data.Search)
+  }
   }
 
   async function SearchInput(e) {
