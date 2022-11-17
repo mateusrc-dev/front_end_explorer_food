@@ -18,6 +18,9 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
   animation: downtop 1s;
+  @media (max-width: 600px) {
+    padding: 0px;
+  }
   }
   .light {
   position: absolute;
@@ -33,11 +36,12 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
   animation: downtop 1s;
-  }
-  
   @media (max-width: 600px) {
     padding: 0px;
   }
+  }
+  
+  
   .logo {
     display: flex;
     align-items: center;

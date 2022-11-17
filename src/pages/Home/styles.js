@@ -6,6 +6,9 @@ export const Container = styled.div`
   height: 100vh;
   display: grid;
   grid-template-rows: 104px auto 77px;
+  @media (max-width: 600px) {
+    grid-template-rows: 150px auto 77px;
+  }
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
   width: 20px;
@@ -36,11 +39,12 @@ export const Container = styled.div`
     width: 100%;
     grid-area: content;
     overflow: auto;
+    
     @media (max-width: 600px) {
-    margin-top: 46px;
     margin-bottom: 40px;
     height: 100%;
-    min-width: 600px;
+    width: 600px;
+    overflow-x: hidden;
   }
   .searchAlert {
     position: absolute;

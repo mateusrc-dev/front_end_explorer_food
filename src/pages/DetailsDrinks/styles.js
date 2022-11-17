@@ -5,7 +5,11 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
+  overflow: hidden;
   grid-template-rows: 104px 50px auto 77px;
+  @media (max-width: 600px) {
+    grid-template-rows: 150px 50px auto 77px;
+  }
   grid-template-areas: "header" "back" "content" "footer";
   main::-webkit-scrollbar {
   width: 20px;
@@ -41,8 +45,8 @@ export const ButtonText = styled(Link)`
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
   @media (max-width: 600px) {
-  margin-top: 70px;
   margin-left: 0;
+  margin-top: 10px;
  }
   svg {
     width: 22px;
@@ -68,7 +72,6 @@ export const Main = styled.main`
   justify-content: center;
   flex-direction: column;
   overflow-y: scroll;
-  margin-top: 40px;
  }
  
  .image {

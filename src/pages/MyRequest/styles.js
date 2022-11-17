@@ -2,12 +2,14 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
-  
   width: 100%;
   height: 100vh;
   display: grid;
   overflow: hidden;
   grid-template-rows: 104px auto 77px;
+  @media (max-width: 600px) {
+    grid-template-rows: 150px auto 77px;
+  }
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
   width: 20px;
@@ -26,7 +28,6 @@ export const Container = styled.div`
   background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
   border: 5px solid rgba(0, 0, 0, 0);
   }
-  
   
   main.light {
     background: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -48,7 +49,7 @@ export const Container = styled.div`
     flex-direction: column;
     padding: 0;
     gap: 40px;
-    margin-top: 46px;
+    
  }
   .h1Dark{
     margin: 20px 0;
@@ -503,7 +504,6 @@ export const Container = styled.div`
 `;
 
 export const ButtonText = styled(Link)`
-  
   margin-top: 30px;
   white-space: nowrap;
   width: 300px;
@@ -533,8 +533,6 @@ export const ButtonText = styled(Link)`
   }
   .dark {
     color: ${({ theme }) => theme.COLORS.WHITE_200};
-    
   }
-  
 `;
 

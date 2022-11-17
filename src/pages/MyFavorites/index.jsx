@@ -4,12 +4,14 @@ import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
 import { useState, useEffect } from 'react'
 import { api } from "../../services/api"
+import { useStatePage } from '../../hooks/statePage'
 
 export function MyFavorites() {
 
   const [favoritesDish, setFavoritesDish] = useState([])
   const [favoritesDrink, setFavoritesDrink] = useState([])
   const [favoritesDessert, setFavoritesDessert] = useState([])
+  const { statePage } = useStatePage()
 
   useEffect(() => {
     async function fetchFavoritesDish() {
@@ -38,60 +40,64 @@ export function MyFavorites() {
   return (
     <Container>
       <Header />
-      <main>
-        <div className="columnOne">
-        <ButtonText to="/"><SlArrowLeft />voltar para a Home</ButtonText>
-          <h1>Pratos favoritos</h1>
-          <div className="requests">
-            {
-              favoritesDish.map(fav => (
-                <div className="request" key={String(fav.id)}>
-                  <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
-                  <div className="Text">
-                    <div className="text">
-                      <span className="name">{fav.name}</span>
-                    </div>
-                    <p>{fav.description}</p>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
+      <main className={statePage ? "light" : "dark"}>
+        <div className="button">
+          <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
         </div>
-        <div className="columnTwo">
-          <h1 className="title">Sobremesas favoritas</h1>
-          <div className="requests">
-            {
-              favoritesDessert.map(fav => (
-                <div className="request" key={String(fav.id)}>
-                  <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
-                  <div className="Text">
-                    <div className="text">
-                      <span className="name">{fav.name}</span>
+        <div className="columns">
+          <div className="columnOne">
+            <h1 className={statePage ? "titleLight" : "titleDark"}>Pratos favoritos</h1>
+            <div className="requests">
+              {
+                favoritesDish.map(fav => (
+                  <div className="request" key={String(fav.id)}>
+                    <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                    <div className="Text">
+                      <div className="text">
+                        <span className="name">{fav.name}</span>
+                      </div>
+                      <p  className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
                     </div>
-                    <p>{fav.description}</p>
                   </div>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
           </div>
-        </div>
-        <div className="columnTwo">
-          <h1 className="title">Bebidas favoritas</h1>
-          <div className="requests">
-            {
-              favoritesDrink.map(fav => (
-                <div className="request" key={String(fav.id)}>
-                  <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
-                  <div className="Text">
-                    <div className="text">
-                      <span className="name">{fav.name}</span>
+          <div className="columnTwo">
+            <h1 className={statePage ? "titleLight" : "titleDark"}>Sobremesas favoritas</h1>
+            <div className="requests">
+              {
+                favoritesDessert.map(fav => (
+                  <div className="request" key={String(fav.id)}>
+                    <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                    <div className="Text">
+                      <div className="text">
+                        <span className="name">{fav.name}</span>
+                      </div>
+                      <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
                     </div>
-                    <p>{fav.description}</p>
                   </div>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
+          </div>
+          <div className="columnTwo">
+            <h1 className={statePage ? "titleLight" : "titleDark"}>Bebidas favoritas</h1>
+            <div className="requests">
+              {
+                favoritesDrink.map(fav => (
+                  <div className="request" key={String(fav.id)}>
+                    <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                    <div className="Text">
+                      <div className="text">
+                        <span className="name">{fav.name}</span>
+                      </div>
+                      <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </main>

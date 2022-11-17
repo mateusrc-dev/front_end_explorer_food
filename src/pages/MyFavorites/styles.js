@@ -7,6 +7,9 @@ export const Container = styled.div`
   display: grid;
   overflow: hidden;
   grid-template-rows: 104px auto 77px;
+  @media (max-width: 600px) {
+    grid-template-rows: 150px auto 77px;
+  }
   grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
   width: 20px;
@@ -25,11 +28,34 @@ export const Container = styled.div`
   background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
   border: 5px solid rgba(0, 0, 0, 0);
   }
+  main.light {
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
+    
+  }
+  main.dark {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    
+  }
+  .columns {
+    display: flex;
+    @media (max-width: 600px) {
+    flex-direction: column;
+}
+  }
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+  .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+    font-weight: bold;
+  }
+ 
   main {
   grid-area: content;
   padding: 0 125px;
   display: flex;
-  gap: 50px;
+  flex-direction: column;
   overflow: auto;
   @media (max-width: 600px) {
   height: 100%;
@@ -37,8 +63,8 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 0;
   gap: 0;
-  margin-top: 46px;
 }
+
 .columnTwo:last-child {
   @media (max-width: 600px) {
   margin-bottom: 100px;
@@ -65,9 +91,14 @@ export const Container = styled.div`
     }
   
   }
-  .title {
-    margin-top: 45px;
+  .titleDark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
+  .titleLight {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+
   h2{
     margin-top: 20px;
     font-family: 'Poppins';
@@ -109,256 +140,26 @@ export const Container = styled.div`
   .Text{
     display: flex;
     flex-direction: column;
-    p{
-      font-family: 'Roboto';
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 160%;
-      color: ${({ theme }) => theme.COLORS.RED_300};
-    }
-  }
-  .name {
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 160%;
-    color: ${({ theme }) => theme.COLORS.WHITE_100};
-    margin-right: 10px;
-  }
-  .price {
+  .descriptionLight {
     font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 160%;
-    color: ${({ theme }) => theme.COLORS.GRAY_300}
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
-  .columnTwo{
-    .headerTable{
-      display:flex;
-    }
-  .pix{
-      border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
-      background: transparent;
-      border-radius: 5px 0 0 0;
-      width: 300px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      p{
-        font-family: 'Roboto';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 100%;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-      img{
-        width: 20px;
-        height: 20px;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-  }
-  .pixTwo{
-      border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
-      background: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-      border-radius: 5px 0 0 0;
-      width: 300px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      p{
-        font-family: 'Roboto';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 100%;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-      img{
-        width: 20px;
-        height: 20px;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-  }
-  .credit{
-      border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
-      background: transparent;
-      border-radius: 0 5px 0 0;
-      border-left: none;
-      width: 300px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      p{
-        font-family: 'Roboto';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 100%;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-      svg {
-        width: 25px;
-        height: 25px;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-  }
-  .creditTwo{
-      border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
-      background:  ${({ theme }) => theme.COLORS.BACKGROUND_700};
-      border-radius: 0 5px 0 0;
-      border-left: none;
-      width: 300px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      p{
-        font-family: 'Roboto';
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 100%;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-      svg {
-        width: 25px;
-        height: 25px;
-        color: ${({ theme }) => theme.COLORS.WHITE_200};
-      }
-  }
-  .row{
-      border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_800};
-      background: transparent;
-      border-radius: 0 0 5px 5px;
-      border-top: none;
-      width: 600px;
-      height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 40px;
-  }
-  .img {
-    display: flex;
-  }
-  .imgnone{
-    display:none;
-  }
-  .form {
-    .input {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 30px;
-    }
-    .valAndCvc{
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-    }
-   
-     
-    label {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 100%;
-      color:  ${({ theme }) => theme.COLORS.GRAY_300};
-    }
-    input{
-      border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
-      background: transparent;
-      border-radius: 5px;
-      padding: 16px;
-      height: 50px;
-      color: ${({ theme }) => theme.COLORS.WHITE_200};
-    }
-  }
-  .formnone {
-    display: none;
-  }
-  .aguardandopagamentoOne {
-    display: flex;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
+  .descriptionDark {
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 24px;
-    line-height: 100%;
-    color: ${({ theme }) => theme.COLORS.GRAY_300};
-    svg {
-      width: 104px;
-      height: 104px;
-      color: ${({ theme }) => theme.COLORS.GRAY_300};
-    }
-  }
-  .aguardandopagamentoTwo{
-    display: none;
-  }
-  .alertOne{
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 100%;
-    color: ${({ theme }) => theme.COLORS.GRAY_300};
-    svg {
-      width: 104px;
-      height: 104px;
-    }
-  }
-  .alertTwo{
-    display: none;
-  }
-  .buttonOne{
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 100%;
-    color: ${({ theme }) => theme.COLORS.GRAY_300};
-    a{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Roboto';
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 100%;
-      color: ${({ theme }) => theme.COLORS.GRAY_300};
-    }
-    .svg{
-      width: 30px;
-      height: 30px;
-    }
-    svg {
-      width: 104px;
-      height: 104px;
-    }
-  }
-  .buttonTwo{
-    display: none;
+    font-size: 12px;
+    line-height: 160%;
+    color: ${({ theme }) => theme.COLORS.RED_300};
   }
   }
 }
 `;
 
 export const ButtonText = styled(Link)`
-  margin-top: 10px;
+  margin: 30px 0;
   white-space: nowrap;
   width: 300px;
   grid-area: back;  
@@ -371,9 +172,22 @@ export const ButtonText = styled(Link)`
   font-size: 16px;
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
-  svg {
-    width: 16px;
-    height: 16px;
+  .svgDark {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
+  .svgLight {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+}
+  
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+  .dark {
     color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
 `;

@@ -5,8 +5,12 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 104px 50px auto 77px;
-  grid-template-areas: "header" "back" "content" "footer";
+  overflow: hidden;
+  grid-template-rows: 104px auto 77px;
+  @media (max-width: 600px) {
+    grid-template-rows: 150px auto 77px;
+  }
+  grid-template-areas: "header" "content" "footer";
   main::-webkit-scrollbar {
   width: 20px;
   }
@@ -24,56 +28,66 @@ export const Container = styled.div`
   background-clip: padding-box; /*para as bordas ficarem transparentes e com isso dar a impressão que tem uma margem nos lados da borda*/
   border: 5px solid rgba(0, 0, 0, 0);
   }
+  main.light {
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
+    
+  }
+  main.dark {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    
+  }
 `;
 
 export const ButtonText = styled(Link)`
-  margin-left: 125px;
-  margin-top: 50px;
-  width: 100px;
-  grid-area: back;  
+  margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 11px;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 140%;
   color: ${({ theme }) => theme.COLORS.WHITE_200};
-  @media (max-width: 600px) {
-  margin-top: 70px;
-  margin-left: 0;
- }
-  svg {
+ .svgDark {
     width: 22px;
     height: 22px;
     color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
+  .svgLight {
+    width: 22px;
+    height: 22px;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+}
+  
+  .light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    font-weight: bold;
+  }
+  .dark {
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
+  }
 `;
+
 
 export const Main = styled.main`
   grid-area: content;
   padding: 0 125px;
   display: flex;
-  align-items: center;
-  gap: 50px;
+  flex-direction: column;
+  gap: 30px;
   animation: scale 1s;
+  overflow-y: scroll;
+  height: 100%;
   @media (max-width: 600px) {
   padding: 0px;
   width: 600px;
-  height: 100%;
-  display: flex;
   gap: 10px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  overflow-y: scroll;
-  margin-top: 40px;
  }
- 
- .image {
+ .details {
+  display: flex;
+  gap: 30px;
   @media (max-width: 600px) {
-  margin-top: 450px;
+  flex-direction: column;
  }
  }
 @keyframes scale {
@@ -91,7 +105,7 @@ export const Main = styled.main`
   margin-bottom: 50px;
  }
     width: 550px;
-  h1 {
+  .h1Dark {
     color: ${({ theme }) => theme.COLORS.WHITE_100};
     font-family: 'Poppins';
     font-style: normal;
@@ -100,7 +114,16 @@ export const Main = styled.main`
     line-height: 140%;
     margin-bottom: 8px;
   }
-  p {
+  .h1Light {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 140%;
+    margin-bottom: 8px;
+  }
+  .pDark {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -108,6 +131,15 @@ export const Main = styled.main`
     line-height: 140%;
     margin-bottom: 32px;
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+  }
+  .pLight {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    margin-bottom: 32px;
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_1100};
   }
 }
   .ingredients {
@@ -119,7 +151,12 @@ export const Main = styled.main`
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
+    .Dark{
     color: ${({ theme }) => theme.COLORS.WHITE_100};
+  }
+    .Light{
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_1100};
+  }
     margin-bottom: 45px;
     span {
       display: flex;
@@ -135,13 +172,21 @@ export const Main = styled.main`
     gap: 50px;
     padding-right: 160px;
   }
-  .price {
+  .priceDark {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.BLUE_200};
+  }
+  .priceLight {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 160%;
+    color: ${({ theme }) => theme.COLORS.WHITE_200};
   }
   .amount{
     display: flex;
