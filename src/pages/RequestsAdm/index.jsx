@@ -1,6 +1,6 @@
 import { Container, ButtonText } from './styles'
 import { HeaderTwo } from '../../components/HeaderTwo'
-import { Footer } from '../../components/Footer'
+import { FooterTwo } from '../../components/FooterTwo'
 import { SlArrowLeft } from 'react-icons/sl'
 import { useState, useEffect } from 'react'
 import { api } from "../../services/api"
@@ -79,7 +79,7 @@ return (
         </tbody>
       </table>
     </main>
-    <Footer />
+    <FooterTwo />
   </Container>
 )
 }

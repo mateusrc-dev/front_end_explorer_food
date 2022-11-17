@@ -30,7 +30,7 @@ export function Details() {
       <Header />
       <Main className={statePage ? "light" : "dark"}>
         <div className="back">
-          <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"}/><p className={statePage ? "light" : "dark"}>voltar</p></ButtonText>
+          <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar</p></ButtonText>
         </div>
         <div className="details">
           <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { api } from "../../services/api"
-import { Footer } from '../../components/Footer'
+import { FooterTwo } from '../../components/FooterTwo'
 import HomeImage from '../../assets/homeimage.png'
 import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
@@ -239,7 +239,7 @@ export function HomeAdm() {
           </div>
         </div>
       </main>
-      <Footer />
+      <FooterTwo />
     </Container>
   )
 }

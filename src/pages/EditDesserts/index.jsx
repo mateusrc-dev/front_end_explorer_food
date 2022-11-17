@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { Container, ButtonText } from './styles'
 import { SlArrowLeft } from 'react-icons/sl'
 import { HeaderTwo } from '../../components/HeaderTwo'
-import { Footer } from '../../components/Footer'
+import { FooterTwo } from '../../components/FooterTwo'
 import { FiUpload } from 'react-icons/fi'
 import { IngredientItem } from '../../components/IngredientItem'
 
@@ -103,7 +103,7 @@ export function EditDesserts() {
           </button>
         </div>
       </main>
-      <Footer />
+      <FooterTwo />
     </Container >
   )
 }

@@ -40,6 +40,7 @@ export const Container = styled.div`
     display: flex;
     @media (max-width: 600px) {
     flex-direction: column;
+    gap: 30px;
 }
   }
   .light {
@@ -67,7 +68,7 @@ export const Container = styled.div`
 
 .columnTwo:last-child {
   @media (max-width: 600px) {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 }
   h1{
