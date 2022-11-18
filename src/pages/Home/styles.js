@@ -34,12 +34,14 @@ export const Container = styled.div`
   main.dark {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_900}; 
   }
+`;
 
-  main {
+export const Main = styled.main`
     width: 100%;
+    height: 100%;
     grid-area: content;
     overflow: auto;
-    
+   
     @media (max-width: 600px) {
     margin-bottom: 40px;
     height: 100%;
@@ -533,6 +535,4 @@ export const Container = styled.div`
         transform: translateY(0)
       }
     }
-  }
-
-`;
+    `;

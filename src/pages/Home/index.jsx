@@ -6,7 +6,7 @@ import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
-import { Container } from './styles'
+import { Container, Main } from './styles'
 import { Link } from 'react-router-dom'
 import { useInput } from '../../hooks/input'
 import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
@@ -106,7 +106,7 @@ export function Home() {
   return (
     <Container>
       <Header />
-      <main className={statePage ? "light" : "dark"}>
+      <Main className={statePage ? "light" : "dark"}>
         <div className={search.length !== 0 ? "searchAlert" : "none"}>
           <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
         </div>
@@ -210,7 +210,7 @@ export function Home() {
             </div>
           </div>
         </div>
-      </main>
+      </Main>
       <Footer />
     </Container>
   )

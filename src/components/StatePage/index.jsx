@@ -3,11 +3,15 @@ import { useStatePage } from '../../hooks/statePage'
 import { BsLightbulbOff } from 'react-icons/bs'
 import { BsLightbulb } from 'react-icons/bs'
 
-export function StatePage({StatePage}) {
+export function StatePage({ StatePage }) {
   const { handleStatesPages } = useStatePage()
 
   function handleState() {
-    handleStatesPages(StatePage)
+    if (StatePage == true) {
+      handleStatesPages(false)
+    } else {
+      handleStatesPages(true)
+    }
   }
 
   return (

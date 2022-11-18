@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 export const InputContext = createContext({})
 
 function InputProvider({ children }) {
@@ -6,8 +6,16 @@ function InputProvider({ children }) {
 
 
   function handleStates( Search ) {
+    localStorage.setItem("@explorerfood: search", Search)
     setSearch(Search)
   }
+
+  useEffect(() => {
+    const search = localStorage.getItem("@explorerfood: search")
+    if (search) {
+      setSearch(search)
+    }
+  }, [])
 
   return (
     <InputContext.Provider value={{ search, handleStates }}>
