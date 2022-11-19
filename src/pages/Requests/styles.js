@@ -1,7 +1,22 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const Container = styled.div`
+export const ContainerOne = styled.div`
+    div.containerLight {
+    width: 100%;
+    height: 100vh;
+    background: ${({ theme }) => theme.COLORS.GRAY_100};
+    
+  }
+    div.containerDark {
+    width: 100%;
+    height: 100vh;
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    
+  }
+`
+
+export const ContainerTwo = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;

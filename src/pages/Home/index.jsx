@@ -6,7 +6,7 @@ import { BiChevronRight } from 'react-icons/bi'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
 import { useRef } from 'react'
-import { Container, Main } from './styles'
+import { ContainerOne, ContainerTwo, Main } from './styles'
 import { Link } from 'react-router-dom'
 import { useInput } from '../../hooks/input'
 import { AmountAndButtonInclude } from '../../components/AmountAndButtonInclude'
@@ -104,115 +104,117 @@ export function Home() {
   }
 
   return (
-    <Container>
-      <Header />
-      <Main className={statePage ? "light" : "dark"}>
-        <div className={search.length !== 0 ? "searchAlert" : "none"}>
-          <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
-        </div>
-        <div className={statePage ? "logoHomeLight" : "logoHomeDark"}>
-          <img src={HomeImage} alt="imagem da home" />
-          <div className={statePage ? "logoTextLight" : "logoTextDark"}>
-            <h1 >Sabores inigualáveis </ h1>
-            <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+    <ContainerOne>
+      <ContainerTwo className={statePage ? "containerLight" : "containerDark"}>
+        <Header />
+        <Main className={statePage ? "light" : "dark"}>
+          <div className={search.length !== 0 ? "searchAlert" : "none"}>
+            <RiAlertFill className="svgAlert" /><p>Aperte enter (caso o campo de pesquisa estiver selecionado) ou clique no botão com a lupa para salvar suas pesquisas para usá-las depois e acelerar suas pesquisas!</p>
           </div>
-        </div>
-        <h2 className={statePage ? "textLight" : "textDark"}>Pratos principais</h2>
-        <div className="container">
-          <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClick}>
-            <button ><IoIosArrowBack /></button>
-          </div>
-          <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClick}>
-            <button ><IoIosArrowForward /></button>
-          </div>
-          <div ref={carousel} className="listFood">
-            <div className={foods.length === 0 ? "searchNone" : "none"}>
-              <p>Não foi encontrado nenhum prato!</p>
-              <RiAlertFill />
+          <div className={statePage ? "logoHomeLight" : "logoHomeDark"}>
+            <img src={HomeImage} alt="imagem da home" />
+            <div className={statePage ? "logoTextLight" : "logoTextDark"}>
+              <h1 >Sabores inigualáveis </ h1>
+              <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
             </div>
-            <div className={foods.length === 0 ? "none" : "listFoods"}>
-              {
-                foods.map(food => (
-                  <div className="cardFood" key={String(food.id)} >
-                    <Favorite dish_id={food.id} />
-                    <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
-                    <Link to={`/details/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
-                    <div className="description"><p>{food.description}</p></div>
-                    <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")} </span>
-                    <div className="amountAndButton">
-                      <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+          </div>
+          <h2 className={statePage ? "textLight" : "textDark"}>Pratos principais</h2>
+          <div className="container">
+            <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClick}>
+              <button ><IoIosArrowBack /></button>
+            </div>
+            <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClick}>
+              <button ><IoIosArrowForward /></button>
+            </div>
+            <div ref={carousel} className="listFood">
+              <div className={foods.length === 0 ? "searchNone" : "none"}>
+                <p>Não foi encontrado nenhum prato!</p>
+                <RiAlertFill />
+              </div>
+              <div className={foods.length === 0 ? "none" : "listFoods"}>
+                {
+                  foods.map(food => (
+                    <div className="cardFood" key={String(food.id)} >
+                      <Favorite dish_id={food.id} />
+                      <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
+                      <Link to={`/details/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
+                      <div className="description"><p>{food.description}</p></div>
+                      <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")} </span>
+                      <div className="amountAndButton">
+                        <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+                      </div>
                     </div>
-                  </div>
-                ))
-              }
+                  ))
+                }
+              </div>
             </div>
           </div>
-        </div>
-        <h2 className={statePage ? "textLight" : "textDark"}>Sobremesas</h2>
-        <div className="container">
-          <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClickTwo}>
-            <button ><IoIosArrowBack /></button>
-          </div>
-          <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClickTwo}>
-            <button ><IoIosArrowForward /></button>
-          </div>
-          <div ref={carouselTwo} className="listFood">
-            <div className={foodsDesserts.length === 0 ? "searchNone" : "none"}>
-              <p>Não foi encontrada nenhuma sobremesa!</p>
-              <RiAlertFill />
+          <h2 className={statePage ? "textLight" : "textDark"}>Sobremesas</h2>
+          <div className="container">
+            <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClickTwo}>
+              <button ><IoIosArrowBack /></button>
             </div>
-            <div className={foodsDesserts.length === 0 ? "none" : "listFoods"}>
-              {
-                foodsDesserts.map(food => (
-                  <div className="cardFood" key={String(food.id)} >
-                    <FavoriteDesserts dessert_id={food.id} />
-                    <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
-                    <Link to={`/detailsdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
-                    <p>{food.description}</p>
-                    <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
-                    <div className="amountAndButton">
-                      <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+            <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClickTwo}>
+              <button ><IoIosArrowForward /></button>
+            </div>
+            <div ref={carouselTwo} className="listFood">
+              <div className={foodsDesserts.length === 0 ? "searchNone" : "none"}>
+                <p>Não foi encontrada nenhuma sobremesa!</p>
+                <RiAlertFill />
+              </div>
+              <div className={foodsDesserts.length === 0 ? "none" : "listFoods"}>
+                {
+                  foodsDesserts.map(food => (
+                    <div className="cardFood" key={String(food.id)} >
+                      <FavoriteDesserts dessert_id={food.id} />
+                      <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
+                      <Link to={`/detailsdesserts/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
+                      <p>{food.description}</p>
+                      <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
+                      <div className="amountAndButton">
+                        <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+                      </div>
                     </div>
-                  </div>
-                ))
-              }
+                  ))
+                }
+              </div>
             </div>
           </div>
-        </div>
-        <h2 className={statePage ? "textLight" : "textDark"}>Bebidas</h2>
-        <div className="container">
-          <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClickThree}>
-            <button ><IoIosArrowBack /></button>
-          </div>
-          <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClickThree}>
-            <button ><IoIosArrowForward /></button>
-          </div>
-          <div ref={carouselThree} className="listFood">
-            <div className={foodsDrinks.length === 0 ? "searchNone" : "none"}>
-              <p>Não foi encontrada nenhuma bebida!</p>
-              <RiAlertFill />
+          <h2 className={statePage ? "textLight" : "textDark"}>Bebidas</h2>
+          <div className="container">
+            <div className={statePage ? "arrowOneLight" : "arrowOneDark"} onClick={handleLeftClickThree}>
+              <button ><IoIosArrowBack /></button>
             </div>
-            <div className={foodsDrinks.length === 0 ? "none" : "listFoods"}>
-              {
-                foodsDrinks.map(food => (
-                  <div className="cardFood" key={String(food.id)} >
-                    <FavoriteDrinks drink_id={food.id} />
-                    <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
-                    <Link to={`/detailsdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
-                    <p>{food.description}</p>
-                    <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
-                    <div className="amountAndButton">
-                      <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+            <div className={statePage ? "arrowTwoLight" : "arrowTwoDark"} onClick={handleRightClickThree}>
+              <button ><IoIosArrowForward /></button>
+            </div>
+            <div ref={carouselThree} className="listFood">
+              <div className={foodsDrinks.length === 0 ? "searchNone" : "none"}>
+                <p>Não foi encontrada nenhuma bebida!</p>
+                <RiAlertFill />
+              </div>
+              <div className={foodsDrinks.length === 0 ? "none" : "listFoods"}>
+                {
+                  foodsDrinks.map(food => (
+                    <div className="cardFood" key={String(food.id)} >
+                      <FavoriteDrinks drink_id={food.id} />
+                      <img src={`${api.defaults.baseURL}/files/${food.image}`} alt="imagem do prato" />
+                      <Link to={`/detailsdrinks/${food.id}`}><a><h2>{food.name}<BiChevronRight /></h2></a></Link>
+                      <p>{food.description}</p>
+                      <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(food.price).toFixed(2)).replace(".", ",")}</span>
+                      <div className="amountAndButton">
+                        <AmountAndButtonInclude image={food.image} price={food.price} name={food.name} />
+                      </div>
                     </div>
-                  </div>
-                ))
-              }
+                  ))
+                }
+              </div>
             </div>
           </div>
-        </div>
-      </Main>
-      <Footer />
-    </Container>
+        </Main>
+        <Footer />
+      </ContainerTwo>
+    </ContainerOne >
   )
 }
 

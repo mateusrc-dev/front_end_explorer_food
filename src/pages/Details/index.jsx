@@ -1,4 +1,4 @@
-import { Container, Main, ButtonText } from './styles'
+import { ContainerOne, ContainerTwo, Main, ButtonText } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
@@ -26,35 +26,37 @@ export function Details() {
   }, [])
 
   return (
-    <Container>
-      <Header />
-      <Main className={statePage ? "light" : "dark"}>
-        <div className="back">
-          <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar</p></ButtonText>
-        </div>
-        <div className="details">
-          <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
-          <div className="textDetails">
-            <h1 className={statePage ? "h1Light" : "h1Dark"}>{data.name}</h1>
-            <p className={statePage ? "pLight" : "pDark"}>{data.description}</p>
-            <div className="ingredients">
-              {
-                ingredients.map(ingredient => (
-                  <span key={String(ingredient.id)}>
-                    <Img imgName={ingredient.name} />
-                    <p className={statePage ? "Light" : "Dark"}>{ingredient.name}</p>
-                  </span>
-                ))
-              }
-            </div>
-            <div className="finishBuy">
-              <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(data.price).toFixed(2)).replace(".", ",")}</span>
-              <AmountAndButtonInclude image={data.image} price={data.price} name={data.name} />
+    <ContainerOne>
+      <ContainerTwo className={statePage ? "containerLight" : "containerDark"}>
+        <Header />
+        <Main className={statePage ? "light" : "dark"}>
+          <div className="back">
+            <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar</p></ButtonText>
+          </div>
+          <div className="details">
+            <img className="image" src={`${api.defaults.baseURL}/files/${data.image}`} alt="foto do prato" />
+            <div className="textDetails">
+              <h1 className={statePage ? "h1Light" : "h1Dark"}>{data.name}</h1>
+              <p className={statePage ? "pLight" : "pDark"}>{data.description}</p>
+              <div className="ingredients">
+                {
+                  ingredients.map(ingredient => (
+                    <span key={String(ingredient.id)}>
+                      <Img imgName={ingredient.name} />
+                      <p className={statePage ? "Light" : "Dark"}>{ingredient.name}</p>
+                    </span>
+                  ))
+                }
+              </div>
+              <div className="finishBuy">
+                <span className={statePage ? "priceLight" : "priceDark"}>R$ {String(Number(data.price).toFixed(2)).replace(".", ",")}</span>
+                <AmountAndButtonInclude image={data.image} price={data.price} name={data.name} />
+              </div>
             </div>
           </div>
-        </div>
-      </Main>
-      <Footer />
-    </Container>
+        </Main>
+        <Footer />
+      </ContainerTwo>
+    </ContainerOne >
   )
 }

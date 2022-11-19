@@ -1,4 +1,4 @@
-import { Container, ButtonText } from './styles'
+import { ContainerOne, ContainerTwo, ButtonText } from './styles'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { SlArrowLeft } from 'react-icons/sl'
@@ -38,70 +38,72 @@ export function MyFavorites() {
   }, [])
 
   return (
-    <Container>
-      <Header />
-      <main className={statePage ? "light" : "dark"}>
-        <div className="button">
-          <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
-        </div>
-        <div className="columns">
-          <div className="columnOne">
-            <h1 className={statePage ? "titleLight" : "titleDark"}>Pratos favoritos</h1>
-            <div className="requests">
-              {
-                favoritesDish.map(fav => (
-                  <div className="request" key={String(fav.id)}>
-                    <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
-                    <div className="Text">
-                      <div className="text">
-                        <span className="name">{fav.name}</span>
+    <ContainerOne>
+      <ContainerTwo className={statePage ? "containerLight" : "containerDark"}>
+        <Header />
+        <main className={statePage ? "light" : "dark"}>
+          <div className="button">
+            <ButtonText to="/"><SlArrowLeft className={statePage ? "svgLight" : "svgDark"} /><p className={statePage ? "light" : "dark"}>voltar para a Home</p></ButtonText>
+          </div>
+          <div className="columns">
+            <div className="columnOne">
+              <h1 className={statePage ? "titleLight" : "titleDark"}>Pratos favoritos</h1>
+              <div className="requests">
+                {
+                  favoritesDish.map(fav => (
+                    <div className="request" key={String(fav.id)}>
+                      <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                      <div className="Text">
+                        <div className="text">
+                          <span className="name">{fav.name}</span>
+                        </div>
+                        <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
                       </div>
-                      <p  className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
                     </div>
-                  </div>
-                ))
-              }
+                  ))
+                }
+              </div>
+            </div>
+            <div className="columnTwo">
+              <h1 className={statePage ? "titleLight" : "titleDark"}>Sobremesas favoritas</h1>
+              <div className="requests">
+                {
+                  favoritesDessert.map(fav => (
+                    <div className="request" key={String(fav.id)}>
+                      <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                      <div className="Text">
+                        <div className="text">
+                          <span className="name">{fav.name}</span>
+                        </div>
+                        <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+            <div className="columnTwo">
+              <h1 className={statePage ? "titleLight" : "titleDark"}>Bebidas favoritas</h1>
+              <div className="requests">
+                {
+                  favoritesDrink.map(fav => (
+                    <div className="request" key={String(fav.id)}>
+                      <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
+                      <div className="Text">
+                        <div className="text">
+                          <span className="name">{fav.name}</span>
+                        </div>
+                        <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
           </div>
-          <div className="columnTwo">
-            <h1 className={statePage ? "titleLight" : "titleDark"}>Sobremesas favoritas</h1>
-            <div className="requests">
-              {
-                favoritesDessert.map(fav => (
-                  <div className="request" key={String(fav.id)}>
-                    <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
-                    <div className="Text">
-                      <div className="text">
-                        <span className="name">{fav.name}</span>
-                      </div>
-                      <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-          <div className="columnTwo">
-            <h1 className={statePage ? "titleLight" : "titleDark"}>Bebidas favoritas</h1>
-            <div className="requests">
-              {
-                favoritesDrink.map(fav => (
-                  <div className="request" key={String(fav.id)}>
-                    <img src={`${api.defaults.baseURL}/files/${fav.image}`} alt="imagem do prato" />
-                    <div className="Text">
-                      <div className="text">
-                        <span className="name">{fav.name}</span>
-                      </div>
-                      <p className={statePage ? "descriptionLight" : "descriptionDark"}>{fav.description}</p>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </Container>
+        </main>
+        <Footer />
+      </ContainerTwo>
+    </ContainerOne >
   )
 }
