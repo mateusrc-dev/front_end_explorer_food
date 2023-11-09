@@ -1,6 +1,6 @@
 Parte visual do aplicativo Explorer Food (FRONT-END)
 
-Aplicativo consiste em um e-commerce de comida, no qual o usuário pode adicionar a comida para a comprar, podendo escolher a quantidade de items que deseja comprar
+Aplicativo consiste em um e-commerce de comida, no qual o usuário pode adicionar a refeição finalizar a compra, podendo escolher a quantidade de items que deseja comprar, o admin pode dar feedback para o cliente em relação ao status do pedido (se está sendo preparado, se foi enviado)
 
 Nesse aplicativo usamos as seguintes técnicas:
 
