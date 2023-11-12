@@ -26,3 +26,6 @@
 	"email": "marcos@email.com",
 	"password": "123456"
 }
+
+## ➡️ Para usar a aplicação, link do deploy abaixo:
+• https://explorerfoodd.netlify.app/
